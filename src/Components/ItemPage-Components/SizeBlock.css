@@ -1,0 +1,60 @@
+.SizeBlock {
+    display: flex;
+}
+
+.SizeBlock-input {
+    display: none;
+}
+
+.SizeBlock-label {
+    background-color: #191919;
+    box-sizing: border-box;
+    color: white;
+    padding: 5px 10px;
+    width: 100px;
+
+    height: 40px;
+
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s ease-out;
+}
+
+.SizeBlock-label:hover {
+    filter: brightness(150%);
+    transform: scale(1.1);
+    backface-visibility: hidden;
+}
+
+
+@media (max-width:767px) {
+    .SizeBlock-label {
+
+        padding: calc(1.1vw + 0.12rem) calc(2.86vw + 0.12rem);
+
+        width: calc(35vw + 0.12rem);
+
+        height: calc(13.58vw + 0.12rem);
+
+        font-size: calc(4.72vw + 0.12rem);
+
+    }
+}
+
+
+@media (min-width:768px) and (max-width:1024px) {
+    .SizeBlock-label {
+
+        padding: 5px 10px;
+
+        width: 80px;
+        height: 30px;
+        font-size: 14px;
+
+    }
+}

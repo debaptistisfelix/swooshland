@@ -1,0 +1,175 @@
+/* .LoginPage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8vh;
+    margin-bottom: 30px;
+    background-color: whitesmoke;
+
+} */
+
+.LoginPage-card {
+    background-color: whitesmoke;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 5px;
+    /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3); */
+    height: 400px;
+    width: min(90%, 400px);
+    border: 1px solid #495057;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 30px 0;
+    transition: all 0.5s ease-out;
+    position: absolute;
+    z-index: 8;
+    transform: rotateY(-90deg);
+}
+
+.hide-login-form {
+    /*  transform: rotateY(-90deg); */
+    opacity: 0;
+    animation: hide 0.5s 0s forwards ease-out;
+
+}
+
+
+.show-login-form {
+    /* transform: rotateY(0); */
+    animation: show 0.5s 0.5s forwards ease-out;
+
+}
+
+@keyframes hide {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(-90deg);
+    }
+}
+
+@keyframes show {
+    from {
+        transform: rotateY(-90deg);
+    }
+
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+
+
+.LoginPage-title-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*  border: 1px solid red; */
+    box-sizing: border-box;
+    width: 80%;
+    height: 20%;
+}
+
+.LoginPage-title {
+    color: #191919;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.LoginPage-subtitle {
+    color: #495057;
+    font-size: 16px;
+}
+
+.LoginPage-inputs-box {
+    /* border: 1px solid black; */
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+    justify-content: space-between;
+}
+
+.LoginPage-input-box {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.LoginPage-input-box label {
+    font-weight: bold;
+    color: #495057;
+    letter-spacing: 2px;
+}
+
+.LoginPage-input-box input {
+    height: 40%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #495057;
+    background-color: whitesmoke;
+}
+
+.LoginPage-reset-pw {
+    align-self: flex-end;
+    font-weight: bold;
+    color: #495057;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.LoginPage-reset-pw:hover {
+    color: #191919;
+    text-decoration: underline;
+}
+
+.LoginPage-btn {
+    background-color: #191919;
+    color: white;
+    border: none;
+    outline: none;
+    letter-spacing: 2px;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.LoginPage-btn:hover {
+    filter: brightness(130%);
+}
+
+.LoginPage-to-register {
+    display: flex;
+    gap: 10px;
+}
+
+.LoginPage-to-register span {
+    font-size: 13px;
+}
+
+.LoginPage-to-register-a {
+    color: #495057;
+}
+
+
+.LoginPage-to-register-b {
+    color: #191919;
+    cursor: pointer;
+}
+
+.LoginPage-to-register-b:hover {
+    text-decoration: underline;
+    transform: translateY(-2px);
+}
