@@ -1,0 +1,86 @@
+.ProductsDisplayer {
+    width: 100%;
+    height: 100%;
+    justify-self: flex-end;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    border-left: 1px solid #dee2e6;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+}
+
+.max-size-width {
+
+    animation: expandWidth 0.5s 0s forwards ease-out;
+}
+
+.small-size-width {
+    animation: reduceWidth 0.5s 0s forwards ease-out;
+}
+
+
+@keyframes expandWidth {
+    from {
+        left: 25%;
+        width: 75%;
+    }
+
+    to {
+        left: 0;
+        width: 100%;
+    }
+}
+
+@keyframes reduceWidth {
+    from {
+        left: 0;
+        width: 100%;
+    }
+
+    to {
+        left: 25%;
+        width: 75%;
+    }
+}
+
+@media (max-width:767px) {
+    .max-size-width {
+
+        animation: none
+    }
+
+    .small-size-width {
+        animation: none
+    }
+}
+
+
+
+@media (min-width:768px) and (max-width:1024px) {
+
+
+    @keyframes expandWidth {
+        from {
+            left: 30%;
+            width: 70%;
+        }
+
+        to {
+            left: 0;
+            width: 100%;
+        }
+    }
+
+    @keyframes reduceWidth {
+        from {
+            left: 0;
+            width: 100%;
+        }
+
+        to {
+            left: 30%;
+            width: 70%;
+        }
+    }
+}

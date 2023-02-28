@@ -2,8 +2,7 @@ import "../ShowItems/ItemListPage.css";
 import Drawer from "./Drawer";
 import { useState, useEffect } from "react";
 import ProductCard2 from "../ProductCard2";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import ExpandibleContainer from "./ExpandibleContainer";
 
 const items = [
     { model: "NIKE AIR FORCE 1", name: "DOODLES", imgSrc: "/list/doodles.jpg", price: "189.90" },
@@ -37,6 +36,15 @@ const items = [
     { model: "PUMA CALI", name: "CLEOPATRA", imgSrc: "/list/puma.jpg", price: "189.90" },
 ]
 
+const categories = [
+    { categ: "AIR FORCE 1", qty: 11 },
+    { categ: "JORDAN 1 MID", qty: 8 },
+    { categ: "JORDAN 1 LOW", qty: 2 },
+    { categ: "PUMA", qty: 1 },
+    { categ: "FILA", qty: 1 },
+    { categ: "ADIDAS", qty: 1 },
+];
+
 
 
 function ItemListPage() {
@@ -45,9 +53,9 @@ function ItemListPage() {
     const [openSort, setOpenSort] = useState(false);
     const [loadedPage, setLoadedPage] = useState(false);
 
-    useEffect(() => {
-        AOS.init();
-    }, [])
+
+
+
 
     function toggleDrawer() {
         openDrawer === "" && setOpenDrawer(false);
@@ -64,8 +72,10 @@ function ItemListPage() {
             return item.model.includes(brand)
         })
         setListedItems(filteredList);
-        setOpenDrawer(false);
+        window.matchMedia("(max-width:767px)").matches && setOpenDrawer(false);
     }
+
+
 
     function sortByAsc() {
         const numAsc = [...listedItems].sort((a, b) => a.price - b.price)
@@ -106,7 +116,7 @@ function ItemListPage() {
         boxStatus = undefined;
     }
 
-    /*  openDrawer === true ? boxStatus = "small-size-width" : boxStatus = "max-size-width" */
+
     let sortModal;
     openSort === true ? sortModal = "show-sort-modal" : sortModal = "hide-sort-modal"
 
@@ -138,48 +148,25 @@ function ItemListPage() {
                     <Drawer
                         toggleDrawer={toggleDrawer}
                         sortByBrand={sortByBrand}
-                        drawerStatus={openDrawer} />
-                    <div className={`ItemListPage-box ${boxStatus}`}>
-                        <div className="ItemListPage-banner" data-aos="fade-down">
-                            <span className="ItemListPage-title">SNEAKERS</span>
-                            <div className="ItemListPage-control-box">
-                                <span
-                                    onClick={toggleDrawer}
-                                    className="ItemListPage-control-tool filter-status">
-                                    {openDrawer === true ? "HIDE " : "SHOW "}
+                        drawerStatus={openDrawer}
+                        categories={categories}
+                        items={listedItems}
+                    />
 
-                                    FILTERS
-                                    <i className="fa-solid fa-sliders"></i>
-                                </span>
-                                <span onClick={toggleSortMOdal} className="ItemListPage-control-tool sort-status">
-                                    SORT BY
-                                    <i className="fa-solid fa-sort-down"></i>
-                                    <div className={`ItemListPage-sort-modal ${sortModal}`}>
-                                        <span
-                                            onClick={sortByAZ}
-                                            className="sort-modal-option">NAME (A-Z)</span>
-                                        <span
-                                            onClick={sortByZA}
-                                            className="sort-modal-option">NAME (Z-A)</span>
-                                        <span
-                                            onClick={sortByAsc}
-                                            className="sort-modal-option">PRICE (<i className="fa-solid fa-arrow-up"></i>)</span>
-                                        <span
-                                            onClick={sortByDesc}
-                                            className="sort-modal-option">PRICE (<i className="fa-solid fa-arrow-down"></i>)</span>
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
-                        <div className="ItemListPage-list-container" data-aos="flip-down">
-                            <span className="results-amount">
-                                Sneaker results: (<b>{listedItems.length}</b>)
-                            </span>
-                            <div className="ItemListPage-list-content">
-                                {displayedItems}
-                            </div>
-                        </div>
-                    </div>
+                    <ExpandibleContainer
+                        boxStatus={boxStatus}
+                        toggleDrawer={toggleDrawer}
+                        openDrawer={openDrawer}
+                        toggleSortMOdal={toggleSortMOdal}
+                        sortModal={sortModal}
+                        sortByAZ={sortByAZ}
+                        sortByZA={sortByZA}
+                        sortByAsc={sortByAsc}
+                        sortByDesc={sortByDesc}
+                        listedItems={listedItems}
+                        displayedItems={displayedItems}
+                        category="Sneakers"
+                    />
                 </div>
                 : <div className="ItemListPage-loader-box">
                     <div className="loader-container">

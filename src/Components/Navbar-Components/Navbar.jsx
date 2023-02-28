@@ -59,6 +59,7 @@ function Navbar() {
     (openNav === false) ? NavBlurrer = "hide-nav-blurrer" : NavBlurrer = undefined
 
     let SearchNavBlurrer;
+
     openSearchResults === false ? SearchNavBlurrer = "hide-search-nav-blurrer" : SearchNavBlurrer = undefined;
 
 
@@ -116,7 +117,7 @@ function Navbar() {
                 <ul className="Navbar-links">
                     <NavLink onClick={() => setOpenNav(false)} className={`Navbar-link ${linkStatus}1 homeLink`}>HOME <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
                     <NavLink onClick={() => setOpenNav(false)} to="/sneakers" className={`Navbar-link ${linkStatus}2`}>SNEAKERS <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
-                    <NavLink onClick={() => setOpenNav(false)} className={`Navbar-link ${linkStatus}3`}>ACCESSORIES <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
+                    <NavLink onClick={() => setOpenNav(false)} to="/accessories" className={`Navbar-link ${linkStatus}3`}>ACCESSORIES <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
                     <NavLink onClick={() => setOpenNav(false)} className={`Navbar-link ${linkStatus}4`}>ABOUT US <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
                 </ul>
                 <div className="Navbar-search-box">

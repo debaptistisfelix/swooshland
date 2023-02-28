@@ -1,0 +1,303 @@
+.ItemListPage-box {
+    width: 100%;
+    height: 100%;
+    justify-self: flex-end;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    border-left: 1px solid #dee2e6;
+    box-sizing: border-box;
+
+}
+
+.max-size-width {
+
+    animation: expandWidth 0.5s 0s forwards ease-out;
+}
+
+.small-size-width {
+    animation: reduceWidth 0.5s 0s forwards ease-out;
+}
+
+
+@keyframes expandWidth {
+    from {
+        left: 25%;
+        width: 75%;
+    }
+
+    to {
+        left: 0;
+        width: 100%;
+    }
+}
+
+@keyframes reduceWidth {
+    from {
+        left: 0;
+        width: 100%;
+    }
+
+    to {
+        left: 25%;
+        width: 75%;
+    }
+}
+
+.ItemListPage-banner {
+    border: 1px solid #dee2e6;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0% 5%;
+    /*  color: #495057; */
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.ItemListPage-title {
+    color: #191919;
+    font-size: 40px;
+    letter-spacing: 5px;
+    font-weight: 600;
+}
+
+.ItemListPage-control-box {
+    /*    border: 1px solid black; */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.ItemListPage-control-tool {
+    font-weight: 600;
+    color: #191919;
+    font-size: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+
+.sort-status {
+    position: relative;
+}
+
+.ItemListPage-sort-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    border: 1px solid #dee2e6;
+    background-color: whitesmoke;
+    top: 150%;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    z-index: 5;
+}
+
+.sort-modal-option {
+    color: #191919;
+    border: 1px solid #dee2e6;
+    height: 25%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.show-sort-modal {
+    opacity: 1;
+}
+
+.hide-sort-modal {
+    opacity: 0;
+}
+
+.sort-modal-option:hover {
+    background-color: #dee2e6;
+}
+
+.ItemListPage-list-container {
+    width: 100%;
+    min-height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ItemListPage-list-container .results-amount {
+    color: #495057;
+    padding: 15px 0;
+    letter-spacing: 2px;
+
+}
+
+.ItemListPage-list-content {
+    height: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    /*  border: 1px solid #dee2e6; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    padding: 5%;
+    padding-top: 2%;
+    overflow-y: scroll;
+
+    border-top: none;
+}
+
+
+
+
+.ItemListPage-loader-box {
+    width: 100%;
+    height: 100%;
+    min-height: 92vh;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+
+}
+
+.ItemListPage-loader-box .loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    letter-spacing: 3px;
+    color: #495057;
+}
+
+.ItemListPage-loader-box .loader {
+    border: 4px solid #dee2e6;
+    border-top: 4px solid #495057;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+@media (max-width:767px) {
+
+
+    .ItemListPage-banner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .ItemListPage-title {
+
+        font-size: clamp(22px, 6.45vw + 0.12rem, 26px);
+        letter-spacing: 5px;
+        height: 50%;
+
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ItemListPage-control-box {
+        gap: 0;
+        width: 100%;
+        height: 50%;
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .ItemListPage-control-tool {
+        font-size: clamp(10px, 2.86vw + 0.12rem, 16px);
+        gap: 3px;
+
+        width: 50%;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+@media (min-width:768px) and (max-width:1024px) {
+
+
+    .ItemListPage-title {
+
+        font-size: 30px;
+
+    }
+
+    .ItemListPage-control-box {
+        /*    border: 1px solid black; */
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: clamp(20px, 2.35vw + 0.12rem, 40px)
+    }
+
+    .ItemListPage-control-tool {
+        font-weight: 600;
+        color: #191919;
+        font-size: clamp(12px, 1.31vw + 0.12rem, 14px);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        cursor: pointer;
+        letter-spacing: 2px;
+    }
+
+    @keyframes expandWidth {
+        from {
+            left: 30%;
+            width: 70%;
+        }
+
+        to {
+            left: 0;
+            width: 100%;
+        }
+    }
+
+    @keyframes reduceWidth {
+        from {
+            left: 0;
+            width: 100%;
+        }
+
+        to {
+            left: 30%;
+            width: 70%;
+        }
+    }
+}

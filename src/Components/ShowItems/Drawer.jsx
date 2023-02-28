@@ -1,6 +1,6 @@
 import "../ShowItems/Drawer.css";
 
-function Drawer({ drawerStatus, sortByBrand, toggleDrawer }) {
+function Drawer({ drawerStatus, sortByBrand, toggleDrawer, categories, items }) {
     let drawerClass = "no-drawer"
     if (drawerStatus === true) {
         drawerClass = "open-drawer"
@@ -9,6 +9,17 @@ function Drawer({ drawerStatus, sortByBrand, toggleDrawer }) {
     } else {
         drawerClass = "no-drawer"
     }
+
+
+
+    let categoryList = categories.map((categ, i) => {
+        return <span
+            onClick={() => sortByBrand(`${categ.categ}`)}
+            className="Drawer-category-model">
+            {categ.categ}
+            <span className="Drawer-model-qty">({categ.qty})</span>
+        </span>
+    })
 
 
     /* drawerStatus === true ? drawerClass = "open-drawer" : drawerClass = "close-drawer" */
@@ -29,42 +40,9 @@ function Drawer({ drawerStatus, sortByBrand, toggleDrawer }) {
                         onClick={() => sortByBrand(" ")}
                         className="Drawer-category-model">
                         ALL
-                        <span className="Drawer-model-qty">(25)</span>
+                        <span className="Drawer-model-qty">({items.length})</span>
                     </span>
-                    <span
-                        onClick={() => sortByBrand("AIR FORCE")}
-                        className="Drawer-category-model">
-                        NIKE AIR FORCE
-                        <span className="Drawer-model-qty">(11)</span>
-                    </span>
-                    <span className="Drawer-category-model"
-                        onClick={() => sortByBrand("JORDAN 1 MID")}>
-                        NIKE AIR JORDAN MID
-                        <span className="Drawer-model-qty">(8)</span>
-                    </span>
-                    <span className="Drawer-category-model"
-                        onClick={() => sortByBrand("JORDAN 1 LOW")}>
-                        NIKE JORDAN 1 LOW
-                        <span className="Drawer-model-qty">(2)</span>
-                    </span>
-                    <span className="Drawer-category-model"
-                        onClick={() => sortByBrand("PUMA")}>
-
-                        PUMA
-                        <span className="Drawer-model-qty">(1)</span>
-                    </span>
-                    <span className="Drawer-category-model"
-                        onClick={() => sortByBrand("FILA")}>
-
-                        FILA
-                        <span className="Drawer-model-qty">(1)</span>
-                    </span>
-                    <span className="Drawer-category-model"
-                        onClick={() => sortByBrand("ADIDAS")}>
-
-                        ADIDAS
-                        <span className="Drawer-model-qty">(1)</span>
-                    </span>
+                    {categoryList}
                 </div>
             </div>
 

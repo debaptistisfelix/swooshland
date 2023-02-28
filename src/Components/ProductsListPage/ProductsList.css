@@ -1,0 +1,31 @@
+.ProductsList {
+    width: 100%;
+    min-height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: whitesmoke;
+}
+
+.ProductsList .results-amount {
+    color: #495057;
+    padding: 15px 0;
+    letter-spacing: 2px;
+}
+
+
+.ProductsList-list-content {
+    height: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    /*  border: 1px solid #dee2e6; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    padding: 5%;
+    padding-top: 2%;
+    overflow-y: scroll;
+
+    border-top: none;
+}
