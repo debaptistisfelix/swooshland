@@ -121,7 +121,7 @@ function Navbar() {
         <nav className="Navbar">
             <div className="Navbar-logo-box">
 
-                <NavLink className="Navbar-logo">SWOOSHLAND</NavLink>
+                <NavLink to="/" className="Navbar-logo">SWOOSHLAND</NavLink>
             </div>
             <div className={`Navbar-rightside ${navStatus}`}>
                 <div className="Navbar-close-sidemenu"><i onClick={toggleNavStatus} className="fa-solid fa-xmark"></i></div>

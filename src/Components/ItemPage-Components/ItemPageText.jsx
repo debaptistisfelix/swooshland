@@ -1,6 +1,6 @@
 import "./ItemPageText.css";
 import SizeBlock from "./SizeBlock";
-import { useState } from "react";
+
 
 const sizes = [
     { size: "EU 36", id: 1 },
@@ -20,6 +20,8 @@ function ItemPageText() {
 
 
 
+
+
     let sizeTable = sizes.map(size => {
         return <SizeBlock
             key={size.id}
@@ -30,6 +32,7 @@ function ItemPageText() {
     })
     return (
         <div className="ItemPageText">
+
             <div className="ItemPageText-title-box">
                 <div className="ItemPageText-title-price">
                     <span className="ItemPageText-model">JORDAN 1 ROGUE </span>
