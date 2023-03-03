@@ -13,12 +13,6 @@ function ProductCard2({ model, name, imgSrc, price }) {
                 </div>
                 <div className="ProductCard2-text-down">
                     <span className="ProductCard2-name">{name}</span>
-                    <div className="ProductCard2-palette">
-                        {/* <div style={{ backgroundColor: "pink" }} className="ProductCard-palette-color"></div>
-                        <div style={{ backgroundColor: "lightblue" }} className="ProductCard-palette-color"></div>
-                        <div style={{ backgroundColor: "blue" }} className="ProductCard-palette-color"></div> */}
-                    </div>
-
                 </div>
             </div>
         </div>

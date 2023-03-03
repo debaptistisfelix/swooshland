@@ -1,11 +1,13 @@
 import "./Navbar.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import UserModalNav from "./UserModalNav";
 import CartModalNav from "./CartModalNav";
 import NavbarSearchResults from "./NavbarSearchResults";
 import CartIcon from "./CartIcon";
+import { useContext } from "react";
+import { LoggedContext } from "../Context/LoggedContext";
 
 const items = [
     { model: "NIKE AIR FORCE 1", name: "DOODLES", imgSrc: "/list/doodles.jpg", price: "189.90" },
@@ -45,6 +47,15 @@ function Navbar() {
     const [openCartModal, setOpenCartModal] = useState(false);
     const [openSearchResults, setOpenSearchResults] = useState(false);
     const [searchValue, setSearchValue] = useState("");
+    const { setLogged } = useContext(LoggedContext);
+
+    useEffect(() => {
+        const checkLogSession = () => {
+            window.localStorage.getItem("isLoggedIn") ? setLogged(true) : setLogged(false);
+        }
+        checkLogSession();
+    }, []);
+
 
     let navStatus;
     openNav === true ? navStatus = "Navbar-active" : undefined
@@ -118,7 +129,7 @@ function Navbar() {
                     <NavLink onClick={() => setOpenNav(false)} className={`Navbar-link ${linkStatus}1 homeLink`}>HOME <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
                     <NavLink onClick={() => setOpenNav(false)} to="/sneakers" className={`Navbar-link ${linkStatus}2`}>SNEAKERS <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
                     <NavLink onClick={() => setOpenNav(false)} to="/accessories" className={`Navbar-link ${linkStatus}3`}>ACCESSORIES <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
-                    <NavLink onClick={() => setOpenNav(false)} className={`Navbar-link ${linkStatus}4`}>ABOUT US <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
+                    <NavLink onClick={() => setOpenNav(false)} to="/aboutus" className={`Navbar-link ${linkStatus}4`}>ABOUT US <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
                 </ul>
                 <div className="Navbar-search-box">
                     <span className="Navbar-search-cta">Explore all of our Custom Products!</span>

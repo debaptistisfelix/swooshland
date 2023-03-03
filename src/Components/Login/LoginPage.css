@@ -15,7 +15,7 @@
     font-family: 'Montserrat', sans-serif;
     border-radius: 5px;
     /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3); */
-    height: 400px;
+    height: 450px;
     width: min(90%, 400px);
     border: 1px solid #495057;
     display: flex;

@@ -1,0 +1,8 @@
+.AboutUsPage {
+    background-color: whitesmoke;
+    width: 100%;
+    min-height: 92vh;
+    margin-top: 8vh;
+    display: flex;
+    margin-bottom: 100px;
+}

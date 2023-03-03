@@ -8,6 +8,7 @@ function UserLogContainer() {
 
     function toggleForm() {
         setDisplayedLogin(!displayedLogin)
+
     }
     return (
         <div className="UserLogContainer">
