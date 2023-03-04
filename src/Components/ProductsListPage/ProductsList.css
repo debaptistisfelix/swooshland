@@ -22,10 +22,25 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 70px;
+    gap: 50px;
     padding: 5%;
     padding-top: 2%;
     overflow-y: scroll;
 
     border-top: none;
+}
+
+.ProductCardXL-container {
+    width: 320px;
+    width: min(90%, 300px);
+    height: 320px;
+    height: clamp(320px, 50%, 350px);
+    /*  min-width: 200px;
+    min-height: 220px; */
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
 }

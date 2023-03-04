@@ -2,8 +2,11 @@ import "./SneakersListPage.css";
 import { useState, useEffect } from "react";
 import ProductsDrawer from "./ProductsDrawer";
 import ProductsDisplayer from "./ProductsDisplayer";
+import axios from "axios";
 
-const items = [
+
+
+/* const items = [
     { model: "NIKE AIR FORCE 1", category: "NIKE AIR FORCE 1", name: "DOODLES", imgSrc: "/list/doodles.jpg", price: "189.90" },
     { model: "NIKE AIR FORCE 1", category: "NIKE AIR FORCE 1", name: "DRAGON V2", imgSrc: "/list/dragonv2.jpg", price: "189.90" },
     { model: "NIKE AIR FORCE 1", category: "NIKE AIR FORCE 1", name: "DRAGON V1", imgSrc: "/list/dragonv1.jpg", price: "189.90" },
@@ -33,7 +36,7 @@ const items = [
 
     { model: "FILA RAPTOR", category: "FILA", name: "SAFARI", imgSrc: "/list/fila.jpg", price: "189.90" },
     { model: "PUMA CALI", category: "PUMA", name: "CLEOPATRA", imgSrc: "/list/puma.jpg", price: "189.90" },
-]
+] */
 
 const categories = [
     { categ: "NIKE AIR FORCE 1", qty: 11 },
@@ -45,12 +48,24 @@ const categories = [
 ];
 const drawerImg = "dragon-img.jpg"
 const ProductName = "Sneakers"
+const path = "sneakers"
 
 
 function ItemListPage() {
 
+    useEffect(() => {
+        const fetchSneakers = async () => {
+            const response = await axios.get("http://localhost:3000/api/sneakers");
+            const results = response.data;
+            setListedItems(results);
+            setFilteredItems(results);
+        }
+        fetchSneakers();
+    }, []);
+
     // ITEMS STATE
-    const [listedItems, setListedItems] = useState(items)
+    const [listedItems, setListedItems] = useState([]);
+    const [filteredItems, setFilteredItems] = useState([])
 
 
 
@@ -72,32 +87,32 @@ function ItemListPage() {
 
     // SORT PRODUCTS BY BRAND NAME
     function sortByBrand(brand) {
-        let filteredList = items.filter(item => {
+        let filteredList = listedItems.filter(item => {
             return item.category.includes(brand)
         })
-        setListedItems(filteredList);
+        setFilteredItems(filteredList);
         window.matchMedia("(max-width:767px)").matches && setOpenDrawer(false);
     }
 
     // SORTING FUNCTION FOR SORT MODAL 
     function sortByAsc() {
-        const numAsc = [...listedItems].sort((a, b) => a.price - b.price)
-        setListedItems(numAsc);
+        const numAsc = [...filteredItems].sort((a, b) => a.price - b.price)
+        setFilteredItems(numAsc);
     }
 
     function sortByDesc() {
-        const numDesc = [...listedItems].sort((a, b) => b.price - a.price)
-        setListedItems(numDesc);
+        const numDesc = [...filteredItems].sort((a, b) => b.price - a.price)
+        setFilteredItems(numDesc);
     }
 
     function sortByAZ() {
-        const arrAZ = [...listedItems].sort((a, b) => a.name > b.name ? 1 : -1)
-        setListedItems(arrAZ);
+        const arrAZ = [...filteredItems].sort((a, b) => a.name > b.name ? 1 : -1)
+        setFilteredItems(arrAZ);
     }
 
     function sortByZA() {
-        const arrZA = [...listedItems].sort((a, b) => a.name > b.name ? -1 : 1)
-        setListedItems(arrZA);
+        const arrZA = [...filteredItems].sort((a, b) => a.name > b.name ? -1 : 1)
+        setFilteredItems(arrZA);
     }
 
     // SHOW LOADER UNTIL EVERYTHING IS READY
@@ -121,7 +136,6 @@ function ItemListPage() {
                         sortByBrand={sortByBrand}
                         categories={categories}
                         listedItems={listedItems}
-                        items={items}
                         drawerImg={drawerImg}
                     />
                     <ProductsDisplayer
@@ -135,6 +149,8 @@ function ItemListPage() {
                         sortByAsc={sortByAsc}
                         sortByDesc={sortByDesc}
                         name={ProductName}
+                        path={path}
+                        filteredItems={filteredItems}
                     />
                 </div>
                 : <div className="ProductsListPage-loader-box">

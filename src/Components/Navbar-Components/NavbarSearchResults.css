@@ -13,6 +13,14 @@
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }
 
+.ProductCard2-container {
+    width: fit-content;
+    height: fit-content;
+
+    color: #191919;
+    text-decoration: none;
+}
+
 .showSearchResults {
     top: 8vh;
     right: 0;

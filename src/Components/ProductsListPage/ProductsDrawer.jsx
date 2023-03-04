@@ -1,6 +1,6 @@
 import "../ProductsListPage/ProductsDrawer.css";
 
-function ProductsDrawer({ items, openDrawer, toggleDrawer, categories, listedItems, sortByBrand, drawerImg }) {
+function ProductsDrawer({ listedItems, openDrawer, toggleDrawer, categories, listedlistedItems, sortByBrand, drawerImg }) {
     let drawerClass = "no-drawer"
     if (openDrawer === true) {
         drawerClass = "open-drawer"
@@ -36,7 +36,7 @@ function ProductsDrawer({ items, openDrawer, toggleDrawer, categories, listedIte
                         onClick={() => sortByBrand("")}
                         className="ProductsDrawer-category-model">
                         ALL
-                        <span className="ProductsDrawer-model-qty">({items.length})</span>
+                        <span className="ProductsDrawer-model-qty">({listedItems.length})</span>
                     </span>
                     {list}
                 </div>

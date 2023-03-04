@@ -1,8 +1,10 @@
 import "./ImageSlider.css"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import MiniImg from "./MiniImg"
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-const images = [
+/* const images = [
     { src: "rogue1.jpg", id: 1 },
     { src: "rogue2.jpg", id: 2 },
     { src: "rogue3.jpg", id: 3 },
@@ -13,35 +15,57 @@ const images = [
     { src: "rogue8.jpg", id: 8 },
     { src: "rogue9.jpg", id: 9 },
 
-]
+] */
 
-function ImageSlider() {
-    const [displayedImg, setDisplayedImg] = useState(images[2])
+function ImageSlider({ product }) {
+    const images = product.images;
+
+
+    const [displayedImg, setDisplayedImg] = useState(images[0].imgSrc)
 
     function changeDisplayedImg(id) {
         const chosenImg = images.filter(img => {
-            return img.id === id;
+            return img._id === id;
         })
-        setDisplayedImg(chosenImg[0])
+        setDisplayedImg(chosenImg[0].imgSrc)
     }
+
+    useEffect(() => {
+        AOS.init();
+        return () => { AOS.refresh() }
+    }, [])
+
+    useEffect(() => {
+
+        setDisplayedImg(images[0].imgSrc)
+
+    }, [images[0].imgSrc]);
 
     const galleryImages = images.map((img, i) => {
         return <MiniImg
             changeImg={changeDisplayedImg}
-            imgSrc={img.src}
-            key={img.id}
-            id={img.id}
+            imgSrc={img.imgSrc}
+            key={img._id}
+            id={img._id}
             displayedImg={displayedImg}
         />
     })
 
+
+    let bigAos;
+    let smallAos;
+    window.matchMedia("(max-width:767px)").matches ? bigAos = "fade-down" : bigAos = "fade-right"
+    window.matchMedia("(max-width:767px)").matches ? smallAos = "fade-right" : smallAos = "fade-down"
+
+
     return (
         <div className="ImageSlider">
             <div
-                className="ImageSlider-img-box">
-                <img className="ImageSlider-img" src={displayedImg.src} />
+                className={`ImageSlider-img-box`}
+                data-aos={`${bigAos}`} data-aos-delay={500}>
+                <img className="ImageSlider-img" src={displayedImg} />
             </div>
-            <div className="ImageSlider-images">
+            <div className={`ImageSlider-images`} data-aos={`${smallAos}`} data-aos-delay={500}>
                 {galleryImages}
             </div>
         </div>

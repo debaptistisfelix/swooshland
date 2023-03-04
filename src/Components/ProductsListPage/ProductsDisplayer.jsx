@@ -2,7 +2,7 @@ import "../ProductsListPage/ProductsDisplayer.css"
 import ProductsBanner from "./ProductsBanner";
 import ProductsList from "./ProductsList";
 
-function ProductsDisplayer({ openDrawer, toggleDrawer, toggleSortModal, sortModal, listedItems, sortByAZ, sortByZA, sortByAsc, sortByDesc, name }) {
+function ProductsDisplayer({ path, openDrawer, toggleDrawer, toggleSortModal, sortModal, listedItems, sortByAZ, sortByZA, sortByAsc, sortByDesc, name, filteredItems }) {
     let displayerStatus;
     if (openDrawer === true) {
         displayerStatus = "small-size-width"
@@ -11,6 +11,7 @@ function ProductsDisplayer({ openDrawer, toggleDrawer, toggleSortModal, sortModa
     } else {
         displayerStatus = undefined;
     }
+
     return (
         <div className={`ProductsDisplayer ${displayerStatus}`}>
             <ProductsBanner
@@ -26,6 +27,8 @@ function ProductsDisplayer({ openDrawer, toggleDrawer, toggleSortModal, sortModa
             />
             <ProductsList
                 listedItems={listedItems}
+                filteredItems={filteredItems}
+                path={path}
             />
         </div>
     )

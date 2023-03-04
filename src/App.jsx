@@ -22,6 +22,8 @@ function App() {
           <Route path="/aboutus" element={<AboutUsPage />} />
           <Route path="/user-log" element={<UserLogContainer />} />
           <Route path="/item" element={<ItemPage />} />
+          <Route path="/sneakers/:itemId" element={<ItemPage path="sneakers" />} />
+          <Route path="/accessories/:itemId" element={<ItemPage path="accessories" />} />
         </Routes>
         <Footer />
       </LoggedProvider>

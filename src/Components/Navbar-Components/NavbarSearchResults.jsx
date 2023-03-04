@@ -1,4 +1,5 @@
 import "./NavbarSearchResults.css"
+import { Link } from "react-router-dom";
 
 import ProductCard2 from "../ProductCard2";
 
@@ -7,12 +8,12 @@ function NavbarSearchResults({ openedSearchResults, searchValue, filteredItem })
     openedSearchResults === true ? SearchResultsStatus = "showSearchResults" : SearchResultsStatus = undefined;
 
     let foundResults = filteredItem.map(item => {
-        return <ProductCard2
-            name={item.name}
-            model={item.model}
-            price={item.price}
-            imgSrc={item.imgSrc}
-        />
+        return <Link className="ProductCard2-container">
+            <ProductCard2
+                item={item}
+            />
+        </Link>
+
     })
     return (
         <div className={`NavbarSearchResults ${SearchResultsStatus}`}>

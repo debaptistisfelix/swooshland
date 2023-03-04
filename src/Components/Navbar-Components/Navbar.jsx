@@ -8,8 +8,9 @@ import NavbarSearchResults from "./NavbarSearchResults";
 import CartIcon from "./CartIcon";
 import { useContext } from "react";
 import { LoggedContext } from "../Context/LoggedContext";
+import axios from "axios";
 
-const items = [
+/* const items = [
     { model: "NIKE AIR FORCE 1", name: "DOODLES", imgSrc: "/list/doodles.jpg", price: "189.90" },
     { model: "NIKE AIR FORCE 1", name: "DRAGON V2", imgSrc: "/list/dragonv2.jpg", price: "189.90" },
     { model: "NIKE AIR FORCE 1", name: "DRAGON V1", imgSrc: "/list/dragonv1.jpg", price: "189.90" },
@@ -39,7 +40,9 @@ const items = [
 
     { model: "FILA RAPTOR", name: "SAFARI", imgSrc: "/list/fila.jpg", price: "189.90" },
     { model: "PUMA CALI", name: "CLEOPATRA", imgSrc: "/list/puma.jpg", price: "189.90" },
-]
+]  */
+
+
 
 function Navbar() {
     const [openNav, setOpenNav] = useState(false);
@@ -49,11 +52,23 @@ function Navbar() {
     const [searchValue, setSearchValue] = useState("");
     const { setLogged } = useContext(LoggedContext);
 
+    const [items, setItems] = useState([]);
+
     useEffect(() => {
         const checkLogSession = () => {
             window.localStorage.getItem("isLoggedIn") ? setLogged(true) : setLogged(false);
         }
         checkLogSession();
+
+        async function fetchProds() {
+            const sneakRes = await axios.get("http://localhost:3000/api/sneakers");
+            const sneakers = sneakRes.data;
+            const accessRes = await axios.get("http://localhost:3000/api/accessories");
+            const accessories = accessRes.data;
+            setItems([...sneakers, ...accessories])
+        }
+
+        fetchProds();
     }, []);
 
 
@@ -109,8 +124,10 @@ function Navbar() {
     searchValue === ""
         ? filteredItem = []
         : filteredItem = items.filter(item => {
-            return (item.model.toLowerCase().includes(searchValue.toLowerCase()) || item.name.toLowerCase().includes(searchValue.toLowerCase()))
+            return (item.category.toLowerCase().includes(searchValue.toLowerCase()) || item.name.toLowerCase().includes(searchValue.toLowerCase()))
         })
+
+    console.log(items)
 
 
 

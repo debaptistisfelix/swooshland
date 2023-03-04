@@ -10,7 +10,7 @@ function ProductCardXL({ model, name, imgSrc, price }) {
             <div className="ProductCardXL-text-box">
                 <div className="ProductCardXL-text-up">
                     <span className="ProductCardXL-model">{model}</span>
-                    <span className="ProductCardXL-price">${price}</span>
+                    <span className="ProductCardXL-price">${price}0</span>
                 </div>
                 <div className="ProductCardXL-text-down">
                     <span className="ProductCardXL-name">{name}</span>
