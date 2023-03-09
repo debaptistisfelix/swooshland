@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import ProductsDrawer from "./ProductsDrawer";
 import ProductsDisplayer from "./ProductsDisplayer";
 import axios from "axios";
+import useLoadedState from "../Hooks/useLoadedState";
 
 /* const items = [
     { model: "M.H.A. BACKPACK", category: "BACKPACK", name: "HIMIKO TOGA", imgSrc: "/list/toga.jpg", price: "89.90" },
@@ -19,17 +20,19 @@ const categories = [
 ];
 const drawerImg = "dragon-img.jpg"
 const ProductName = "Accessories"
-const path = "accessories";
+const path = "products";
 
 function AccessoriesListPage() {
 
     useEffect(() => {
         const fetchSneakers = async () => {
-            const response = await axios.get("http://localhost:3000/api/accessories");
+            const response = await axios.get("http://localhost:3000/api/products");
             const results = response.data;
-            console.log(results);
-            setListedItems(results);
-            setFilteredItems(results);
+            const accessoriesResults = results.filter(item => {
+                return item.tag === "accessories";
+            })
+            setListedItems(accessoriesResults);
+            setFilteredItems(accessoriesResults);
         }
         fetchSneakers();
     }, []);
@@ -55,6 +58,12 @@ function AccessoriesListPage() {
         e.stopPropagation();
         setOpenSort(!openSort);
     }
+
+    const sortModalEl = document.querySelector(".ProductsBanner-sort-modal");
+    const body = document.querySelector("body");
+    body.addEventListener("click", (e) => {
+        e.target !== sortModalEl && setOpenSort(false);
+    })
 
     // SORT PRODUCTS BY BRAND NAME
     function sortByBrand(brand) {
@@ -89,13 +98,8 @@ function AccessoriesListPage() {
 
 
     // SHOW LOADER UNTIL EVERYTHING IS READY
-    const [loadedPage, setLoadedPage] = useState(false);
-    function loadPage() {
-        setTimeout(() => {
-            setLoadedPage(true);
-        }, 600);
-    }
-    loadPage();
+    const [loadedPage, setLoadedPage, loadPage] = useLoadedState(false);
+    loadPage(600);
 
     return (
         <div className="ProductsListPage">

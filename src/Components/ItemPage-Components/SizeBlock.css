@@ -12,9 +12,7 @@
     color: white;
     padding: 5px 10px;
     width: 100px;
-
     height: 40px;
-
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -25,10 +23,20 @@
     transition: all 0.2s ease-out;
 }
 
+.one-size-block {
+    width: 200px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
 .SizeBlock-label:hover {
     filter: brightness(150%);
     transform: scale(1.1);
     backface-visibility: hidden;
+}
+
+.SizeBlock-input:checked~.SizeBlock-label {
+    background-color: #495057;
 }
 
 

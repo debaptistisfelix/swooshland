@@ -2,10 +2,15 @@ import "./LoginPage.css"
 import { useState, useContext } from "react";
 import axios from "axios";
 import { LoggedContext } from "../Context/LoggedContext";
-
+import { UserContext } from "../Context/UserContext";
+import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage({ formOn, toggleForm }) {
+
+    const [cookies, setCookie, removeCookie] = useCookies(['client']);
+
+    const { user, setUser } = useContext(UserContext);
 
     // TO REDIRECT AFTER LOG IN
     const navigate = useNavigate();
@@ -38,9 +43,23 @@ function LoginPage({ formOn, toggleForm }) {
         } else if (!response.data.message) {
             logIn();
             setLogError(false);
-            navigate("/")
+            navigate("/");
+            setUser(response.data);
+            const infos = {
+                /*  username: response.data.username,
+                 cart: response.data.cart,
+                 wishlist: response.data.wishlist, */
+                _id: response.data._id,
+
+            }
+            setCookie('client', infos, {
+                path: '/',
+                maxAge: 1000 * 60 * 60 * 24
+            });
         }
     }
+
+    /*  window.localStorage.removeItem("User"); */
 
     let errorStyles = {
         color: "red",

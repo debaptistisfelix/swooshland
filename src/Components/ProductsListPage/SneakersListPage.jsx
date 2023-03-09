@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import ProductsDrawer from "./ProductsDrawer";
 import ProductsDisplayer from "./ProductsDisplayer";
 import axios from "axios";
+import useLoadedState from "../Hooks/useLoadedState";
 
 
 
@@ -48,17 +49,20 @@ const categories = [
 ];
 const drawerImg = "dragon-img.jpg"
 const ProductName = "Sneakers"
-const path = "sneakers"
+const path = "products"
 
 
 function ItemListPage() {
 
     useEffect(() => {
         const fetchSneakers = async () => {
-            const response = await axios.get("http://localhost:3000/api/sneakers");
+            const response = await axios.get("http://localhost:3000/api/products");
             const results = response.data;
-            setListedItems(results);
-            setFilteredItems(results);
+            const sneakerResults = results.filter(item => {
+                return item.tag === "sneakers";
+            })
+            setListedItems(sneakerResults);
+            setFilteredItems(sneakerResults);
         }
         fetchSneakers();
     }, []);
@@ -84,6 +88,12 @@ function ItemListPage() {
         e.stopPropagation();
         setOpenSort(!openSort);
     }
+
+    const sortModalEl = document.querySelector(".ProductsBanner-sort-modal");
+    const body = document.querySelector("body");
+    body.addEventListener("click", (e) => {
+        e.target !== sortModalEl && setOpenSort(false);
+    })
 
     // SORT PRODUCTS BY BRAND NAME
     function sortByBrand(brand) {
@@ -116,13 +126,16 @@ function ItemListPage() {
     }
 
     // SHOW LOADER UNTIL EVERYTHING IS READY
-    const [loadedPage, setLoadedPage] = useState(false);
-    function loadPage() {
-        setTimeout(() => {
-            setLoadedPage(true);
-        }, 600);
-    }
-    loadPage();
+    /*  const [loadedPage, setLoadedPage] = useState(false);
+     function loadPage() {
+         setTimeout(() => {
+             setLoadedPage(true);
+         }, 600);
+     }
+     loadPage(); */
+
+    const [loadedPage, setLoadedPage, loadPage] = useLoadedState(false);
+    loadPage(600);
 
 
     return (

@@ -23,7 +23,7 @@
 
 
     .MiniImg img {
-        width: 100px;
+        width: calc(33vw + 0.12rem);
         height: 100%;
         cursor: pointer;
     }

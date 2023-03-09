@@ -9,38 +9,11 @@ import CartIcon from "./CartIcon";
 import { useContext } from "react";
 import { LoggedContext } from "../Context/LoggedContext";
 import axios from "axios";
+import { UserContext } from "../Context/UserContext";
+import { useCookies } from "react-cookie";
+import { v4 as uuidv4 } from 'uuid';
 
-/* const items = [
-    { model: "NIKE AIR FORCE 1", name: "DOODLES", imgSrc: "/list/doodles.jpg", price: "189.90" },
-    { model: "NIKE AIR FORCE 1", name: "DRAGON V2", imgSrc: "/list/dragonv2.jpg", price: "189.90" },
-    { model: "NIKE AIR FORCE 1", name: "DRAGON V1", imgSrc: "/list/dragonv1.jpg", price: "189.90" },
-    { model: "NIKE AIR FORCE 1", name: "HEAVEN & HELL", imgSrc: "/list/heaven.jpg", price: "189.90" },
-    { model: "NIKE AIR FORCE 1", name: "KRAKEN 1994", imgSrc: "/list/kraken1994.jpg", price: "189.90" },
-    { model: "NIKE AIR FORCE 1", name: "L.A. KRAKEN", imgSrc: "/list/krakenla.jpg", price: "189.90" },
-    { model: "NIKE AIR FORCE 1", name: "LEO KAWAI", imgSrc: "/list/kawai.jpg", price: "189.90" },
-    { model: "NIKE AIR FORCE 1", name: "LEOPARD", imgSrc: "/list/leo.jpg", price: "189.90" },
-    { model: "NIKE AIR FORCE 1", name: "PURPLE DRIP", imgSrc: "/list/purple.jpg", price: "189.90" },
-    { model: "NIKE AIR FORCE 1", name: "SKY CAMU", imgSrc: "/list/sky.jpg", price: "189.90" },
-    { model: "NIKE AIR FORCE 1", name: "JOLLY", imgSrc: "/list/jolly.jpg", price: "189.90" },
 
-    { model: "JORDAN 1 MID", name: "PINK DIOR", imgSrc: "/list/dior.jpg", price: "249.90" },
-    { model: "JORDAN 1 MID", name: "LEMON", imgSrc: "/list/lemon.jpg", price: "249.90" },
-    { model: "JORDAN 1 MID", name: "OG-ORANGE", imgSrc: "/list/og.jpg", price: "249.90" },
-    { model: "JORDAN 1 MID", name: "SIN OF RAGE", imgSrc: "/list/ira.jpg", price: "249.90" },
-    { model: "JORDAN 1 MID", name: "SIN OF PRIDE", imgSrc: "/list/superbia.jpg", price: "249.90" },
-    { model: "JORDAN 1 MID", name: "BREEZE", imgSrc: "/list/breeze.jpg", price: "249.90" },
-    { model: "JORDAN 1 MID", name: "SUNDAY", imgSrc: "/list/sunday.jpg", price: "249.90" },
-    { model: "JORDAN 1 MID", name: "SIN OF LUST", imgSrc: "/list/lust.jpg", price: "249.90" },
-
-    { model: "JORDAN 1 LOW", name: "EAZY", imgSrc: "/list/eazy.jpg", price: "249.90" },
-    { model: "JORDAN 1 LOW", name: "MIAMI", imgSrc: "/list/miami.jpg", price: "249.90" },
-
-    { model: "ADIDAS STAN SMITH", name: "SPIDEY", imgSrc: "/list/spidey.jpg", price: "159.90" },
-    { model: "ADIDAS STAN SMITH", name: "MINIONS", imgSrc: "/list/minions.jpg", price: "159.90" },
-
-    { model: "FILA RAPTOR", name: "SAFARI", imgSrc: "/list/fila.jpg", price: "189.90" },
-    { model: "PUMA CALI", name: "CLEOPATRA", imgSrc: "/list/puma.jpg", price: "189.90" },
-]  */
 
 
 
@@ -51,25 +24,45 @@ function Navbar() {
     const [openSearchResults, setOpenSearchResults] = useState(false);
     const [searchValue, setSearchValue] = useState("");
     const { setLogged } = useContext(LoggedContext);
+    const { user, setUser } = useContext(UserContext);
+    const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+
+
 
     const [items, setItems] = useState([]);
 
+    // Ogni volta che lo user subisce cambiamenti viene aggiornato
+    useEffect(() => {
+        async function fetchUser() {
+            const userData = cookies.client._id
+            const res = await axios.get(`http://localhost:3000/api/users/${userData}`)
+            const userInfos = res.data;
+            setUser(userInfos)
+        }
+        cookies.client ? fetchUser() : undefined
+
+    }, [user]);
+
     useEffect(() => {
         const checkLogSession = () => {
-            window.localStorage.getItem("isLoggedIn") ? setLogged(true) : setLogged(false);
+
+            cookies.isLGGD ? setLogged(true) : setLogged(false);
+            /*  window.localStorage.getItem("isLoggedIn") ? setLogged(true) : setLogged(false); */
         }
         checkLogSession();
 
+
+
         async function fetchProds() {
-            const sneakRes = await axios.get("http://localhost:3000/api/sneakers");
-            const sneakers = sneakRes.data;
-            const accessRes = await axios.get("http://localhost:3000/api/accessories");
-            const accessories = accessRes.data;
-            setItems([...sneakers, ...accessories])
+            const res = await axios.get("http://localhost:3000/api/products");
+            const products = res.data;
+
+            setItems([...products])
         }
 
         fetchProds();
     }, []);
+
 
 
     let navStatus;
@@ -127,10 +120,19 @@ function Navbar() {
             return (item.category.toLowerCase().includes(searchValue.toLowerCase()) || item.name.toLowerCase().includes(searchValue.toLowerCase()))
         })
 
-    console.log(items)
 
 
 
+    const body = document.querySelector("body");
+    const navbar = document.querySelector(".Navbar");
+    const userModal = document.querySelector(".UserModalNav");
+    const cartModal = document.querySelector(".CartModalNav");
+
+    body.addEventListener("click", (e) => {
+        e.target !== navbar && hideSearchResults();
+        e.target !== userModal && setOpenUserModal(false);
+        e.target !== cartModal && setOpenCartModal(false);
+    })
 
 
 
@@ -178,18 +180,25 @@ function Navbar() {
                                 <span className="Navbar-sneaker-brand">NIKE AIR </span>
                                 <span className="Navbar-sneaker-category">JORDAN 1 MID</span>
                                 <span className="Navbar-sneaker-name">OG-ORANGE</span>
-                                <Link className="Navbar-show-monthly">SHOW <i class="fa-solid fa-rocket"></i></Link>
+                                <Link className="Navbar-show-monthly">SHOW <i className="fa-solid fa-rocket"></i></Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="Navbar-icons">
-                <NavLink
-                    onClick={toggleUserModal}
-                    className={`fa-regular fa-user nav-icons ${openUserModal === true ? "selected-nav-user-icon" : undefined}`}></NavLink>
+                <i
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        toggleUserModal();
+
+                    }}
+                    className={`fa-regular fa-user nav-icons ${openUserModal === true ? "selected-nav-user-icon" : undefined}`}></i>
                 <div className="Nav-cart-count-box"
-                    onClick={toggleCartModal}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        toggleCartModal();
+                    }}
 
                 >
                     {/* <NavLink
@@ -197,7 +206,7 @@ function Navbar() {
                         className={`fa-solid fa-bag-shopping nav-icons ${openCartModal === true ? "selected-nav-cart-icon" : undefined}`}>
                     </NavLink>
                     <span className="Nav-cart-count">3</span> */}
-                    <CartIcon
+                    <CartIcon cart={user.cart}
                     />
                 </div>
                 <div onClick={toggleNavStatus} className="Navbar-hamburger">

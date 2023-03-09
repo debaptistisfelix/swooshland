@@ -1,0 +1,176 @@
+.CartRecap {
+    background-color: whitesmoke;
+    height: 90%;
+    width: 33%;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 2%;
+    box-sizing: border-box;
+}
+
+.CartRecap-title {
+    color: #191919;
+    font-weight: 600;
+    font-size: 25px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    width: 100%;
+    height: 10%;
+    height: 40px;
+
+}
+
+.CartRecap-sub-ship {
+    border-bottom: 2px solid #dee2e6;
+    width: 100%;
+    height: 50%;
+    height: 250px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.CartRecap-subtotal {
+    color: #191919;
+    display: flex;
+    justify-content: space-between;
+    height: 30%;
+    height: 82px;
+    align-items: center;
+    font-weight: 600;
+
+}
+
+.CartRecap-subtotal-label {
+    letter-spacing: 2px;
+}
+
+.CartRecap-ship {
+
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    height: 165px;
+    justify-content: space-between;
+}
+
+.CartRecap-ship-visible {
+    display: flex;
+    justify-content: space-between;
+    height: 40%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: #191919;
+
+
+}
+
+.CartRecap-ship-label {
+    letter-spacing: 2px;
+}
+
+.CartRecap-ship-hidden {
+    display: flex;
+    flex-direction: column;
+
+    color: #495057;
+    height: 60%;
+    height: 100px;
+    font-weight: 200;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 14px;
+}
+
+.CartRecap-ship-hidden b {
+    font-weight: 600;
+}
+
+.CartRecap-total {
+
+    width: 100%;
+    height: 40%;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px
+}
+
+.CartRecap-total-box {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid #dee2e6;
+    justify-content: space-between;
+    align-items: center;
+    height: 20%;
+    height: 40px;
+    font-weight: bold;
+    color: #191919;
+    font-size: 18px;
+
+}
+
+
+.CartRecap-total-label {
+    letter-spacing: 3px;
+}
+
+.CartRecap-btn {
+    color: white;
+    text-decoration: none;
+    background-color: #191919;
+    width: 250px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 3px;
+    border-radius: 500px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.CartRecap-btn:hover {
+    filter: brightness(130%);
+}
+
+
+@media (max-width:767px) {
+    .CartRecap {
+        height: 400px;
+        width: 100%;
+        font-family: 'Montserrat', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 2%;
+
+    }
+
+    .CartRecap-title {
+        font-size: 18px;
+        text-align: center;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .CartRecap {
+        height: 400px;
+    }
+
+    .CartRecap-title {
+        font-size: 18px;
+
+    }
+}

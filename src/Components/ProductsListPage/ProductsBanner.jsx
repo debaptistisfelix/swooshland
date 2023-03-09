@@ -8,6 +8,7 @@ function ProductsBanner({ openDrawer, toggleDrawer, toggleSortModal, sortModal, 
         AOS.init();
     }, [])
 
+
     return (
         <div className="ProductsBanner" data-aos="fade-down" >
             <span className="ProductsBanner-title">{name.toUpperCase()}</span>

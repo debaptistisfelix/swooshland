@@ -3,6 +3,8 @@ import "../Register/RegisterPage.css";
 import axios from "axios";
 import { LoggedContext } from "../Context/LoggedContext";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../Context/UserContext";
+import { useCookies } from "react-cookie";
 
 
 
@@ -10,6 +12,9 @@ import { useNavigate } from "react-router-dom";
 
 
 function RegisterPage({ formOn, toggleForm }) {
+    const { user, setUser } = useContext(UserContext);
+    const [cookies, setCookie, removeCookie] = useCookies(['U-I']);
+
     const navigate = useNavigate();
     const { logIn } = useContext(LoggedContext);
 
@@ -43,6 +48,15 @@ function RegisterPage({ formOn, toggleForm }) {
             setRegistrationError(true);
         } else {
             logIn();
+            setUser(response.data);
+            const infos = {
+                username: response.data.username,
+                cart: response.data.cart,
+                wishlist: response.data.wishlist,
+                id: response.data._id
+
+            }
+            setCookie('U-I', infos, { path: '/' });
             setRegistrationError(false);
             navigate("/");
         }

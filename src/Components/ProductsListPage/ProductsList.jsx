@@ -12,7 +12,7 @@ function ProductsList({ path, listedItems, filteredItems }) {
     }, [])
 
     let list = filteredItems.map(item => {
-        return <Link
+        return <Link key={item._id}
             onClick={() => { window.scrollTo(0, 0); }}
             className="ProductCardXL-container" to={`/${path}/${item._id}`}>
             <ProductCardXL

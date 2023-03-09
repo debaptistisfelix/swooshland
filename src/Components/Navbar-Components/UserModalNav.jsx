@@ -2,9 +2,17 @@ import "./UserModalNav.css"
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { LoggedContext } from "../Context/LoggedContext";
+import { UserContext } from "../Context/UserContext";
+import { useCookies } from "react-cookie";
+import { v4 as uuidv4 } from 'uuid';
 
 function UserModalNav({ openedUserModal, toggleUserModal }) {
+    const { user, setUser } = useContext(UserContext)
     const { logged, logOut } = useContext(LoggedContext);
+    const [cookies, setCookie, removeCookie] = useCookies(['U-I']);
+
+
+
     let userModalStatus;
     openedUserModal === true ? userModalStatus = "showUserModal" : userModalStatus = undefined;
     return (
@@ -17,7 +25,9 @@ function UserModalNav({ openedUserModal, toggleUserModal }) {
                         <i className="fa-regular fa-user nav-icons"></i>
                         <span
                             onClick={toggleUserModal}><span
-                                onClick={logOut}
+                                onClick={() => {
+                                    logOut();
+                                }}
                                 className="UserModalNav-linktag">Log Out</span>
                         </span>
                     </div>

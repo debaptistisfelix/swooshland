@@ -1,15 +1,20 @@
 import "./NavbarSearchResults.css"
 import { Link } from "react-router-dom";
+import useLoadedState from "../Hooks/useLoadedState";
 
 import ProductCard2 from "../ProductCard2";
 
 function NavbarSearchResults({ openedSearchResults, searchValue, filteredItem }) {
+
     let SearchResultsStatus;
     openedSearchResults === true ? SearchResultsStatus = "showSearchResults" : SearchResultsStatus = undefined;
 
     let foundResults = filteredItem.map(item => {
-        return <Link className="ProductCard2-container">
+        return <Link key={item._id}
+
+            to={`/products/${item._id}`} className="ProductCard2-container">
             <ProductCard2
+                key={item._id}
                 item={item}
             />
         </Link>
@@ -24,16 +29,7 @@ function NavbarSearchResults({ openedSearchResults, searchValue, filteredItem })
             </div>
             <div className="NavbarSearchResults-results">
                 {foundResults}
-                {/* <ProductCard2 />
-                <ProductCard2 />
-                <ProductCard2 />
-                <ProductCard2 />
-                <ProductCard2 />
-                <ProductCard2 />
-                <ProductCard2 />
-                <ProductCard2 />
-                <ProductCard2 />
-                <ProductCard2 /> */}
+
             </div>
         </div>
     )

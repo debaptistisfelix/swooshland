@@ -32,7 +32,6 @@ function ImageSlider({ product }) {
 
     useEffect(() => {
         AOS.init();
-        return () => { AOS.refresh() }
     }, [])
 
     useEffect(() => {
@@ -62,10 +61,10 @@ function ImageSlider({ product }) {
         <div className="ImageSlider">
             <div
                 className={`ImageSlider-img-box`}
-                data-aos={`${bigAos}`} data-aos-delay={500}>
+                data-aos={`${bigAos}`} data-aos-delay={600}>
                 <img className="ImageSlider-img" src={displayedImg} />
             </div>
-            <div className={`ImageSlider-images`} data-aos={`${smallAos}`} data-aos-delay={500}>
+            <div className={`ImageSlider-images`} data-aos={`${smallAos}`} data-aos-delay={600}>
                 {galleryImages}
             </div>
         </div>

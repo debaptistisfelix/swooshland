@@ -1,0 +1,245 @@
+.CartListBlock {
+
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.CartListBlock-img-box {
+    height: 180px;
+    width: 200px;
+}
+
+.CartListBlock-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.CartListBlock-text {
+
+    height: 150px;
+    width: 70%;
+    box-sizing: border-box;
+}
+
+.CartListBlock-toptext {
+
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    color: #191919;
+    height: 20%;
+}
+
+.CartListBlock-model {
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+
+.CartListBlock-price {
+    font-weight: 600;
+}
+
+.CartListBlock-subtext {
+
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.CartListBlock-categ {
+    color: #495057;
+    letter-spacing: 2px;
+}
+
+.CartListBlock-palette {
+    color: #495057;
+    display: flex;
+    gap: 15px;
+
+}
+
+.CartListBlock-color {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #495057;
+    border-radius: 50%;
+}
+
+
+
+.CartListBlock-size-box {
+    color: #495057;
+    display: flex;
+}
+
+.CartListBlock-left-bottom {
+
+    width: 100%;
+    display: flex;
+    gap: 15px;
+    box-sizing: border-box;
+}
+
+.CartListBlock-size-label {
+    color: #495057;
+    font-size: 16px;
+}
+
+.CartListBlock-size-select {
+    border: none;
+    color: #495057;
+    font-size: 16px;
+    background-color: whitesmoke;
+    cursor: pointer;
+}
+
+.CartListBlock-right-bottom {
+    color: #191919;
+    display: flex;
+    gap: calc(15px)
+}
+
+.CartListBlock-right-bottom i {
+    transition: all 0.2s ease-out;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.CartListBlock-right-bottom i:hover {
+    font-size: 18px;
+    filter: brightness(150%);
+}
+
+
+@media (max-width:767px) {
+    .CartListBlock {
+        height: 170px;
+        height: 200px;
+
+        align-items: flex-start;
+
+    }
+
+    .CartListBlock-img-box {
+        height: clamp(80px, 27.86vw + 0.12rem, 100px);
+        width: clamp(80px, 27.86vw + 0.12rem, 100px)
+    }
+
+    .CartListBlock-text {
+        padding-left: clamp(5px, 1.1vw + 0.12rem, 15px)
+    }
+
+    .CartListBlock-toptext {
+        flex-direction: column;
+        display: flex;
+        height: fit-content;
+        gap: 5px;
+        margin-bottom: 5px;
+    }
+
+    .CartListBlock-model {
+        font-weight: 600;
+        letter-spacing: 0px;
+        font-size: clamp(16px, 4.72vw + 0.12rem, 20px)
+    }
+
+    .CartListBlock-price {
+        font-size: clamp(16px, 4.72vw + 0.12rem, 20px)
+    }
+
+    .CartListBlock-subtext {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .CartListBlock-categ {
+        font-size: clamp(16px, 4.72vw + 0.12rem, 20px)
+    }
+
+
+    .CartListBlock-palette {
+        color: #495057;
+        display: flex;
+        gap: 15px;
+
+    }
+
+    .CartListBlock-color {
+        width: 15px;
+        height: 15px;
+        border: 1px solid #495057;
+        border-radius: 50%;
+    }
+
+    .CartListBlock-size-box {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .CartListBlock-size-label {
+        color: #495057;
+        font-size: clamp(16px, 4.72vw + 0.12rem, 20px)
+    }
+
+    .CartListBlock-size-select {
+
+        font-size: clamp(16px, 4.72vw + 0.12rem, 20px)
+    }
+
+    .CartListBlock-right-bottom {
+        color: #191919;
+        display: flex;
+        font-size: clamp(18px, 6.45vw + 0.12rem, 22px);
+        gap: 20px;
+
+    }
+
+    .CartListBlock-right-bottom i {
+        transition: all 0.2s ease-out;
+        font-size: 18px;
+        cursor: pointer;
+    }
+
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .CartListBlock {
+
+
+        align-items: flex-start;
+
+    }
+
+    .CartListBlock-img-box {
+        height: clamp(80px, 27.86vw + 0.12rem, 100px);
+        width: clamp(80px, 27.86vw + 0.12rem, 100px)
+    }
+
+    .CartListBlock-model {
+        font-weight: 600;
+        letter-spacing: 0px;
+        font-size: 16px;
+    }
+
+    .CartListBlock-price {
+        font-size: 16px
+    }
+
+    .CartListBlock-color {
+        width: 15px;
+        height: 15px;
+        border: 1px solid #495057;
+        border-radius: 50%;
+    }
+
+}

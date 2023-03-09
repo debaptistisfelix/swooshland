@@ -1,4 +1,5 @@
 import "../ProductsListPage/ProductsDrawer.css";
+import { v4 as uuidv4 } from 'uuid';
 
 function ProductsDrawer({ listedItems, openDrawer, toggleDrawer, categories, listedlistedItems, sortByBrand, drawerImg }) {
     let drawerClass = "no-drawer"
@@ -12,6 +13,7 @@ function ProductsDrawer({ listedItems, openDrawer, toggleDrawer, categories, lis
 
     let list = categories.map(categ => {
         return <span
+            key={uuidv4()}
             onClick={() => sortByBrand(`${categ.categ}`)}
             className="ProductsDrawer-category-model">
             {categ.categ}

@@ -7,13 +7,13 @@ function Footer() {
             <div className="Footer-upper-part">
                 <div className="Footer-side side-A">
                     <div className="Footer-links">
-                        <span className="Footer-links-title"><b>EXPLORE</b> <i class="fa-solid fa-rocket"></i></span>
-                        <Link className="Footer-link">SNEAKERS</Link>
-                        <Link className="Footer-link">ACCESSORIES</Link>
-                        <Link className="Footer-link">ABOUT US</Link>
+                        <span className="Footer-links-title"><b>EXPLORE</b> <i className="fa-solid fa-rocket"></i></span>
+                        <Link to="/sneakers" className="Footer-link">SNEAKERS</Link>
+                        <Link to="/accessories" className="Footer-link">ACCESSORIES</Link>
+                        <Link to="/aboutus" className="Footer-link">ABOUT US</Link>
                     </div>
                     <div className="Footer-links">
-                        <span className="Footer-links-title"><b>INFO</b> <i class="fa-solid fa-circle-info"></i></span>
+                        <span className="Footer-links-title"><b>INFO</b> <i className="fa-solid fa-circle-info"></i></span>
                         <Link className="Footer-link">SHIPPING</Link>
                         <Link className="Footer-link">RETURN POLICY</Link>
                         <Link className="Footer-link">FAQ</Link>
@@ -26,7 +26,7 @@ function Footer() {
                             <input className="Footer-newsletter-input"
                                 type="text"
                                 placeholder="Insert email to receive latest news" />
-                            <button className="Footer-submit"><i class="fa-solid fa-envelope"></i></button>
+                            <button className="Footer-submit"><i className="fa-solid fa-envelope"></i></button>
                         </div>
                         <span className="Footer-newsletter-policy">By subscribing to our Newsletter you accept the Terms & Condition of our Privacy Policy.</span>
                     </div>
@@ -42,7 +42,7 @@ function Footer() {
                 </div>
             </div>
             <div className="Footer-under-part">
-                <span className="Footer-copyright"><i class="fa-regular fa-copyright"></i>
+                <span className="Footer-copyright"><i className="fa-regular fa-copyright"></i>
                     2023 Debastuzzi Inc. All rights reserved
                 </span>
             </div>

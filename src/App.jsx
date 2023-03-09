@@ -8,25 +8,29 @@ import AccessoriesListPage from "./Components/ProductsListPage/AccessoriesListPa
 import SneakersListPage from "./Components/ProductsListPage/SneakersListPage";
 import AboutUsPage from "./Components/AboutUsPage/AboutUsPage";
 import { LoggedProvider } from "./Components/Context/LoggedContext";
-
+import { UserProvider } from "./Components/Context/UserContext";
+import Cart from "./Components/Cart/Cart";
 
 
 function App() {
   return (
     <div className="App">
-      <LoggedProvider>
-        <Navbar />
-        <Routes>
-          <Route path="/sneakers" element={<SneakersListPage />} />
-          <Route path="/accessories" element={<AccessoriesListPage />} />
-          <Route path="/aboutus" element={<AboutUsPage />} />
-          <Route path="/user-log" element={<UserLogContainer />} />
-          <Route path="/item" element={<ItemPage />} />
-          <Route path="/sneakers/:itemId" element={<ItemPage path="sneakers" />} />
-          <Route path="/accessories/:itemId" element={<ItemPage path="accessories" />} />
-        </Routes>
-        <Footer />
-      </LoggedProvider>
+      <UserProvider>
+        <LoggedProvider>
+          <Navbar />
+          <Routes>
+            <Route path="/sneakers" element={<SneakersListPage />} />
+            <Route path="/accessories" element={<AccessoriesListPage />} />
+            <Route path="/aboutus" element={<AboutUsPage />} />
+            <Route path="/user-log" element={<UserLogContainer />} />
+            <Route path="/item" element={<ItemPage />} />
+            <Route path="/products/:itemId" element={<ItemPage />} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
+          <Footer />
+        </LoggedProvider>
+      </UserProvider>
+
     </div>
   )
 }

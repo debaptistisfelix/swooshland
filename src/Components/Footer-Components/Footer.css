@@ -177,6 +177,7 @@
 
 @media (max-width:767px) {
     .Footer {
+        margin-top: auto;
         min-height: 400px;
         height: clamp(400px, 142.15vw + 0.12rem, 500px);
 
