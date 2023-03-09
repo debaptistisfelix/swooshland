@@ -16,20 +16,17 @@ export function LoggedProvider(props) {
 
 
     const logOut = () => {
-        setLogged(false);
-        navigate("/");
-
-        setUser({})
         removeCookie("client");
         removeCookie("isLGGD");
-
-
+        setLogged(false);
+        setUser({})
+        navigate("/sneakers");
 
     }
 
     const logIn = () => {
         setLogged(true);
-        setCookie('isLGGD', true, { path: '/' });
+        setCookie('isLGGD', true, { path: '/', maxAge: 60 * 60 * 24 });
 
     }
 

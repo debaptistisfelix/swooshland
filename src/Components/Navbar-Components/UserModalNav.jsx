@@ -27,6 +27,7 @@ function UserModalNav({ openedUserModal, toggleUserModal }) {
                             onClick={toggleUserModal}><span
                                 onClick={() => {
                                     logOut();
+                                    setUser({});
                                 }}
                                 className="UserModalNav-linktag">Log Out</span>
                         </span>

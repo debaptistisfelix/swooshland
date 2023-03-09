@@ -43,19 +43,16 @@ function LoginPage({ formOn, toggleForm }) {
         } else if (!response.data.message) {
             logIn();
             setLogError(false);
-            navigate("/");
             setUser(response.data);
             const infos = {
-                /*  username: response.data.username,
-                 cart: response.data.cart,
-                 wishlist: response.data.wishlist, */
                 _id: response.data._id,
 
             }
             setCookie('client', infos, {
                 path: '/',
-                maxAge: 1000 * 60 * 60 * 24
+                maxAge: 60 * 60 * 24
             });
+            navigate("/");
         }
     }
 

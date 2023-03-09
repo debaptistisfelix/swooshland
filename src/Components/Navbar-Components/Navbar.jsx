@@ -39,9 +39,12 @@ function Navbar() {
             const userInfos = res.data;
             setUser(userInfos)
         }
-        cookies.client ? fetchUser() : undefined
+        function resetUser() {
+            setUser({})
+        }
+        cookies.client ? fetchUser() : undefined;
 
-    }, [user]);
+    }, []);
 
     useEffect(() => {
         const checkLogSession = () => {
@@ -51,8 +54,6 @@ function Navbar() {
         }
         checkLogSession();
 
-
-
         async function fetchProds() {
             const res = await axios.get("http://localhost:3000/api/products");
             const products = res.data;
@@ -61,6 +62,8 @@ function Navbar() {
         }
 
         fetchProds();
+
+
     }, []);
 
 

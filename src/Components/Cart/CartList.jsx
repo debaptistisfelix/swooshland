@@ -4,12 +4,22 @@ import { useEffect, useState, useContext } from "react";
 import CartListBlock from "./CartListBlock";
 import { UserContext } from "../Context/UserContext";
 import useCartState from "../Hooks/useCartState";
+import { useCookies } from "react-cookie";
 
 
 function CartList() {
-    const { user } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
+
+    const [cookies, setCookie] = useCookies(['client']);
 
     const [cart, setCart] = useState([]);
+
+    async function fetchUser() {
+        const userData = cookies.client._id
+        const res = await axios.get(`http://localhost:3000/api/users/${userData}`)
+        const userInfos = res.data;
+        setUser(userInfos)
+    }
 
     useEffect(() => {
         setCart(user.cart);
@@ -25,6 +35,8 @@ function CartList() {
         await axios.patch(`http://localhost:3000/api/users/${user._id}`, {
             cart: [...filteredItems]
         })
+        fetchUser();
+
     }
 
 

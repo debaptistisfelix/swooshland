@@ -68,7 +68,9 @@ function CartRecap() {
             <div className="CartRecap-total">
                 <div className="CartRecap-total-box">
                     <span className="CartRecap-total-label">TOTAL</span>
-                    <span className="CartRecap-total-sum">${total}</span>
+                    <span className="CartRecap-total-sum">
+                        {subtotal === 0 ? "" : `$${total}`}
+                    </span>
                 </div>
                 <Link
 

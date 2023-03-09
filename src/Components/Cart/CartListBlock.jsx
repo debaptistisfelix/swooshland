@@ -36,10 +36,10 @@ function CartListBlock({ item, removeItem }) {
                             </select>
                         </div>
                         <div className="CartListBlock-right-bottom">
-                            <i class="fa-solid fa-star"></i>
+                            {/* <i className="fa-solid fa-star"></i> */}
                             <i
                                 onClick={() => { removeItem(item.id) }}
-                                class="fa-solid fa-trash"></i>
+                                className="fa-solid fa-trash"></i>
                         </div>
                     </div>
                 </div>
