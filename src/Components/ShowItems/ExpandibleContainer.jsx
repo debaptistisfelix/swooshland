@@ -41,12 +41,7 @@ function ExpandibleContainer({ category, boxStatus, toggleDrawer, openDrawer, to
                 </div>
             </div>
             <div className="ItemListPage-list-container" data-aos="flip-down">
-                <span className="results-amount">
-                    Generated results: (<b>{listedItems.length}</b>)
-                </span>
-                <div className="ItemListPage-list-content">
-                    {displayedItems}
-                </div>
+
             </div>
         </div>
     )

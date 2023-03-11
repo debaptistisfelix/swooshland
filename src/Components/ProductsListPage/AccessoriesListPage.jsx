@@ -1,18 +1,12 @@
 import "../ProductsListPage/AccessoriesListPage.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { ItemsContext } from "../Context/ItemsContext";
 import ProductsDrawer from "./ProductsDrawer";
 import ProductsDisplayer from "./ProductsDisplayer";
 import axios from "axios";
 import useLoadedState from "../Hooks/useLoadedState";
 
-/* const items = [
-    { model: "M.H.A. BACKPACK", category: "BACKPACK", name: "HIMIKO TOGA", imgSrc: "/list/toga.jpg", price: "89.90" },
-    { model: "LUNCHBOX", category: "LUNCHBOX", name: "LAMU' BENTO", imgSrc: "/list/bento.jpg", price: "69.90" },
-    { model: "WALLET", category: "WALLET", name: "NARUTO", imgSrc: "/list/naruto.jpg", price: "49.90" },
-    { model: "WALLET", category: "WALLET", name: "GAARA", imgSrc: "/list/gaara.jpg", price: "49.90" },
-    { model: "WALLET", category: "WALLET", name: "BERSERK", imgSrc: "/list/berserk.jpg", price: "49.90" },
-    { model: "WALLET", category: "WALLET", name: "KAKASHI", imgSrc: "/list/kakashi.jpg", price: "49.90" },
-]; */
+
 const categories = [
     { categ: "BACKPACK", qty: 1 },
     { categ: "LUNCHBOX", qty: 1 },
@@ -23,6 +17,8 @@ const ProductName = "Accessories"
 const path = "products";
 
 function AccessoriesListPage() {
+
+    const { listedItems, setListedItems, filteredItems, setFilteredItems } = useContext(ItemsContext);
 
     useEffect(() => {
         const fetchSneakers = async () => {
@@ -37,9 +33,7 @@ function AccessoriesListPage() {
         fetchSneakers();
     }, []);
 
-    // ITEMS STATE
-    const [listedItems, setListedItems] = useState([])
-    const [filteredItems, setFilteredItems] = useState([]);
+
 
 
 
@@ -75,26 +69,7 @@ function AccessoriesListPage() {
         window.matchMedia("(max-width:767px)").matches && setOpenDrawer(false);
     }
 
-    // SORTING FUNCTION FOR SORT MODAL 
-    function sortByAsc() {
-        const numAsc = [...filteredItems].sort((a, b) => a.price - b.price)
-        setFilteredItems(numAsc);
-    }
 
-    function sortByDesc() {
-        const numDesc = [...filteredItems].sort((a, b) => b.price - a.price)
-        setFilteredItems(numDesc);
-    }
-
-    function sortByAZ() {
-        const arrAZ = [...filteredItems].sort((a, b) => a.name > b.name ? 1 : -1)
-        setFilteredItems(arrAZ);
-    }
-
-    function sortByZA() {
-        const arrZA = [...filteredItems].sort((a, b) => a.name > b.name ? -1 : 1)
-        setFilteredItems(arrZA);
-    }
 
 
     // SHOW LOADER UNTIL EVERYTHING IS READY
@@ -110,8 +85,6 @@ function AccessoriesListPage() {
                         toggleDrawer={toggleDrawer}
                         sortByBrand={sortByBrand}
                         categories={categories}
-                        listedItems={listedItems}
-
                         drawerImg={drawerImg}
 
                     />
@@ -120,14 +93,9 @@ function AccessoriesListPage() {
                         toggleDrawer={toggleDrawer}
                         toggleSortModal={toggleSortModal}
                         sortModal={sortModal}
-                        listedItems={listedItems}
-                        sortByAZ={sortByAZ}
-                        sortByZA={sortByZA}
-                        sortByAsc={sortByAsc}
-                        sortByDesc={sortByDesc}
                         name={ProductName}
                         path={path}
-                        filteredItems={filteredItems}
+
                     />
                 </div>
                 : <div className="ProductsListPage-loader-box">

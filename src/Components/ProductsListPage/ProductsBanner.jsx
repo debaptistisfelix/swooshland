@@ -1,13 +1,15 @@
 import "../ProductsListPage/ProductsBanner.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
+import { ItemsContext } from "../Context/ItemsContext";
 
-function ProductsBanner({ openDrawer, toggleDrawer, toggleSortModal, sortModal, sortByAZ, sortByZA, sortByAsc, sortByDesc, name }) {
+function ProductsBanner({ openDrawer, toggleDrawer, toggleSortModal, sortModal, name }) {
     useEffect(() => {
         AOS.init();
     }, [])
 
+    const { sortByAZ, sortByZA, sortByAsc, sortByDesc } = useContext(ItemsContext);
 
     return (
         <div className="ProductsBanner" data-aos="fade-down" >

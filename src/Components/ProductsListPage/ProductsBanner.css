@@ -49,8 +49,10 @@
     align-items: center;
     justify-content: space-evenly;
     position: absolute;
+    box-sizing: border-box;
     border: 1px solid #dee2e6;
     background-color: whitesmoke;
+    border: 2px solid #dee2e6;
     top: 150%;
     right: 0;
     width: 150px;
@@ -60,7 +62,7 @@
 
 .sort-modal-option {
     color: #191919;
-    border: 1px solid #dee2e6;
+    /*   border: 1px solid #dee2e6; */
     height: 25%;
     width: 100%;
     display: flex;
@@ -81,6 +83,44 @@
 
 .sort-modal-option:hover {
     background-color: #dee2e6;
+}
+
+.filter-status {
+    position: relative;
+}
+
+.ProductsBanner-filter-modal {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 150%;
+    right: 0;
+    border: 2px solid #dee2e6;
+    background-color: whitesmoke;
+    z-index: 5;
+    width: 300px;
+    height: 150px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.filter-modal-option {
+    color: #191919;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    gap: 10px;
+    height: 25px;
+}
+
+.filter-modal-option:hover {
+    background-color: #dee2e6;
+
 }
 
 @media (max-width:767px) {

@@ -1,7 +1,11 @@
 import "../ProductsListPage/ProductsDrawer.css";
 import { v4 as uuidv4 } from 'uuid';
+import { useContext } from "react";
+import { ItemsContext } from "../Context/ItemsContext";
 
-function ProductsDrawer({ listedItems, openDrawer, toggleDrawer, categories, listedlistedItems, sortByBrand, drawerImg }) {
+function ProductsDrawer({ openDrawer, toggleDrawer, categories, sortByBrand, drawerImg }) {
+    const { listedItems } = useContext(ItemsContext);
+
     let drawerClass = "no-drawer"
     if (openDrawer === true) {
         drawerClass = "open-drawer"

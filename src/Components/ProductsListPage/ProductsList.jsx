@@ -4,12 +4,16 @@ import ProductCardXL from "./ProductCardXL";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { ItemsContext } from "../Context/ItemsContext";
+import { memo } from "react";
 
-function ProductsList({ path, listedItems, filteredItems }) {
+function ProductsList({ path }) {
     useEffect(() => {
         AOS.init();
     }, [])
+
+    const { filteredItems } = useContext(ItemsContext)
 
     let list = filteredItems.map(item => {
         return <Link key={item._id}
@@ -37,4 +41,4 @@ function ProductsList({ path, listedItems, filteredItems }) {
     )
 }
 
-export default ProductsList;
+export default memo(ProductsList);
