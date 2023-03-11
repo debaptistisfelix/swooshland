@@ -169,6 +169,7 @@ function Navbar() {
 
                     </div>
                     <NavbarSearchResults
+                        toggleNavStatus={toggleNavStatus}
                         searchValue={searchValue}
                         openedSearchResults={openSearchResults}
                         filteredItem={filteredItem} />

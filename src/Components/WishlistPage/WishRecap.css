@@ -1,0 +1,53 @@
+.WishRecap {
+    background-color: whitesmoke;
+    height: 90%;
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2%;
+    box-sizing: border-box;
+}
+
+.WishRecap-title {
+    color: #191919;
+    font-weight: 600;
+    font-size: 25px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    width: 100%;
+    height: 10%;
+    height: 40px;
+
+}
+
+.WishRecap-subtotal {
+    color: #191919;
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 30%;
+    height: 82px;
+    align-items: center;
+    font-weight: 600;
+
+}
+
+@media (max-width:767px) {
+    .WishRecap {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 2%;
+
+    }
+
+    .WishRecap-title {
+        font-size: 18px;
+        text-align: center;
+    }
+}

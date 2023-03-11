@@ -4,14 +4,17 @@ import useLoadedState from "../Hooks/useLoadedState";
 
 import ProductCard2 from "../ProductCard2";
 
-function NavbarSearchResults({ openedSearchResults, searchValue, filteredItem }) {
+function NavbarSearchResults({ openedSearchResults, searchValue, filteredItem, toggleNavStatus }) {
 
     let SearchResultsStatus;
     openedSearchResults === true ? SearchResultsStatus = "showSearchResults" : SearchResultsStatus = undefined;
 
     let foundResults = filteredItem.map(item => {
         return <Link key={item._id}
-
+            onClick={(e) => {
+                window.matchMedia('(max-width: 767px)').matches && e.stopPropagation();
+                toggleNavStatus()
+            }}
             to={`/products/${item._id}`} className="ProductCard2-container">
             <ProductCard2
                 key={item._id}

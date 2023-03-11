@@ -116,7 +116,7 @@ function ItemPage() {
                             <ImageSlider product={product}
                             />
                         </div>
-                        <ItemPageText product={product} selectSize={selectSize} addToCart={addToCart} addToWish={addToWish} />
+                        <ItemPageText product={product} selectSize={selectSize} addToCart={addToCart} addToWish={addToWish} chosenSize={chosenSize} />
                     </div>
                     <div className="ItemPage-bottom">
                         <span className="ItemPage-related-list">

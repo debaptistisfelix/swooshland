@@ -1,23 +1,34 @@
 import "./CartListBlock.css";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function CartListBlock({ item, removeItem }) {
+function CartListBlock({ item, removeItem, updateSizeChoice }) {
+    const [blockAnim, setBlockAnim] = useState(false);
+    const [currentSize, setCurrentSIze] = useState(item.chosenSize)
 
 
-    const sizeOptions = item.availableSizes.map(size => {
-        return <option
-            className="CartListBlock-option"
-            key={size._id}
-            value={size.EUSize}>{size.EUSize}</option>
-    })
+    let blockStatus;
+    blockAnim === true ? blockStatus = "vanish-anim" : "not true"
+
+    /*  const sizeOptions = item.availableSizes.map(size => {
+         return <option
+ 
+             className="CartListBlock-option"
+             key={size._id}
+             value={size.EUSize}>{size.EUSize}</option>
+     }) */
 
     return (
-        <div className="CartListBlock">
+        <div className={`CartListBlock ${blockStatus}`}>
             <div className="CartListBlock-img-box">
                 <img className="CartListBlock-img" src={item.images[0].imgSrc} />
             </div>
             <div className="CartListBlock-text">
                 <div className="CartListBlock-toptext">
-                    <span className="CartListBlock-model">{item.model}</span>
+                    <Link to={`/products/${item._id}`} className="Cart-product-link">
+                        <span className="CartListBlock-model">{item.model}</span>
+                    </Link>
+
                     <span className="CartListBlock-price">${item.price}0</span>
                 </div>
                 <div className="CartListBlock-subtext">
@@ -31,14 +42,15 @@ function CartListBlock({ item, removeItem }) {
                     <div className="CartListBlock-size-box">
                         <div className="CartListBlock-left-bottom">
                             <label className="CartListBlock-size-label">Size</label>
-                            <select className="CartListBlock-size-select">
-                                {sizeOptions}
-                            </select>
+                            <span>{item.chosenSize}</span>
                         </div>
                         <div className="CartListBlock-right-bottom">
-                            {/* <i className="fa-solid fa-star"></i> */}
+
                             <i
-                                onClick={() => { removeItem(item.id) }}
+                                onClick={() => {
+                                    removeItem(item.id);
+                                    setBlockAnim(true);
+                                }}
                                 className="fa-solid fa-trash"></i>
                         </div>
                     </div>

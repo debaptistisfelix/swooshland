@@ -10,7 +10,7 @@ import { useCookies } from "react-cookie";
 function CartList() {
     const { user, setUser } = useContext(UserContext);
 
-    const [cookies, setCookie] = useCookies(['client']);
+    const [cookies] = useCookies(['client']);
 
     const [cart, setCart] = useState([]);
 
@@ -36,20 +36,39 @@ function CartList() {
             cart: [...filteredItems]
         })
         fetchUser();
+    }
 
+    /*   async function updateSizeChoice(id, currSize) {
+          const ItemToUpdate = cart.filter(item => {
+              return item.id === id;
+          })
+          const filteredItems = cart.filter(item => {
+              return item.id !== id;
+          })
+  
+          await axios.patch(`http://localhost:3000/api/users/${user._id}`, {
+              cart: [...filteredItems, { ...ItemToUpdate, chosenSize: currSize }]
+          })
+          fetchUser();
+      } */
+
+
+
+    let cartList;
+
+    if (user.cart) {
+        cartList = cart.map(item => {
+            return <CartListBlock
+                user={user}
+                key={item.id}
+                item={item}
+                removeItem={removeItem}
+
+            />
+        })
     }
 
 
-
-
-    const cartList = cart.map(item => {
-        return <CartListBlock
-            user={user}
-            key={item.id}
-            item={item}
-            removeItem={removeItem}
-        />
-    })
 
     /*  let cartList;
      cart.length > 1
@@ -74,11 +93,12 @@ function CartList() {
         <div className="CartList">
             <span className="CartList-title">YOUR CART</span>
 
-            {cart.length === 0
+            {cart?.length === 0
                 ? <div className="CartList-empty-box">
                     <span className="CartList-empty">No Items in your Cart yet.</span>
                 </div>
                 : <div className="CartList-list">
+                    {/* {(!user.cart) ? undefined : cartList} */}
                     {cartList}
                 </div>
             }

@@ -1,0 +1,132 @@
+.Error404 {
+    background-color: whitesmoke;
+    margin-top: 8vh;
+    min-height: 92vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Error404-card {
+    height: 500px;
+    width: min(720px, 90%);
+    position: relative;
+    background-image: url("/puma/puma2.jpg");
+    background-image: url("/leo/leo2.jpg");
+    /* background-image: url("/puma/puma5.jpg"); */
+    /*  background-image: url("/lemon/lemon2.jpg"); */
+    /* background-image: url("/sky/sky2.jpg"); */
+    background-size: cover;
+    background-position: center;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    filter: brightness(0%);
+    border-radius: 10px;
+    animation: lightup 1s 0s forwards ease-out;
+}
+
+
+
+.Error404-card img {
+    display: none;
+}
+
+@keyframes lightup {
+    from {
+        filter: brightness(30%);
+    }
+
+    to {
+        filter: brightness(90%);
+    }
+}
+
+.Error-text-box {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+
+    position: absolute;
+    top: 0;
+}
+
+.Error {
+    color: whitesmoke;
+    color: rgba(245, 245, 245, 0.9);
+    margin: 0;
+
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 125px;
+    letter-spacing: 20px;
+}
+
+.Error-nr {
+    color: whitesmoke;
+    color: rgba(245, 245, 245, 0.9);
+    text-align: center;
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+.Error-detail {
+    color: white;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+
+@media (max-width:767px) {
+    .Error404 {
+        background-color: whitesmoke;
+        margin-top: 0;
+        min-height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Error404-card {
+        height: 500px;
+        width: min(720px, 100%);
+        position: relative;
+        background-image: url("/leo/leo2.jpg");
+        background-size: cover;
+        background-position: center;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+        filter: brightness(0%);
+        border-radius: 0;
+        animation: lightup 1s 0s forwards ease-out;
+    }
+
+    .Error {
+
+        text-align: center;
+        font-size: clamp(40px, 13.58vw + 0.12rem, 80px)
+    }
+
+    .Error-nr {
+
+        font-size: clamp(30px, 10vw + 0.12rem, 40px);
+    }
+
+    .Error-detail {
+        color: white;
+        letter-spacing: 4px;
+        text-align: center;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .Error404 {
+
+        margin-top: 0;
+        min-height: 80vh;
+
+    }
+}

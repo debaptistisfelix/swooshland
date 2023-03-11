@@ -1,4 +1,4 @@
-.CartList {
+.WishList {
 
     width: 60%;
     height: 100%;
@@ -11,7 +11,7 @@
 
 }
 
-.CartList-title {
+.WishList-title {
     color: #191919;
     font-weight: 600;
     font-size: 25px;
@@ -21,14 +21,14 @@
     height: 40px;
 }
 
-.CartList-empty-box {
+.WishList-empty-box {
     width: 100%;
     height: 90%;
     position: relative;
 
 }
 
-.CartList-empty {
+.WishList-empty {
     color: #495057;
     font-size: 16px;
     position: absolute;
@@ -36,36 +36,37 @@
 
 }
 
-.CartList-list {
+.WishList-list {
     width: 100%;
+
     height: 90%;
     overflow-y: scroll;
 
 }
 
+
 @media (max-width:767px) {
-    .CartList {
+    .WishList {
         width: 100%;
         max-height: 50%;
+
     }
 
-    .CartList-title {
+    .WishList-title {
         font-size: 18px;
         text-align: center;
 
     }
 
-    .CartList-empty-box {
-        border-left: 1px solid black;
-    }
 
-    .CartList-empty {
+
+    .WishList-empty {
         text-align: center;
         width: 100%;
         top: 10px;
     }
 
-    .CartList-list {
+    .WishList-list {
         display: flex;
         flex-direction: column;
         /* gap: clamp(40px, 13.58vw + 0.12rem, 60px); */
@@ -74,7 +75,7 @@
 }
 
 @media (min-width:768px) and (max-width:1024px) {
-    .CartList-title {
+    .WishList-title {
         font-size: 18px;
     }
 }

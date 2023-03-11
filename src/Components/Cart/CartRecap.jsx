@@ -10,31 +10,58 @@ function CartRecap() {
 
     const [cart, setCart] = useCartState([])
     const [subtotal, setSubtotal] = useState(0);
-    const [total, setTotal] = useState(0);
+    /* const [total, setTotal] = useState(0); */
     const [shippingCost, setShippingCost] = useState(0)
 
+    function calculateSubtotal() {
+        if (user.cart) {
+            let cartSubtotalArr = user.cart.map(item => {
+                return item.price
+            })
+            let subtotalCount = cartSubtotalArr.reduce((a, b) => {
+                return a + b;
+            }, 0);
+            setSubtotal(subtotalCount);
+        }
+
+    }
+
+
+
     useEffect(() => {
         setCart(user.cart);
+        calculateSubtotal();
     }, [])
 
+
     useEffect(() => {
         setCart(user.cart);
+        calculateSubtotal();
     }, [user])
 
-
     useEffect(() => {
-        let cartSubtotalArr = cart.map(item => {
+        (subtotal < 200) ? setShippingCost(30) : setShippingCost(0);
+    }, [subtotal])
+
+    /* useEffect(() => {
+        setCart(user.cart);
+        let cartSubtotalArr = user.cart.map(item => {
             return item.price
         })
         let subtotalCount = cartSubtotalArr.reduce((a, b) => {
             return a + b;
         }, 0);
         setSubtotal(subtotalCount);
-        subtotal < 200 ? setShippingCost(30) : setShippingCost(0);
+        (subtotal < 200) ? setShippingCost(30) : setShippingCost(0);
+    }, [user.cart])
+
+
+    useEffect(() => {
+        (subtotal < 200) ? setShippingCost(30) : setShippingCost(0);
+        console.log(shippingCost)
         setTotal((subtotal + shippingCost).toFixed(2));
-    }, [cart])
-
-
+        console.log(subtotal, total);
+    }, [subtotal]) */
 
 
 
@@ -69,7 +96,7 @@ function CartRecap() {
                 <div className="CartRecap-total-box">
                     <span className="CartRecap-total-label">TOTAL</span>
                     <span className="CartRecap-total-sum">
-                        {subtotal === 0 ? "" : `$${total}`}
+                        {subtotal === 0 ? "" : `$${(subtotal + shippingCost).toFixed(2)}`}
                     </span>
                 </div>
                 <Link

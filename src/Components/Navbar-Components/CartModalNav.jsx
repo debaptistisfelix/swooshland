@@ -11,26 +11,49 @@ function CartModalNav({ openedCartModal }) {
 
     const [cart, setCart] = useCartState([]);
     const [cartList, setCartList] = useState([]);
+    const [total, setTotal] = useState(0)
 
+
+
+
+    useEffect(() => {
+        if (user._id) {
+
+            setCart(user.cart);
+            let list = user.cart.map(item => {
+                return { name: item.name, model: item.model }
+            })
+            setCartList(list);
+        }
+        else if (!user._id) {
+            console.log("user not logged in")
+        }
+
+        if (user._id) {
+            let cartTotalArr = user.cart.map(item => {
+                return item.price
+            })
+            let TotalCount = cartTotalArr.reduce((a, b) => {
+                return a + b;
+            }, 0);
+            setTotal(TotalCount);
+        }
+
+
+
+
+    }, [user])
 
 
 
     /* useEffect(() => {
-        setCart(user.cart);
-        let list = user.cart.map(item => {
-            return { name: item.name, model: item.model }
-        })
-        setCartList(list);
-    }, [user]) */
-
-
-
-    /*  useEffect(() => {
-         let list = cart.map(item => {
-             return { name: item.name, model: item.model }
-         })
-         setCartList(list);
-     }, [cart]) */
+        if (user !== []) {
+            let list = cart.map(item => {
+                return { name: item.name, model: item.model }
+            })
+            setCartList(list);
+        }
+    }, [cart])  */
 
 
 
@@ -41,12 +64,15 @@ function CartModalNav({ openedCartModal }) {
         window.scrollTo(0, 0);
     }
 
-    let displayedList = cartList.map(item => {
-        return <div key={item._id} className="CartModalNav-itembox">
-            <span className="item-box-qty"><b>1x</b></span>
-            <span className="item-box-name">{item.model} - {item.name}</span>
-        </div>
-    })
+    /*  if (user._id) {
+         let displayedList = cartList.map(item => {
+             return <div key={item._id} className="CartModalNav-itembox">
+                 <span className="item-box-qty"><b>1x</b></span>
+                 <span className="item-box-name">{item.model} - {item.name}</span>
+             </div>
+         })
+     } */
+
 
 
 
@@ -58,9 +84,18 @@ function CartModalNav({ openedCartModal }) {
                 <span className="CartModalNav-title"><b>Swoosh</b>Cart <i className="fa-solid fa-cart-shopping"></i></span>
             </div>
             <div className="CartModalNav-cartbox">
-                {displayedList}
+                {
+                    (!user._id)
+                        ? <span className="empty-cart-model">Empty cart</span>
+                        : cartList.map(item => {
+                            return <div key={item._id} className="CartModalNav-itembox">
+                                <span className="item-box-qty"><i className="fa-solid fa-heart"></i></span>
+                                <span className="item-box-name"><b>{item.model}</b> - {item.name}</span>
+                            </div>
+                        })
+                }
             </div>
-            <span className="CartModalNav-total">TOTAL: <b>$269.90</b></span>
+            <span className="CartModalNav-total">TOTAL: <b>${total.toFixed(2)}</b></span>
             <button className="CartModalNav-button"
                 onClick={moveToCart}
             >VIEW CART</button>

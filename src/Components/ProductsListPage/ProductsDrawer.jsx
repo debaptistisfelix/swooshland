@@ -14,7 +14,7 @@ function ProductsDrawer({ listedItems, openDrawer, toggleDrawer, categories, lis
     let list = categories.map(categ => {
         return <span
             key={uuidv4()}
-            onClick={() => sortByBrand(`${categ.categ}`)}
+            onClick={() => sortByBrand(categ.categ)}
             className="ProductsDrawer-category-model">
             {categ.categ}
             <span className="ProductsDrawer-model-qty">({categ.qty})</span>

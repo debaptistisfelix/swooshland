@@ -21,32 +21,41 @@ function UserModalNav({ openedUserModal, toggleUserModal }) {
             className={`UserModalNav ${userModalStatus}`}>
             {logged === true
                 ? <div className="UserModalNav-content-logged">
-                    <div className="UserModalNav-link UserModalNav-user">
+                    <div
+                        onClick={() => {
+                            logOut();
+                            setUser({});
+                        }}
+                        className="UserModalNav-link UserModalNav-user">
                         <i className="fa-regular fa-user nav-icons"></i>
                         <span
                             onClick={toggleUserModal}><span
-                                onClick={() => {
-                                    logOut();
-                                    setUser({});
-                                }}
                                 className="UserModalNav-linktag">Log Out</span>
                         </span>
                     </div>
-                    <div className="UserModalNav-link">
-                        <Link className="UserModalNav-linktag">Orders</Link>
-                    </div>
-                    <div className="UserModalNav-link">
-                        <Link className="UserModalNav-linktag">Whishlist</Link>
-                    </div>
-                    <div className="UserModalNav-link">
-                        <Link className="UserModalNav-linktag">Settings</Link>
-                    </div>
-                </div>
-                : <div className="UserModalNav-content-notLogged">
-                    <Link to="/user-log" className="UserModalNav-linktag">
-                        Log in / Sign up</Link>
-                </div>
+                    <Link to="/orders" className="UserModalNav-linktag">
+                        <div className="UserModalNav-link">
+                            Orders
+                        </div>
+                    </Link>
 
+                    <Link to="/wishlist" className="UserModalNav-linktag">
+                        <div className="UserModalNav-link">
+                            Whishlist
+                        </div>
+                    </Link>
+                    <Link to="/profile" className="UserModalNav-linktag">
+                        <div className="UserModalNav-link">
+                            Profile
+                        </div>
+                    </Link>
+
+                </div>
+                : <Link to="/user-log" className="UserModalNav-linktag">
+                    <div className="UserModalNav-content-notLogged">
+                        Log in / Sign up
+                    </div>
+                </Link>
             }
 
 

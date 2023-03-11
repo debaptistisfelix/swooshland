@@ -102,69 +102,12 @@
 
 
 
-/* 
+
 @media (max-width:767px) {
 
     .ProductCardXL {
-
-        min-width: min(80%, 240px);
-        min-height: 270px;
-        height: 220px;
-       
-
-
-
-        box-sizing: border-box;
-        border-radius: 10px;
-        position: relative;
-        border-radius: 10px;
-
-    }
-
-    .ProductCardXL-img-box {
-        width: 100%;
-        border-radius: 10px;
-        height: 70%;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    .ProductCardXL-img {
         width: 100%;
         height: 100%;
-        border-radius: 10px;
+        max-height: 50vh;
     }
-
-    .ProductCardXL-text-box {
-        width: 100%;
-        height: 30%;
-        padding: 5px 10px;
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-    }
-
-    .ProductCardXL-text-up {
-
-        display: flex;
-        height: 50%;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: bold;
-        font-size: 13px;
-    }
-
-    .ProductCardXL-text-down {
-
-        display: flex;
-        height: 50%;
-        justify-content: space-between;
-    }
-
-    .ProductCardXL-name {
-        font-weight: 200;
-        font-style: italic;
-        font-size: 14px;
-    }
-
-
-} */
+}
