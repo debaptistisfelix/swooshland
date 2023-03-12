@@ -13,9 +13,9 @@ import { AnimationProvider } from "./Components/Context/AnimationContext";
 import Cart from "./Components/Cart/Cart";
 import WishlistPage from "./Components/WishlistPage/WishlistPage";
 import Error404 from "./Components/Error404/Error404";
-import Profile from "./Components/ProfilePage/Profile";
 import { ItemsProvider } from "./Components/Context/ItemsContext";
 import ItemListPage from "./Components/ShowItems/ItemListPage";
+import ProfilePage from "./Components/ProfilePage/ProfilePage";
 
 
 function App() {
@@ -28,7 +28,6 @@ function App() {
               <Navbar />
               <Routes>
                 <Route path="*" element={<Error404 />} />
-                {/* <Route path="/" element={<ItemListPage />} /> */}
                 <Route path="/sneakers" element={<ItemListPage />} />
                 <Route path="/accessories" element={<AccessoriesListPage />} />
                 <Route path="/aboutus" element={<AboutUsPage />} />
@@ -37,7 +36,7 @@ function App() {
                 <Route path="/products/:itemId" element={<ItemPage />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/wishlist" element={<WishlistPage />} />
-                <Route path="/profile" element={<Profile />} />
+                <Route path="/profile" element={<ProfilePage />} />
               </Routes>
               <Footer />
             </ItemsProvider>

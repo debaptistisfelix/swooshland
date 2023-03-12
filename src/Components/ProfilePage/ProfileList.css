@@ -1,0 +1,23 @@
+.ProfileList {
+
+    width: 60%;
+    height: 100%;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+    border: 1px solid black;
+
+}
+
+.ProfileList-title {
+    color: #191919;
+    font-weight: 600;
+    font-size: 25px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    height: 10%;
+    height: 40px;
+}

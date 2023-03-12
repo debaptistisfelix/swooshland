@@ -25,7 +25,7 @@ function Navbar() {
     const [searchValue, setSearchValue] = useState("");
     const { setLogged } = useContext(LoggedContext);
     const { user, setUser } = useContext(UserContext);
-    const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
+    const [cookies, setCookie, removeCookie] = useCookies(['client']);
 
 
 
@@ -38,6 +38,7 @@ function Navbar() {
             const res = await axios.get(`http://localhost:3000/api/users/${userData}`)
             const userInfos = res.data;
             setUser(userInfos)
+
         }
         function resetUser() {
             setUser({})
@@ -45,6 +46,8 @@ function Navbar() {
         cookies.client ? fetchUser() : undefined;
 
     }, []);
+
+
 
     useEffect(() => {
         const checkLogSession = () => {

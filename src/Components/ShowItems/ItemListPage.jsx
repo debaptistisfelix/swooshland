@@ -1,10 +1,7 @@
 import "../ShowItems/ItemListPage.css";
-
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import { ItemsContext } from "../Context/ItemsContext";
-import ProductCard2 from "../ProductCard2";
-import ExpandibleContainer from "./ExpandibleContainer";
 import ProductsDrawer from "../ProductsListPage/ProductsDrawer";
 import ProductsDisplayer from "../ProductsListPage/ProductsDisplayer";
 

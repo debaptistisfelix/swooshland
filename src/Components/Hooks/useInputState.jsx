@@ -6,9 +6,12 @@ function useInputState(initialValue) {
     function handleChange(e) {
         setValue(e.target.value);
     }
+    function resetInput(e) {
+        setValue("");
+    }
 
 
-    return [value, handleChange];
+    return [value, handleChange, resetInput];
 }
 
 export default useInputState;
