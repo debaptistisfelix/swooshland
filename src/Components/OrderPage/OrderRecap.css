@@ -1,0 +1,95 @@
+.OrderRecap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: whitesmoke;
+
+}
+
+.OrderRecap-container {
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 92%;
+
+}
+
+.OrderRecap-ship-pay {
+    gap: 30px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.OrderRecap-btns {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.OrderRecap-btn {
+    height: 40px;
+    background-color: #191919;
+    color: white;
+    letter-spacing: 3px;
+    border: none;
+    outline: none;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
+    padding: 5px 15px;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.OrderRecap-btn:hover {
+    filter: brightness(120%);
+    transform: scale(1.05);
+}
+
+@media (max-width:767px) {
+    .OrderRecap {
+        gap: 50px;
+        margin-bottom: 50px;
+    }
+
+    .OrderRecap-container {
+        background-color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: fit-content;
+        gap: 30px;
+    }
+
+    .OrderRecap-ship-pay {
+        gap: 30px;
+        height: fit-content;
+        width: 100%;
+
+    }
+
+    .OrderRecap-btns {
+        justify-content: center;
+    }
+
+    .OrderRecap-btn {
+        width: 50%;
+        font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
+    }
+}
+
+@media (min-width:768px) and (max-width:1023px) {
+    .OrderRecap-ship-pay {
+
+        width: 40%;
+
+    }
+}

@@ -70,23 +70,6 @@ function CartList() {
 
 
 
-    /*  let cartList;
-     cart.length > 1
-         ? cartList = cart.map(item => {
-             return <CartListBlock
-                 user={user}
-                 key={item._id}
-                 item={item}
-                 removeItem={removeItem}
-             />
-         })
-         : cartList = <CartListBlock
-             user={user}
-             key={cart[0]._id}
-             item={cart[0]}
-             removeItem={removeItem}
-         /> */
-
 
 
     return (

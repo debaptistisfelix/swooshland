@@ -45,6 +45,7 @@
 .ProfileForm-form input::placeholder {
     color: #495057;
     letter-spacing: 2px;
+
 }
 
 .ProfileForm-form input:hover {
@@ -86,4 +87,34 @@
 .ProfileForm-btn:hover {
     filter: brightness(120%);
     transform: scale(1.05);
+}
+
+@media (max-width:767px) {
+    .ProfileForm {
+        width: 100%;
+        align-items: center;
+    }
+
+    .ProfileForm-title {
+        font-size: clamp(20px, 6.45vw + 0.12rem, 25px);
+        text-align: center;
+    }
+
+    .ProfileForm-form input::placeholder {
+        font-size: clamp(14px, 4vw + 0.12rem, 18px);
+    }
+
+    .ProfileForm-btn {
+        font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
+        width: 100%;
+
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .ProfileForm {
+        width: 40%;
+    }
+
+
 }

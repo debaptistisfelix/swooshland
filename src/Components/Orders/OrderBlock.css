@@ -1,0 +1,72 @@
+.OrderBlock {
+    /* border: 1px solid black; */
+    height: fit-content;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.OrderBlock-infos {
+    height: 50px;
+    width: 100%;
+
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #191919;
+    border-radius: 5px;
+    padding: 0 20px;
+}
+
+.OrderBlock-infos:hover {
+    background-color: #dee2e6;
+}
+
+
+
+.OrderBlock-open-box i {
+    cursor: pointer;
+}
+
+.OrderBlock-details {
+
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 400px;
+    animation: openDetails 0.5s 0s forwards ease-out;
+}
+
+.close-details {
+    animation: closeDetails 0.5s 0s forwards ease-out
+}
+
+@keyframes openDetails {
+    from {
+        opacity: 0;
+        height: 0px;
+    }
+
+    to {
+        opacity: 1;
+        height: 400px;
+    }
+}
+
+@keyframes closeDetails {
+
+
+    from {
+        opacity: 1;
+        height: 400px;
+    }
+
+    to {
+        opacity: 0;
+        height: 0px;
+    }
+}

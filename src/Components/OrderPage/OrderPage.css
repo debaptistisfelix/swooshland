@@ -1,0 +1,152 @@
+.OrderPage {
+    width: 100vw;
+    min-height: 92vh;
+    margin-top: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+}
+
+.OrderPage-container {
+    min-height: 100%;
+    height: 100%;
+    min-width: 100%;
+    width: 100%;
+    background-color: whitesmoke;
+    display: flex;
+    padding: 2% 5%;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+
+.Order-progressbar {
+    display: flex;
+    width: 800px;
+    background-color: rgba(25, 25, 25, 0.75);
+    color: white;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.Order-progress-status {
+    width: 33.33%;
+    box-sizing: border-box;
+    padding: 3px 5px;
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.active-bar {
+    background-color: #191919;
+    border-radius: 0 5px 5px 0;
+    /*   border-radius: 0 500px 500px 0; */
+}
+
+.fa-angle-right {
+    margin-left: auto;
+}
+
+.Order-displayer {
+    width: 100%;
+
+    height: 90%;
+}
+
+
+
+
+
+
+
+.OrderPage-loader-box {
+    width: 100%;
+    height: 100%;
+    min-height: 92vh;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+
+}
+
+.OrderPage-loader-box .loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    letter-spacing: 3px;
+    color: #495057;
+}
+
+.OrderPage-loader-box .loader {
+    border: 4px solid #dee2e6;
+    border-top: 4px solid #495057;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+
+@media (max-width:767px) {
+    .OrderPage {
+        min-height: fit-content;
+        min-width: 100vw;
+
+    }
+
+    .OrderPage-container {
+
+        gap: 10px;
+
+    }
+
+
+    .Order-progressbar {
+        width: 100%
+    }
+
+
+    .Order-progress-status {
+        width: 0%;
+        opacity: 0;
+        box-sizing: border-box;
+        padding: 3px 5px;
+        letter-spacing: 3px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        display: none;
+    }
+
+    .active-bar {
+        width: 100%;
+        opacity: 1;
+        background-color: #191919;
+        display: flex;
+        font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
+        /*   border-radius: 0 500px 500px 0; */
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+
+    .OrderPage {
+        min-height: fit-content;
+        height: 70vh;
+        min-width: 100vw;
+
+    }
+
+    .Order-progressbar {
+        width: 100%;
+    }
+}

@@ -6,9 +6,10 @@
     display: flex;
     flex-direction: column;
     padding-bottom: 0;
+    gap: 30px;
     box-sizing: border-box;
     background-color: whitesmoke;
-    border: 1px solid black;
+    /*  border: 1px solid black; */
 
 }
 
@@ -20,4 +21,47 @@
     font-weight: bold;
     height: 10%;
     height: 40px;
+}
+
+.ProfileList-list {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    gap: 30px;
+}
+
+
+@media (max-width:767px) {
+    .ProfileList {
+        width: 100%;
+        gap: 50px;
+    }
+
+    .empty-address-list {
+        font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
+    }
+
+    .ProfileList-title {
+        text-align: center;
+        font-size: clamp(20px, 6.45vw + 0.12rem, 25px)
+    }
+
+    .ProfileList-list {
+        gap: 50px;
+        justify-content: center;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .ProfileList {
+
+        width: 60%;
+
+    }
+
+    .ProfileList-list {
+        gap: 50px;
+    }
+
+
 }

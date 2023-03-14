@@ -60,7 +60,7 @@ function CartModalNav({ openedCartModal }) {
 
     const navigate = useNavigate();
     function moveToCart() {
-        navigate("/cart");
+        user?.cart ? navigate("/cart") : navigate("/user-log");
         window.scrollTo(0, 0);
     }
 

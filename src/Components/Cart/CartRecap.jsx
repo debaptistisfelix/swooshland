@@ -7,6 +7,7 @@ import useCartState from "../Hooks/useCartState";
 
 function CartRecap() {
     const { user } = useContext(UserContext);
+    console.log(user?.cart)
 
     const [cart, setCart] = useCartState([])
     const [subtotal, setSubtotal] = useState(0);
@@ -64,7 +65,7 @@ function CartRecap() {
     }, [subtotal]) */
 
 
-
+    let condition = (user?.cart.length !== undefined && user?.cart.length === 0)
 
 
     return (
@@ -100,7 +101,12 @@ function CartRecap() {
                     </span>
                 </div>
                 <Link
-
+                    onClick={() => { window.scrollTo(0, 0); }}
+                    style={{
+                        pointerEvents: user?.cart === undefined ? "none" : undefined,
+                        pointerEvents: condition ? "none" : undefined
+                    }}
+                    to="/order"
                     className="CartRecap-btn" > GO TO PAYMENT</Link>
             </div>
         </div >

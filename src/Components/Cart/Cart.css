@@ -4,6 +4,9 @@
     min-height: 92vh;
     background-color: whitesmoke;
     font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 .Cart-container {

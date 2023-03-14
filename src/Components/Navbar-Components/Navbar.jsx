@@ -37,7 +37,7 @@ function Navbar() {
             const userData = cookies.client._id
             const res = await axios.get(`http://localhost:3000/api/users/${userData}`)
             const userInfos = res.data;
-            setUser(userInfos)
+            setUser(userInfos);
 
         }
         function resetUser() {
@@ -125,7 +125,6 @@ function Navbar() {
         : filteredItem = items.filter(item => {
             return (item.category.toLowerCase().includes(searchValue.toLowerCase()) || item.name.toLowerCase().includes(searchValue.toLowerCase()))
         })
-
 
 
 

@@ -1,13 +1,11 @@
-import "../ProfilePage/ProfileForm.css";
+import "../OrderPage/AddressForm.css";
 import { useState, useContext, useEffect } from "react";
 import useInputState from "../Hooks/useInputState";
 import axios from "axios";
 import { UserContext } from "../Context/UserContext";
 import { v4 as uuidv4 } from 'uuid';
 
-
-
-function ProfileForm() {
+function AddressForm() {
     const [name, handleName, resetName] = useInputState("");
     const [surname, handleSurname, resetSurname] = useInputState("");
     const [address, handleAddress, resetAddress] = useInputState("");
@@ -22,7 +20,6 @@ function ProfileForm() {
     const empty = (element) => element === "";
 
     const incompleteForm = (inputs.some(empty));
-    console.log(incompleteForm);
 
     function resetInputs() {
         resetName();
@@ -33,7 +30,6 @@ function ProfileForm() {
         resetRegion();
         resetCountry();
     }
-
 
     async function addAddress(event) {
         event.preventDefault();
@@ -57,10 +53,11 @@ function ProfileForm() {
             resetInputs();
         }
     }
+
     return (
-        <div className="ProfileForm">
-            <span className="ProfileForm-title">ADD ADDRESS</span>
-            <form onSubmit={addAddress} className="ProfileForm-form">
+        <div className="AddressForm">
+            <span className="AddressForm-title">ADD ADDRESS</span>
+            <form onSubmit={addAddress} className="AddressForm-form">
                 <input
                     style={{ border: incompleteForm === false ? "1px solid #007f5f" : undefined }}
                     onChange={handleName}
@@ -91,7 +88,7 @@ function ProfileForm() {
                     placeholder="Address"
                     value={address}
                 />
-                <div className="ProfileForm-input-box">
+                <div className="AddressForm-input-box">
                     <input
                         style={{ border: incompleteForm === false ? "1px solid #007f5f" : undefined }}
                         onChange={handleCity}
@@ -113,7 +110,7 @@ function ProfileForm() {
                         value={postcode}
                     />
                 </div>
-                <div className="ProfileForm-input-box">
+                <div className="AddressForm-input-box">
                     <input
                         style={{ border: incompleteForm === false ? "1px solid #007f5f" : undefined }}
                         onChange={handleRegion}
@@ -135,11 +132,11 @@ function ProfileForm() {
                         value={country}
                     />
                 </div>
-                <button type="submit" className="ProfileForm-btn">ADD <i className="fa-solid fa-plus"></i></button>
+                <button type="submit" className="AddressForm-btn">ADD <i className="fa-solid fa-plus"></i></button>
             </form>
 
         </div>
     )
 }
 
-export default ProfileForm;
+export default AddressForm;

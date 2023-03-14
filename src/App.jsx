@@ -16,6 +16,9 @@ import Error404 from "./Components/Error404/Error404";
 import { ItemsProvider } from "./Components/Context/ItemsContext";
 import ItemListPage from "./Components/ShowItems/ItemListPage";
 import ProfilePage from "./Components/ProfilePage/ProfilePage";
+import OrderPage from "./Components/OrderPage/OrderPage";
+import { OrderProvider } from "./Components/Context/OrderContext";
+import Orders from "./Components/Orders/Orders";
 
 
 function App() {
@@ -25,20 +28,25 @@ function App() {
         <LoggedProvider>
           <AnimationProvider>
             <ItemsProvider>
-              <Navbar />
-              <Routes>
-                <Route path="*" element={<Error404 />} />
-                <Route path="/sneakers" element={<ItemListPage />} />
-                <Route path="/accessories" element={<AccessoriesListPage />} />
-                <Route path="/aboutus" element={<AboutUsPage />} />
-                <Route path="/user-log" element={<UserLogContainer />} />
-                <Route path="/item" element={<ItemPage />} />
-                <Route path="/products/:itemId" element={<ItemPage />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/wishlist" element={<WishlistPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-              </Routes>
-              <Footer />
+              <OrderProvider>
+                <Navbar />
+                <Routes>
+                  <Route path="*" element={<Error404 />} />
+                  <Route path="/sneakers" element={<ItemListPage />} />
+                  <Route path="/accessories" element={<AccessoriesListPage />} />
+                  <Route path="/aboutus" element={<AboutUsPage />} />
+                  <Route path="/user-log" element={<UserLogContainer />} />
+                  <Route path="/item" element={<ItemPage />} />
+                  <Route path="/products/:itemId" element={<ItemPage />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/wishlist" element={<WishlistPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/order" element={<OrderPage />} />
+                  <Route path="/orders" element={<Orders />} />
+                </Routes>
+                <Footer />
+
+              </OrderProvider>
             </ItemsProvider>
           </AnimationProvider>
         </LoggedProvider>

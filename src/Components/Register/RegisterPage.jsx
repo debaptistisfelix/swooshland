@@ -13,7 +13,7 @@ import { useCookies } from "react-cookie";
 
 function RegisterPage({ formOn, toggleForm }) {
     const { user, setUser } = useContext(UserContext);
-    const [cookies, setCookie, removeCookie] = useCookies(['U-I']);
+    const [cookies, setCookie, removeCookie] = useCookies(['client']);
 
     const navigate = useNavigate();
     const { logIn } = useContext(LoggedContext);
@@ -50,13 +50,13 @@ function RegisterPage({ formOn, toggleForm }) {
             logIn();
             setUser(response.data);
             const infos = {
-                username: response.data.username,
-                cart: response.data.cart,
-                wishlist: response.data.wishlist,
+                /*  username: response.data.username,
+                 cart: response.data.cart,
+                 wishlist: response.data.wishlist, */
                 id: response.data._id
 
             }
-            setCookie('U-I', infos, { path: '/' });
+            setCookie('client', infos, { path: '/' });
             setRegistrationError(false);
             navigate("/");
         }

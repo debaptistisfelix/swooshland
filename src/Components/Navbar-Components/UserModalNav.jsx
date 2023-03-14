@@ -40,8 +40,9 @@ function UserModalNav({ openedUserModal, toggleUserModal }) {
                     </Link>
 
                     <Link to="/wishlist" className="UserModalNav-linktag">
-                        <div className="UserModalNav-link">
+                        <div className="UserModalNav-link UserModalNav-wish">
                             Whishlist
+                            {/* {<span className="wishlist-qty-modal">{user?.wishlist.length}</span>} */}
                         </div>
                     </Link>
                     <Link to="/profile" className="UserModalNav-linktag">

@@ -1,11 +1,16 @@
-.ProfilePage {
+.Orders {
     margin-top: 8vh;
     width: 100%;
-    min-height: 92vh;
+
+    height: fit-content;
     background-color: whitesmoke;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
-.Profile-container {
+.Orders-container {
     min-height: 100%;
     height: 100%;
     min-width: 100%;
@@ -13,12 +18,12 @@
     background-color: whitesmoke;
     display: flex;
     padding: 2% 5%;
-    display: flex;
     justify-content: space-between;
     box-sizing: border-box;
 }
 
-.Profile-loader-box {
+
+.Orders-loader-box {
     width: 100%;
     height: 100%;
     min-height: 92vh;
@@ -30,7 +35,7 @@
 
 }
 
-.Profile-loader-box .loader-container {
+.Orders-loader-box .loader-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,7 +45,7 @@
     color: #495057;
 }
 
-.Profile-loader-box .loader {
+.Orders-loader-box .loader {
     border: 4px solid #dee2e6;
     border-top: 4px solid #495057;
     border-radius: 50%;
@@ -49,17 +54,12 @@
     animation: spin 2s linear infinite;
 }
 
-@media (max-width:767px) {
-    .ProfilePage {
-        min-height: fit-content;
-        margin-bottom: 50px;
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
     }
 
-    .Profile-container {
-        flex-direction: column;
-        height: fit-content;
-        gap: 50px;
+    100% {
+        transform: rotate(360deg);
     }
 }
-
-@media (min-width:768px) and (max-width:1024px) {}

@@ -1,0 +1,53 @@
+.AddressList {
+    height: fit-content;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 30px;
+
+}
+
+.AddressList-title {
+    color: #495057;
+    letter-spacing: 2px;
+}
+
+.AddressList-list {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    gap: 20px;
+    height: 100%;
+    padding: 20px 0;
+}
+
+@media (max-width:767px) {
+    .AddressList {
+
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 30px;
+
+    }
+
+    .AddressList-title {
+        text-align: center;
+        font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
+    }
+
+    .AddressList-list {
+        justify-content: center;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .AddressList {
+
+        height: fit-content;
+
+    }
+}

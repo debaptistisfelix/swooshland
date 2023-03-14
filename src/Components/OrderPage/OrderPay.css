@@ -1,0 +1,17 @@
+.OrderPay {
+    background-color: whitesmoke;
+    ;
+    height: 100%;
+}
+
+
+.OrderPay-btn {
+    width: 120px;
+    height: 40px;
+    color: white;
+    background-color: #191919;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
