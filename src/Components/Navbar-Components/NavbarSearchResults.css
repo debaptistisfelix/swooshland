@@ -105,4 +105,9 @@
         box-sizing: border-box;
         overflow-y: scroll;
     }
+
+    .ProductCard2-container {
+
+        width: 100%;
+    }
 }

@@ -2,7 +2,7 @@ import "../Orders/OrderBlock.css";
 import OrderDetail from "./OrderDetails";
 import { useState } from "react";
 
-function OrderBlock({ amount, address, cart, date }) {
+function OrderBlock({ amount, address, cart, date, subtotal, shippingCost }) {
     const [openDetails, setOpenDetails] = useState(false);
     const [animation, setAnimation] = useState(undefined);
 
@@ -46,7 +46,13 @@ function OrderBlock({ amount, address, cart, date }) {
                 </div>
             </div>
             {openDetails === true ? <div className={`OrderBlock-details ${animation}`}>
-                <OrderDetail />
+                <OrderDetail
+                    cart={cart}
+                    address={address}
+                    subtotal={subtotal}
+                    shippingCost={shippingCost}
+                    amount={amount}
+                />
             </div>
                 : undefined}
         </div>

@@ -1,0 +1,23 @@
+.ItemBlock {
+    display: flex;
+
+    align-items: center;
+}
+
+.ItemBlock-img {
+    width: 80px;
+    height: 80px
+}
+
+@media (max-width:767px) {
+    .ItemBlock {
+        display: flex;
+
+        align-items: flex-start;
+    }
+
+    .ItemBlock-text {
+        padding-left: 10px;
+        font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
+    }
+}

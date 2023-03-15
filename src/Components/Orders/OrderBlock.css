@@ -1,6 +1,7 @@
 .OrderBlock {
     /* border: 1px solid black; */
     height: fit-content;
+    min-height: fit-content;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.3);
@@ -38,6 +39,7 @@
     box-sizing: border-box;
     width: 100%;
     height: 400px;
+    display: flex;
     animation: openDetails 0.5s 0s forwards ease-out;
 }
 
@@ -69,4 +71,48 @@
         opacity: 0;
         height: 0px;
     }
+}
+
+@media (max-width:767px) {
+
+    .OrderBlock-items-box {
+        display: none;
+    }
+
+    .OrderBlock-infos {
+        font-size: clamp(14px, 4vw + 0.12rem, 18px);
+        padding: 0 10px;
+    }
+
+
+
+    @keyframes openDetails {
+        from {
+            opacity: 0;
+            height: 0%;
+        }
+
+        to {
+            opacity: 1;
+            height: fit-content;
+        }
+    }
+
+    @keyframes closeDetails {
+
+
+        from {
+            opacity: 1;
+            height: fit-content;
+        }
+
+        to {
+            opacity: 0;
+            height: 0%;
+        }
+    }
+
+
+
+
 }

@@ -25,6 +25,7 @@ function ProductsList({ path }) {
                 imgSrc={item.images[0].imgSrc}
                 price={item.price}
                 key={item._id}
+                palette={item.paletteColors}
             />
         </Link>
 

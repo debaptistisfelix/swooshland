@@ -320,7 +320,7 @@
         align-items: center;
         justify-content: flex-start;
         border-left: 1px solid lightgray;
-        width: 80vw;
+        width: 90vw;
         height: 100vh;
         box-sizing: border-box;
         transition: all 0.5s ease-out;

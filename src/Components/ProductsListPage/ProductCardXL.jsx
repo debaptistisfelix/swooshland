@@ -1,6 +1,6 @@
 import "../ProductsListPage/ProductCardXL.css";
 
-function ProductCardXL({ model, name, imgSrc, price }) {
+function ProductCardXL({ model, name, imgSrc, price, palette }) {
     return (
         <div className="ProductCardXL">
             <div className="ProductCardXL-img-box">
@@ -14,7 +14,17 @@ function ProductCardXL({ model, name, imgSrc, price }) {
                 </div>
                 <div className="ProductCardXL-text-down">
                     <span className="ProductCardXL-name">{name}</span>
-                    {/*                     <span className="ProductsCardXL-add-btn"><i className="fa-solid fa-cart-plus"></i></span> */}
+                    {/* <div className="ProductCardXl-palette">
+                        <div
+                            style={{ backgroundColor: `${palette[2].hex}` }}
+                            className="ProductCardXL-color"></div>
+                        <div
+                            style={{ backgroundColor: `${palette[1].hex}` }}
+                            className="ProductCardXL-color"></div>
+                        <div
+                            style={{ backgroundColor: `${palette[0].hex}` }}
+                            className="ProductCardXL-color"></div>
+                    </div> */}
                 </div>
             </div>
         </div>

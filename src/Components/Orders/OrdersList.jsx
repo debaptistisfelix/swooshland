@@ -21,6 +21,8 @@ function OrdersList() {
             cart={order.orderCart}
             amount={order.toPay}
             date={order.date}
+            shippingCost={order.shippingCost}
+            subtotal={order.subtotal}
         />
     })
 
