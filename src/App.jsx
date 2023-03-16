@@ -19,6 +19,9 @@ import ProfilePage from "./Components/ProfilePage/ProfilePage";
 import OrderPage from "./Components/OrderPage/OrderPage";
 import { OrderProvider } from "./Components/Context/OrderContext";
 import Orders from "./Components/Orders/Orders";
+import OrderCompleted from "./Components/OrderPage/OrderCompleted";
+import OrderFailed from "./Components/OrderPage/OrderFailed";
+import "@stripe/stripe-js";
 
 
 function App() {
@@ -43,6 +46,8 @@ function App() {
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/order" element={<OrderPage />} />
                   <Route path="/orders" element={<Orders />} />
+                  <Route path="/order-completed" element={<OrderCompleted />} />
+                  <Route path="/order-failed" element={<OrderFailed />} />
                 </Routes>
                 <Footer />
 

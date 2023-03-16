@@ -53,13 +53,7 @@ function ItemListPage() {
         setOpenSort(!openSort);
     }
 
-    /*  function sortByBrand(brand) {
-         let filteredList = listedItems.filter(item => {
-             return item.model.includes(brand)
-         })
-         setListedItems(filteredList);
-         window.matchMedia("(max-width:767px)").matches && setOpenDrawer(false);
-     } */
+
 
     function sortByBrand(brand) {
         let filteredList = listedItems.filter(item => {
@@ -88,15 +82,7 @@ function ItemListPage() {
 
 
 
-    /*  let displayedItems = listedItems.map(item => {
-         return <ProductCard2
-             key={item.name}
-             imgSrc={item.imgSrc}
-             model={item.model}
-             name={item.name}
-             price={item.price}
-         />
-     }) */
+
 
     function closeSortModal(e) {
         let usermodal = document.querySelector(".ItemListPage-sort-modal");

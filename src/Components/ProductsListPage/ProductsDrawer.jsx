@@ -2,6 +2,7 @@ import "../ProductsListPage/ProductsDrawer.css";
 import { v4 as uuidv4 } from 'uuid';
 import { useContext } from "react";
 import { ItemsContext } from "../Context/ItemsContext";
+import Slider from "./Slider";
 
 function ProductsDrawer({ openDrawer, toggleDrawer, categories, sortByBrand, drawerImg }) {
     const { listedItems } = useContext(ItemsContext);
@@ -47,6 +48,9 @@ function ProductsDrawer({ openDrawer, toggleDrawer, categories, sortByBrand, dra
                     {list}
                 </div>
             </div>
+            {/* <div className="ProductsDrawer-slider-box">
+                <Slider />
+            </div> */}
         </div>
     )
 }

@@ -3,16 +3,17 @@ import AddressList from "../OrderPage/AddressList";
 import AddressForm from "../OrderPage/AddressForm";
 import { useState, useContext } from "react";
 import { OrderContext } from "../Context/OrderContext";
+import { UserContext } from "../Context/UserContext";
 
-function OrderShip({ addAddressToOrder }) {
-
-    const { chosenAddress, setChosenAddress } = useContext(OrderContext);
+function OrderShip() {
+    const { user } = useContext(UserContext);
+    const { chosenAddress, setChosenAddress, addCartToOrder } = useContext(OrderContext);
     function selectAddress(event) {
         const selectedAd = (event.target.value);
         setChosenAddress(JSON.parse(selectedAd))
     }
 
-    console.log(chosenAddress)
+
     return (
         <div className="OrderShip">
             <div className="OrderShip-container">
@@ -26,7 +27,7 @@ function OrderShip({ addAddressToOrder }) {
                             window.scrollTo(0, 0);
                             return;
                         } else {
-                            addAddressToOrder(chosenAddress);
+                            addCartToOrder(user.cart, chosenAddress);
                             window.scrollTo(0, 0);
                         }
 

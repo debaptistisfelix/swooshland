@@ -11,16 +11,15 @@ function OrderPage() {
     const { user } = useContext(UserContext);
     const { displayedPage,
         setDisplayedPage,
-        order, setOrder,
-        chosenAddress,
-        setChosenAddress,
-        addAddressToOrder,
-        backToOrderShip } = useContext(OrderContext)
+        setChosenAddress, } = useContext(OrderContext)
 
     useEffect(() => {
         setDisplayedPage("OrderShip")
         setChosenAddress("");
     }, [])
+
+
+
 
     const [loadedPage, setLoadedPage] = useState(false)
     function loadPage(delay) {
@@ -53,7 +52,7 @@ function OrderPage() {
                                     <i className="fa-solid fa-credit-card"></i><i className="fa-solid fa-angle-right"></i></div>
                             </div>
                             <div className="Order-displayer">
-                                {displayedPage === "OrderShip" && <OrderShip addAddressToOrder={addAddressToOrder} />}
+                                {displayedPage === "OrderShip" && <OrderShip />}
                                 {displayedPage === "Recap" && <OrderRecap />}
                                 {displayedPage === "Payment" && <OrderPay />}
                             </div>

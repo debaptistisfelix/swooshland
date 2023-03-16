@@ -34,6 +34,7 @@ function ItemPage() {
             const sneaker = res.data;
             setProduct(sneaker);
 
+
         }
         fetchData();
         loadPage(600)
@@ -78,6 +79,7 @@ function ItemPage() {
         console.log(clickedSize);
         setChosenSize(clickedSize);
     }
+
 
     // Funziona e aggiunge effettivamente prodotto al carrello dello user
     async function addToCart(product) {

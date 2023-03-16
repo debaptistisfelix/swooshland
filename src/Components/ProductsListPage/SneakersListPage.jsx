@@ -34,6 +34,7 @@ function SneakersListPage() {
         const fetchSneakers = async () => {
             const response = await axios.get("http://localhost:3000/api/products");
             const results = response.data;
+
             const sneakerResults = results.filter(item => {
                 return item.tag === "sneakers";
             })
@@ -42,6 +43,7 @@ function SneakersListPage() {
         }
         fetchSneakers();
     }, []);
+    console.log("fuck")
 
 
     // DRAWER OPEN/CLOSE STATE

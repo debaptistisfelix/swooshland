@@ -49,6 +49,6 @@
 @media(max-width:767px) {
     .ProductCardXL-container {
         width: min(90vw, 320px);
-        height: 400px;
+        height: fit-content;
     }
 }

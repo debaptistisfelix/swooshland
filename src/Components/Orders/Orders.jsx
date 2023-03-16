@@ -1,7 +1,7 @@
 import "../Orders/Orders.css";
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../Context/UserContext";
-import "../Error404/Error404";
+import Error404 from "../Error404/Error404";
 import OrdersList from "../Orders/OrdersList";
 
 function Orders() {
