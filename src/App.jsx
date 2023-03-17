@@ -22,6 +22,7 @@ import Orders from "./Components/Orders/Orders";
 import OrderCompleted from "./Components/OrderPage/OrderCompleted";
 import OrderFailed from "./Components/OrderPage/OrderFailed";
 import "@stripe/stripe-js";
+import Homepage from "./Components/Homepage/Homepage";
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
                 <Navbar />
                 <Routes>
                   <Route path="*" element={<Error404 />} />
+                  <Route path="/" element={<Homepage />} />
                   <Route path="/sneakers" element={<ItemListPage />} />
                   <Route path="/accessories" element={<AccessoriesListPage />} />
                   <Route path="/aboutus" element={<AboutUsPage />} />

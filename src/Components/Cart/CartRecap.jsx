@@ -65,7 +65,7 @@ function CartRecap() {
     }, [subtotal]) */
 
 
-    let condition = (user?.cart.length !== undefined && user?.cart.length === 0)
+    let condition = (user?.cart.length !== undefined && user?.cart.length === 0 && user?.cart === undefined)
 
 
     return (
@@ -103,7 +103,7 @@ function CartRecap() {
                 <Link
                     onClick={() => { window.scrollTo(0, 0); }}
                     style={{
-                        pointerEvents: user?.cart === undefined ? "none" : undefined,
+                        /*  pointerEvents: user?.cart === undefined ? "none" : undefined, */
                         pointerEvents: condition ? "none" : undefined
                     }}
                     to="/order"

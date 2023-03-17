@@ -186,7 +186,9 @@ function Navbar() {
                                 <span className="Navbar-sneaker-brand">NIKE AIR </span>
                                 <span className="Navbar-sneaker-category">JORDAN 1 MID</span>
                                 <span className="Navbar-sneaker-name">OG-ORANGE</span>
-                                <Link className="Navbar-show-monthly">SHOW <i className="fa-solid fa-rocket"></i></Link>
+                                <Link
+                                    onClick={() => setOpenNav(false)}
+                                    to="/products/64036bf0261d099979a2494b" className="Navbar-show-monthly">SHOW <i className="fa-solid fa-rocket"></i></Link>
                             </div>
                         </div>
                     </div>

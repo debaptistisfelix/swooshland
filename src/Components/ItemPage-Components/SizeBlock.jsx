@@ -5,7 +5,7 @@ function SizeBlock({ size, id, selectSize, sizes, qty }) {
     let oneSize;
     (size === "One Size") ? oneSize = "one-size-block" : undefined;
 
-    const styleCondition = (window.matchMedia('(max-width: 767px)').matches && sizes.length === 1)
+    const styleCondition = (window.matchMedia('(max-width: 1024px)').matches && sizes.length === 1)
 
     return (
         <div
