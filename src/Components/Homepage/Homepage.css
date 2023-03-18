@@ -2,6 +2,7 @@
     margin-top: 8vh;
     width: 100%;
     min-height: 92vh;
+    height: fit-content;
     background-color: whitesmoke;
     font-family: 'Montserrat', sans-serif;
     display: flex;
@@ -25,48 +26,17 @@
 }
 
 .Homepage-right {
-    width: 62%;
-    height: 100%;
-    border: 1px solid black;
-    display: flex;
-
+    min-height: 100%;
+    width: 64%;
+    box-sizing: border-box;
+    overflow: hidden;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    ;
 }
 
-.project1 {
-    width: 150px;
-    height: 100%;
-    background-image: url("/krakenposter.jpg");
-    background-position: center;
-    background-size: cover;
-    position: relative;
-}
-
-.project2 {
-    width: 150px;
-    height: 100%;
-    background-image: url("/kawaii/kawaii6.jpg");
-    background-position: 45%;
-    background-size: cover;
-    position: relative;
-}
-
-.shader {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.7) 75%, rgba(0, 0, 0, 0.3) 100%);
-}
-
-.project-title {
-    color: white;
-    bottom: 20px;
-    display: flex;
-    position: absolute;
-    transform: rotate(-90deg);
 
 
-}
+
 
 
 .Homepage-loader-box {

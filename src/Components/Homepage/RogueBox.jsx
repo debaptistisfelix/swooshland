@@ -2,15 +2,30 @@ import "./RogueBox.css";
 import RogueLust from "./RogueLust";
 import RogueRage from "./RogueRage";
 import RoguePride from "./RoguePride";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 function RogueBox() {
     const [rogueOn, setRogueOn] = useState("RogueLust");
+    const [index, setIndex] = useState(0);
+    const array = ["RogueLust", "RogueRage", "RoguePride"];
     function changeRogue(model) {
         setRogueOn(model);
     }
 
+    /*  useEffect(() => {
+         const intervalId = setInterval(() => {
+             setIndex(prevIndex => (prevIndex + 1) % array.length);
+         }, 5000);
+ 
+         return () => {
+             clearInterval(intervalId);
+         }
+     }, [])
+ 
+     useEffect(() => {
+         setRogueOn(array[index])
+     }, [index]) */
 
 
 

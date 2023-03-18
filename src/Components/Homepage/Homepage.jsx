@@ -2,6 +2,8 @@ import "./Homepage.css";
 import { useState } from "react";
 import RogueBox from "./RogueBox";
 import NewProds from "./NewProds";
+import Models from "./Models";
+import PumaBanner from "./PumaBanner";
 
 function Homepage() {
     const [loadedPage, setLoadedPage] = useState(false);
@@ -19,17 +21,7 @@ function Homepage() {
                 ? <div className="Homepage-container">
                     <RogueBox />
                     <div className="Homepage-right">
-                        <div className="project1">
-                            <div className="shader">
-                                <h2 className="project-title">L.A. KRAKEN</h2>
-                            </div>
-                        </div>
-                        <div className="project2">
-                            <div className="shader">
-                                <h2 className="project-title">LEO KAWAII</h2>
-                            </div>
-                        </div>
-
+                        <PumaBanner />
                     </div>
                 </div>
                 : <div className="Homepage-loader-box">
