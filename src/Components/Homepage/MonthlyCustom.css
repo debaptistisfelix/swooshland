@@ -1,0 +1,154 @@
+.MonthlyCustom {
+    width: 35%;
+    min-height: 100%;
+    height: 83vh;
+    border-radius: 5px;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    position: relative;
+}
+
+.Monthly-poster {
+    width: 100%;
+    height: 100%;
+    background-image: url("/orange/orange4.jpg");
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    filter: brightness(90%);
+    z-index: 1;
+}
+
+.Monthly-cut {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("/simocut2.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 3;
+}
+
+.Monthly-text {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+.Monthly-model {
+    color: #f3722c;
+    font-family: 'Rubik', sans-serif;
+    position: absolute;
+    font-size: 90px;
+    font-weight: 700;
+    top: 50%;
+    left: 10%;
+    width: fit-content;
+}
+
+.Monthly-btn {
+    color: white;
+    letter-spacing: 5px;
+    position: absolute;
+    bottom: 10%;
+    font-size: 16px;
+    right: 7%;
+    z-index: 4;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+}
+
+.Monthly-btn:hover {
+    transform: scale(1.1);
+    font-weight: 600;
+}
+
+
+.Monthly-tag {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    text-align: center;
+    height: fit-content;
+    position: absolute;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    right: 5%;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 62%;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+@media (max-width:768px) {
+    .MonthlyCustom {
+        width: 100%;
+        min-height: 100%;
+        height: 75vh;
+        border-radius: 5px;
+        box-sizing: border-box;
+        position: relative;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+        position: relative;
+    }
+
+    .Monthly-model {
+        color: #f3722c;
+        font-family: 'Rubik', sans-serif;
+        position: absolute;
+        font-size: 60px;
+        font-weight: 700;
+        top: 60%;
+        left: 5%;
+        width: fit-content;
+    }
+
+    .Monthly-btn {
+        color: white;
+        letter-spacing: 3px;
+        position: absolute;
+        bottom: 2%;
+        font-size: 16px;
+        right: 2%;
+        background-color: #f3722c;
+        border-radius: 5px;
+        padding: 2px 5px;
+        z-index: 4;
+        cursor: pointer;
+        transition: all 0.2s ease-out;
+    }
+
+    .Monthly-tag {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        width: fit-content;
+        text-align: center;
+        height: fit-content;
+        position: absolute;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        right: 5%;
+        background-color: rgba(0, 0, 0, 0.5);
+        top: 65%;
+        padding: 5px;
+        border-radius: 5px;
+        z-index: 5;
+    }
+}

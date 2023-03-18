@@ -139,6 +139,11 @@ function Navbar() {
         e.target !== cartModal && setOpenCartModal(false);
     })
 
+    function navLinkFunc() {
+        setOpenNav(false);
+        window.scrollTo(0, 0);
+    }
+
 
 
     return (
@@ -150,10 +155,10 @@ function Navbar() {
             <div className={`Navbar-rightside ${navStatus}`}>
                 <div className="Navbar-close-sidemenu"><i onClick={toggleNavStatus} className="fa-solid fa-xmark"></i></div>
                 <ul className="Navbar-links">
-                    <NavLink onClick={() => setOpenNav(false)} className={`Navbar-link ${linkStatus}1 homeLink`}>HOME <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
-                    <NavLink onClick={() => setOpenNav(false)} to="/sneakers" className={`Navbar-link ${linkStatus}2`}>SNEAKERS <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
-                    <NavLink onClick={() => setOpenNav(false)} to="/accessories" className={`Navbar-link ${linkStatus}3`}>ACCESSORIES <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
-                    <NavLink onClick={() => setOpenNav(false)} to="/aboutus" className={`Navbar-link ${linkStatus}4`}>ABOUT US <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
+                    <NavLink onClick={() => navLinkFunc()} to="/" className={`Navbar-link ${linkStatus}1 homeLink`}>HOME <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
+                    <NavLink onClick={() => navLinkFunc()} to="/sneakers" className={`Navbar-link ${linkStatus}2`}>SNEAKERS <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
+                    <NavLink onClick={() => navLinkFunc()} to="/accessories" className={`Navbar-link ${linkStatus}3`}>ACCESSORIES <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
+                    <NavLink onClick={() => navLinkFunc()} to="/aboutus" className={`Navbar-link ${linkStatus}4`}>ABOUT US <i className="fa-solid fa-chevron-right link-arrow"></i></NavLink>
                 </ul>
                 <div className="Navbar-search-box">
                     <span className="Navbar-search-cta">Explore all of our Custom Products!</span>

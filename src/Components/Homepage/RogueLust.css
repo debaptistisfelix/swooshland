@@ -85,7 +85,7 @@
     z-index: 3;
     position: absolute;
     top: 30px;
-    color: #191919;
+    color: black;
     letter-spacing: 3px;
     font-weight: 500;
 }
@@ -108,7 +108,7 @@
     bottom: 0;
     width: 100%;
     border-radius: 0 0 5px 5px;
-
+    height: 75%;
     z-index: 2;
 
 }
@@ -136,6 +136,7 @@
 @media (max-width:767px) {
     .RogueLust {
         padding-top: 4vh;
+        border-radius: 0;
         background-image: url("/rogue-lust/lust2.jpg");
         box-sizing: border-box;
     }
@@ -230,13 +231,15 @@
         bottom: 0;
         width: 100%;
         height: 70%;
-
+        border-radius: 0;
         z-index: 2;
 
     }
 }
 
 @media (min-width:768px) and (max-width:1023px) {
+
+
     .RogueLust-text-box p {
         text-align: center;
     }

@@ -4,6 +4,9 @@ import RogueBox from "./RogueBox";
 import NewProds from "./NewProds";
 import Models from "./Models";
 import PumaBanner from "./PumaBanner";
+import MonthlyCustom from "./MonthlyCustom";
+import LemonBanner from "./LemonBanner";
+
 
 function Homepage() {
     const [loadedPage, setLoadedPage] = useState(false);
@@ -19,10 +22,20 @@ function Homepage() {
 
             {loadedPage === true
                 ? <div className="Homepage-container">
-                    <RogueBox />
-                    <div className="Homepage-right">
-                        <PumaBanner />
+                    <div className="Homepage-lev2">
+                        <RogueBox />
+                        <div className="Homepage-right">
+                            <PumaBanner />
+                        </div>
                     </div>
+                    <div className="Homepage-lev1">
+                        <div className="Homepage-left">
+                            <LemonBanner />
+                        </div>
+                        <MonthlyCustom />
+                    </div>
+                    <div className="Homepage-lev3"></div>
+
                 </div>
                 : <div className="Homepage-loader-box">
                     <div className="loader-container">

@@ -6,6 +6,7 @@
     box-sizing: border-box;
     position: relative;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+
 }
 
 .Rogue-btns {
@@ -50,7 +51,8 @@
 @media (min-width:768px) and (max-width:1023px) {
     .RogueBox {
         width: 50%;
-        height: 50%;
+        min-height: 50vh;
+        height: 50vh;
         border-radius: 5px;
         box-sizing: border-box;
         position: relative;
