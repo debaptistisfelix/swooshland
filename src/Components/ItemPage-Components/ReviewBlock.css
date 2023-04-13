@@ -1,0 +1,110 @@
+.ReviewBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  padding: 0 20px;
+  color: #191919;
+  box-sizing: border-box;
+  animation: reviewAppear 0.5s 0s forwards ease-out;
+  position: relative;
+}
+
+@keyframes reviewVanish {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes reviewAppear {
+  0% {
+    /*  transform: scale(0); */
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+
+  100% {
+    /* transform: scale(1);
+    opacity: 1; */
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+.ReviewBlock-top {
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.ReviewBlock-bottom {
+  color: #495057;
+  display: flex;
+  font-size: 16px;
+  justify-content: space-between;
+
+  align-items: baseline;
+}
+
+.ReviewBlock-text {
+  width: fit-content;
+  height: fit-content;
+}
+
+.review-delete-btn {
+  display: flex;
+  color: #495057;
+  justify-content: center;
+  border: none;
+  outline: none;
+  letter-spacing: 2px;
+  font-size: 16px;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+}
+
+.review-delete-btn:hover {
+  color: #191919;
+  transform: scale(1.1);
+}
+
+.ReviewBlock-date {
+  color: #495057;
+  font-size: 14px;
+}
+
+@media (max-width: 767px) {
+  .ReviewBlock {
+    padding: 0;
+    font-size: clamp(16px, 4.72vw + 0.12rem);
+  }
+  .ReviewBlock-bottom {
+    color: #495057;
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(16px, 4.72vw + 0.12rem);
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .ReviewBlock-date {
+    color: #495057;
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ReviewBlock {
+    font-size: clamp(16px, 1.83vw + 0.12rem);
+  }
+}

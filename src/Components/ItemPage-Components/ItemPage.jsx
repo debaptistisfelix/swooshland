@@ -1,163 +1,248 @@
-import "../ItemPage-Components/ItemPage.css"
+import "../ItemPage-Components/ItemPage.css";
 import ImageSlider from "./ImageSlider";
 import ItemPageText from "./ItemPageText";
 import ProductCard2 from "../ProductCard2";
 import axios from "axios";
-import { useState, useEffect, useContext } from "react";
-import SizeBlock from "./SizeBlock";
+import { useState, useEffect, useContext, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useLoadedState from "../Hooks/useLoadedState";
-import { UserContext } from "../Context/UserContext";
-import { v4 as uuidv4 } from 'uuid';
-import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
 
+import { v4 as uuidv4 } from "uuid";
 
+import { CartContext } from "../Context/CartContext";
+import { WishContext } from "../Context/WishContext";
+import { LoggedContext } from "../Context/LoggedContext";
+import ReviewSection from "./ReviewSection";
 
 function ItemPage() {
-    const { user, setUser } = useContext(UserContext);
-    const [cookies, setCookie, removeCookie] = useCookies(['cookie-name']);
-    const navigate = useNavigate();
+  let { itemId } = useParams();
+  const { token } = useContext(LoggedContext);
+  const headers = { Authorization: `Bearer ${token}` };
+  const { setUpdateState, updateState, setShowReservedNote } =
+    useContext(CartContext);
+  const { setUpdateWish, updateWish } = useContext(WishContext);
+  const [chosenSize, setChosenSize] = useState("");
+  const [wasBought, setWasBought] = useState(false);
+  const [reviewsUpdate, setReviewsUpdate] = useState(false);
 
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [updateItemState, setUpdateItemState] = useState(false);
 
-    let { itemId } = useParams();
+  const handleReviewUpdate = () => {
+    setReviewsUpdate(!reviewsUpdate);
+  };
 
-    const [chosenSize, setChosenSize] = useState("")
+  const fetchData = useCallback(async () => {
+    const res = await axios.get(`http://localhost:8000/api/items/${itemId}`);
+    setData(res.data.data.data);
+    setError(null);
+    setIsLoading(false);
+    setUpdateItemState(false);
+    console.log("Item was fetched again");
+  }, [itemId, reviewsUpdate, updateItemState]);
 
-    const [related, setRelated] = useState([])
+  useEffect(() => {
+    fetchData().catch((err) => {
+      setError(err.message);
+      setIsLoading(false);
+      setData(null);
+      console.log(err.message);
+    });
+  }, [fetchData, updateItemState, itemId, reviewsUpdate]);
 
-    const [product, setProduct] = useState("")
-    useEffect(() => {
-        async function fetchData() {
-            const res = await axios.get(`http://localhost:3000/api/products/${itemId}`);
-            const sneaker = res.data;
-            setProduct(sneaker);
+  // Check if user has ever ordered the item
+  const didUserBuy = useCallback(async () => {
+    if (token) {
+      try {
+        const res = await axios.get(
+          `http://localhost:8000/api/orders/orderDetails/${itemId}`,
+          { headers }
+        );
 
+        setWasBought(true);
+      } catch (err) {
+        setWasBought(false);
+        console.log(err.response.data.message);
+      }
+    }
+  }, [data]);
 
+  // As soon as you have the product, check if was ever ordered
+  useEffect(() => {
+    if (token !== null) {
+      didUserBuy();
+    }
+  }, [data]);
+
+  const [related, setRelated] = useState([]);
+
+  useEffect(() => {
+    async function fetchRelated() {
+      const res = await axios.get("http://localhost:8000/api/items?limit=50");
+      const sneakers = res.data.data.data;
+      let relatedSneakers = [];
+
+      let similarSnekers = sneakers.filter((item) => {
+        return item.category === data.category;
+      });
+      let preciseSimilarSneakers = similarSnekers.filter((item) => {
+        return item.name !== data.name;
+      });
+
+      relatedSneakers.push(...preciseSimilarSneakers);
+
+      while (relatedSneakers.length <= 10) {
+        let randomIndex = Math.floor(Math.random() * sneakers.length);
+        let sneakerToAdd = sneakers[randomIndex];
+        if (!relatedSneakers.includes(sneakerToAdd)) {
+          relatedSneakers.push(sneakerToAdd);
         }
-        fetchData();
-        loadPage(600)
-    }, [product])
+      }
+      setRelated(relatedSneakers);
+    }
+    fetchRelated();
+  }, [data]);
 
-    useEffect(() => {
-        async function fetchRelated() {
-            const res = await axios.get("http://localhost:3000/api/products");
-            const sneakers = res.data;
-            let relatedSneakers = [];
+  // Select a size to add to Cart/wishlist
+  function selectSize(event) {
+    let clickedSize = event.target.value;
+    console.log(clickedSize);
+    setChosenSize(clickedSize);
+  }
 
+  function makeNotePopUp() {
+    setShowReservedNote(true);
+    setTimeout(() => {
+      setShowReservedNote(false);
+    }, 3000);
+  }
 
-            let similarSnekers = sneakers.filter(item => {
-                return item.category === product.category
-            })
-            let preciseSimilarSneakers = similarSnekers.filter(item => {
-                return item.name !== product.name;
-            })
-
-            relatedSneakers.push(...preciseSimilarSneakers);
-
-
-            while (relatedSneakers.length <= 10) {
-
-                let randomIndex = Math.floor(Math.random() * sneakers.length);
-                let sneakerToAdd = sneakers[randomIndex];
-                if (!relatedSneakers.includes(sneakerToAdd)) {
-                    relatedSneakers.push(sneakerToAdd)
-
-                }
-            }
-            setRelated(relatedSneakers)
+  // Add Item to Cart
+  async function addToCart(data) {
+    const itemtoAdd = {
+      model: data.model,
+      category: data.category,
+      name: data.name,
+      price: data.price,
+      images: data.images[0].imgSrc,
+      tag: data.tag,
+      paletteColors: data.paletteColors,
+      stripe: data.stripe,
+      chosenSize: chosenSize,
+      itemId: data._id,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/cartItems",
+        itemtoAdd,
+        {
+          headers,
         }
-        fetchRelated();
-
-    }, [product.name])
-
-
-
-    function selectSize(event) {
-        let clickedSize = (event.target.value);
-        console.log(clickedSize);
-        setChosenSize(clickedSize);
+      );
+      setUpdateState(!updateState);
+      setUpdateItemState(!updateItemState);
+      makeNotePopUp();
+    } catch (err) {
+      console.log(error);
     }
+  }
 
-
-    // Funziona e aggiunge effettivamente prodotto al carrello dello user
-    async function addToCart(product) {
-        const itemToAdd = { ...product, chosenSize: chosenSize, id: uuidv4() }
-        const response = await axios.patch(`http://localhost:3000/api/users/${user._id}`, {
-            cart: [...user.cart, { ...itemToAdd }]
-        });
-        const updatedUser = await axios.get(`http://localhost:3000/api/users/${user._id}`)
-        setUser(updatedUser.data);
-
+  // Add Item to wishlist
+  async function addToWish(data) {
+    const itemtoAdd = {
+      model: data.model,
+      category: data.category,
+      name: data.name,
+      price: data.price,
+      images: data.images[0].imgSrc,
+      tag: data.tag,
+      paletteColors: data.paletteColors,
+      stripe: data.stripe,
+      chosenSize: chosenSize,
+      itemId: data._id,
+    };
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/wishlist",
+        itemtoAdd,
+        {
+          headers,
+        }
+      );
+      setUpdateWish(!updateWish);
+    } catch (err) {
+      console.log(error);
     }
+  }
 
-    async function addToWish(product) {
-        const itemToAdd = { ...product, chosenSize: chosenSize, id: uuidv4() }
-        const response = await axios.patch(`http://localhost:3000/api/users/${user._id}`, {
-            wishlist: [...user.wishlist, { ...itemToAdd }]
-        });
-        const updatedUser = await axios.get(`http://localhost:3000/api/users/${user._id}`)
-        setUser(updatedUser.data);
-    }
+  const [loadedPage, setLoadedPage, loadPage] = useLoadedState(true);
+  loadPage(600);
 
-
-
-
-    const [loadedPage, setLoadedPage, loadPage] = useLoadedState(false);
-    loadPage(600);
-
-
-    return (
-        <div className="ItemPage">
-
-            {loadedPage === true
-                ? <div className="ItemPage-max-container">
-                    <div className="ItemPage-container">
-                        <div className="ItemPage-img-container">
-                            <ImageSlider product={product}
-                            />
-                        </div>
-                        <ItemPageText product={product} selectSize={selectSize} addToCart={addToCart} addToWish={addToWish} chosenSize={chosenSize} />
-                    </div>
-                    <div className="ItemPage-bottom">
-                        <span className="ItemPage-related-list">
-                            MORE CUSTOMS
-                        </span>
-                        <div className="ItemPage-bottom-container">
-                            {related.map(item => {
-                                return <Link
-                                    key={item._id}
-                                    onClick={() => {
-                                        setLoadedPage(false)
-                                        window.scrollTo(0, 0);
-                                    }}
-                                    to={`/products/${item._id}`} className="ItemPage-card-container">
-                                    <ProductCard2
-                                        item={item}
-                                        key={item._id}
-
-                                    />
-                                </Link>
-                            })}
-
-                        </div>
-
-                    </div>
+  return (
+    <div className="ItemPage">
+      {loadedPage === true ? (
+        <div className="ItemPage-max-container">
+          <div className="ItemPage-container">
+            {error && <>{error}</>}
+            {data && (
+              <>
+                <div className="ItemPage-img-container">
+                  <ImageSlider data={data} />
                 </div>
-                : <div className="ItemPage-loader-box">
-                    <div className="loader-container">
-                        <div className="loader"></div>
-                        <span className="loader-text">LOADING</span>
-                    </div>
-                </div>
-            }
+                <ItemPageText
+                  data={data}
+                  selectSize={selectSize}
+                  addToCart={addToCart}
+                  addToWish={addToWish}
+                  chosenSize={chosenSize}
+                />
+              </>
+            )}
+          </div>
 
-
+          <div className="ItemPage-bottom">
+            <span className="ItemPage-related-list">MORE CUSTOMS</span>
+            <div className="ItemPage-bottom-container">
+              {related.map((item) => {
+                return (
+                  <Link
+                    key={item._id}
+                    onClick={() => {
+                      setLoadedPage(false);
+                      window.scrollTo(0, 0);
+                    }}
+                    to={`/products/${item._id}`}
+                    className="ItemPage-card-container"
+                  >
+                    <ProductCard2 item={item} key={item._id} />
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+          <div className="Itempage-reviews">
+            <ReviewSection
+              data={data}
+              token={token}
+              wasBought={wasBought}
+              handleReviewUpdate={handleReviewUpdate}
+              firstReviewsUpdate={reviewsUpdate}
+            />
+          </div>
         </div>
-
-
-    )
+      ) : (
+        <div className="ItemPage-loader-box">
+          <div className="loader-container">
+            <div className="loader"></div>
+            <span className="loader-text">LOADING</span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default ItemPage;

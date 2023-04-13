@@ -1,0 +1,62 @@
+.RatingBar {
+  width: 100%;
+
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.RatingBar-star-num {
+  font-weight: 600;
+  width: 10%;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.RatingBar-bar {
+  width: 80%;
+  background-color: lightgrey;
+  height: 60%;
+  border-radius: 20px;
+  position: relative;
+  transition: all 0.2 ease-out;
+}
+
+.RatingBar-bar:hover {
+  transform: scale(1.05);
+}
+
+.RatingBar-bar:hover {
+  cursor: pointer;
+}
+
+.RatingBar-qty {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.RatingBar-colored-bar {
+  background-color: #191919;
+  height: 100%;
+  position: absolute;
+  border-radius: 20px 0 0 20px;
+}
+
+@media (max-width: 767px) {
+  .RatingBar-bar {
+    width: 70%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .RatingBar-bar {
+    width: 70%;
+    height: 40%;
+  }
+}

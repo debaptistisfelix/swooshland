@@ -1,45 +1,28 @@
 import "../Orders/OrdersList.css";
-import { useState, useEffect, useContext } from "react";
-import { UserContext } from "../Context/UserContext";
 import OrderBlock from "./OrderBlock";
-
+import useFetchOrders from "../Hooks/useFetchOrders";
+import { OrderContext } from "../Context/OrderContext";
+import { useContext } from "react";
 
 function OrdersList() {
-    const { user } = useContext(UserContext);
-    const [ordersList, setOrdersList] = useState([]);
+  const { data, isLoading, error, setUpdateState } = useContext(OrderContext);
+  console.log(data);
+  return (
+    <div className="OrdersList">
+      <span className="OrdersList-title">YOUR ORDERS</span>
 
-
-
-    useEffect(() => {
-        setOrdersList(user.orders);
-    }, [user])
-
-    const ordersListed = ordersList.map((order, i) => {
-        return <OrderBlock
-            key={i}
-            address={order.orderAddress}
-            cart={order.orderCart}
-            amount={order.toPay}
-            date={order.date}
-            shippingCost={order.shippingCost}
-            subtotal={order.subtotal}
-        />
-    })
-
-
-    return (
-        <div className="OrdersList">
-            <span className="OrdersList-title">YOUR ORDERS</span>
-            {ordersList.length === 0
-                ? <div className="OrdersList-empty-box">
-                    <span className="OrdersList-empty">No Orders submitted yet.</span>
-                </div>
-                : <div className="OrdersList-list">
-                    {ordersListed}
-                </div>
-            }
+      {error && <div>{error}</div>}
+      {isLoading && <div className="Loading-orders">Loading Orders...</div>}
+      {data && (
+        <div className="OrdersList-list">
+          {data.map((order, i) => {
+            return <OrderBlock key={i} order={order} />;
+          })}
+          {data && data.length === 0 && "No orders yet."}
         </div>
-    )
+      )}
+    </div>
+  );
 }
 
 export default OrdersList;

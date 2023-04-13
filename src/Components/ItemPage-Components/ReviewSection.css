@@ -1,0 +1,49 @@
+.ReviewSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.ReviewSection-reviews-top {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ReviewSection-reviews-bottom {
+  width: 100%;
+
+  height: fit-content;
+  min-height: 300px;
+}
+
+.Reviews-list {
+  width: 100%;
+  height: fit-content;
+}
+
+@media (max-width: 767px) {
+  .ReviewSection-reviews-top {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    gap: 50px;
+  }
+
+  .ReviewSection-reviews-bottom {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ReviewSection-reviews-top {
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: space-between;
+  }
+}

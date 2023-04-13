@@ -1,69 +1,62 @@
 .ProfileList {
-
-    width: 60%;
-    height: 100%;
-    padding: 2%;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 0;
-    gap: 30px;
-    box-sizing: border-box;
-    background-color: whitesmoke;
-    /*  border: 1px solid black; */
-
+  width: 60%;
+  height: 100%;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+  gap: 30px;
+  box-sizing: border-box;
+  background-color: whitesmoke;
+  /*  border: 1px solid black; */
 }
 
 .ProfileList-title {
-    color: #191919;
-    font-weight: 600;
-    font-size: 25px;
-    letter-spacing: 3px;
-    font-weight: bold;
-    height: 10%;
-    height: 40px;
+  color: #191919;
+  font-weight: 600;
+  font-size: 25px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  height: 10%;
+  height: 40px;
 }
 
 .ProfileList-list {
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  box-sizing: border-box;
+  overflow: scroll;
+  gap: 30px;
+}
+
+@media (max-width: 767px) {
+  .ProfileList {
+    width: 100%;
+    gap: 50px;
+  }
+
+  .empty-address-list {
+    font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
+  }
+
+  .ProfileList-title {
+    text-align: center;
+    font-size: clamp(20px, 6.45vw + 0.12rem, 25px);
+  }
+
+  .ProfileList-list {
+    gap: 50px;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .ProfileList {
+    width: 60%;
+  }
+
+  .ProfileList-list {
     gap: 30px;
-
-}
-
-
-@media (max-width:767px) {
-    .ProfileList {
-        width: 100%;
-        gap: 50px;
-    }
-
-    .empty-address-list {
-        font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
-    }
-
-    .ProfileList-title {
-        text-align: center;
-        font-size: clamp(20px, 6.45vw + 0.12rem, 25px)
-    }
-
-    .ProfileList-list {
-        gap: 50px;
-        justify-content: center;
-    }
-}
-
-@media (min-width:768px) and (max-width:1024px) {
-    .ProfileList {
-
-        width: 60%;
-
-    }
-
-    .ProfileList-list {
-        gap: 30px;
-
-    }
-
-
+  }
 }

@@ -1,0 +1,104 @@
+.ReviewStats {
+  width: 40%;
+  height: 100%;
+  justify-content: space-between;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.ReviewStats-title {
+  margin: 0;
+  height: 10%;
+
+  color: #191919;
+  letter-spacing: 3px;
+}
+
+.ReviewStats-recap-box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  flex-direction: column;
+
+  height: 85%;
+}
+
+.ReviewStats-recap-box-title {
+  margin: 0;
+  font-size: 16px;
+  color: #191919;
+  letter-spacing: 2px;
+}
+
+.ReviewStats-recap-box-subtitle {
+  margin: 0;
+  color: #191919;
+  letter-spacing: 2px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.ReviewStats-bars-box {
+  width: 100%;
+  height: 75%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+}
+
+@media (max-width: 767px) {
+  .ReviewStats {
+    width: 100%;
+    text-align: center;
+    gap: 20px;
+    /* border: 1px solid red; */
+    padding: 0;
+  }
+
+  .ReviewStats-title {
+    font-size: clamp(18px, 5.72vw + 0.12rem, 24px);
+  }
+
+  .ReviewStats-recap-box {
+    gap: 10px;
+  }
+
+  .ReviewStats-recap-box-title {
+    font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
+  }
+
+  .ReviewStats-recap-box-subtitle {
+    font-size: clamp(14px, 4vw + 0.12rem, 18px);
+  }
+
+  .ReviewStats-bars-box {
+    width: 100%;
+    height: 60%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ReviewStats {
+    padding: 0;
+  }
+
+  .ReviewStats-title {
+    font-size: clamp(18px, 2.09vw + 0.12rem, 24px);
+  }
+
+  .ReviewStats-recap-box-title {
+    font-size: clamp(16px, 1.83vw + 0.12rem, 20px);
+  }
+
+  .ReviewStats-recap-box-subtitle {
+    font-size: clamp(14px, 1.57vw + 0.12rem, 18px);
+  }
+}

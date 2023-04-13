@@ -1,0 +1,29 @@
+.ReviewList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.ReviewList-empty {
+  padding: 20px;
+}
+
+@media (max-width: 767px) {
+  .ReviewList {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 30px;
+
+    padding: 20px 10px;
+  }
+
+  .ReviewList-empty {
+    text-align: center;
+    font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
+  }
+}

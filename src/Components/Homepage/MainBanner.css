@@ -1,0 +1,301 @@
+.MainBanner {
+  background: rgb(206, 212, 218);
+  background: linear-gradient(
+    0deg,
+    rgb(182, 186, 190) 0%,
+    rgba(210, 212, 215, 0.4) 100%
+  );
+  overflow: hidden;
+  width: 100%;
+  height: 92vh;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.MainBanner-slider-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+}
+
+/* .banner-navs {
+  position: absolute;
+  z-index: 12;
+  transform: translateY(-50%);
+  top: 50%;
+  color: rgb(148, 149, 151);
+  font-size: 25px;
+  transition: all 0.2s ease-in-out;
+}
+
+.banner-navs:hover {
+  transform: scale(1.1) translateY(-50%);
+  filter: brightness(30%);
+}
+
+.banner-nav-left {
+  left: 50px;
+  cursor: poiter;
+}
+
+.banner-nav-right {
+  right: 50px;
+  cursor: poiter;
+} */
+
+.MainBanner-text-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+  /*   border: 1px solid black; */
+  box-sizing: border-box;
+}
+
+.MainBanner-title-box {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  /*   border: 1px solid black; */
+}
+
+.MainBanner-mini-title {
+  text-align: center;
+  letter-spacing: 5px;
+  font-size: 16px;
+  margin: 0;
+  font-weight: 600;
+}
+
+.MainBanner-title {
+  font-size: 150px;
+  letter-spacing: 2px;
+  margin: 0;
+
+  /*   border: 1px solid black; */
+  font-weight: bold;
+  text-align: center;
+}
+
+.MainBanner-rogue {
+  color: rgb(181, 181, 182);
+  font-size: 300px;
+  margin: 0;
+  letter-spacing: -30px;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  animation: rogueAppear 0.5s 1s forwards ease-in-out;
+}
+
+@keyframes rogueAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.MainBanner-slogan-box {
+  width: 100%;
+  display: flex;
+  padding: 10px 0;
+  height: 20%;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.MainBanner-slogan {
+  color: rgb(86, 88, 91);
+  letter-spacing: 2px;
+}
+
+.MainBanner-go-btn {
+  text-decoration: none;
+  color: white;
+  position: absolute;
+  bottom: 2%;
+  padding: 5px 20px;
+  border-radius: 20px;
+  letter-spacing: 2px;
+  font-size: 14px;
+  box-sizing: border-box;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  z-index: 8;
+}
+
+.MainBanner-go-btn:not(.active) {
+  transform: translateY(100px);
+}
+
+.MainBanner-go-btn:hover {
+  filter: brightness(120%);
+}
+
+@media (max-width: 767px) {
+  .MainBanner {
+    width: 100%;
+    height: 100vh;
+  }
+  .MainBanner-title-box {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+  }
+
+  .MainBanner-mini-title {
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: clamp(14px, 4vw + 0.12rem, 20px);
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .MainBanner-title {
+    font-size: clamp(40px, 13.58vw + 0.12rem, 60px);
+    letter-spacing: 2px;
+    margin: 0;
+
+    /*   border: 1px solid black; */
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .MainBanner-rogue {
+    font-size: clamp(70px, 24.3vw + 0.12rem, 100px);
+
+    letter-spacing: 0;
+
+    left: 50%;
+    top: 75%;
+
+    transform: translate(-50%, -50%);
+  }
+
+  .MainBanner-slogan-box {
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    gap: clamp(5px, 1.1vw + 0.12rem, 20px);
+    box-sizing: border-box;
+    height: 25%;
+    /*   border: 1px solid black; */
+    justify-content: center;
+  }
+
+  .MainBanner-slogan {
+    text-align: center;
+    padding: 0 5px;
+    box-sizing: border-box;
+    font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
+  }
+
+  .MainBanner-go-btn {
+    text-decoration: none;
+    color: white;
+
+    padding: 5px 20px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .MainBanner {
+    width: 100%;
+    height: 50vh;
+  }
+  .MainBanner-title-box {
+    width: 100%;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+  }
+
+  .MainBanner-mini-title {
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: clamp(16px, 1.83vw + 0.12rem, 20px);
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .MainBanner-title {
+    font-size: clamp(70px, 8.86vw + 0.12rem, 90px);
+    letter-spacing: 2px;
+    margin: 0;
+
+    /*   border: 1px solid black; */
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .MainBanner-rogue {
+    font-size: clamp(150px, 19.28vw + 0.12rem, 200px);
+
+    letter-spacing: 0;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+  }
+
+  .MainBanner-slogan-box {
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    gap: clamp(5px, 1.1vw + 0.12rem, 20px);
+    box-sizing: border-box;
+    height: 30%;
+    /*   border: 1px solid black; */
+    justify-content: center;
+  }
+  .MainBanner-slogan {
+    text-align: center;
+    padding: 0 5px;
+    box-sizing: border-box;
+    font-size: clamp(16px, 1.83vw + 0.12rem, 20px);
+  }
+
+  .MainBanner-go-btn {
+    text-decoration: none;
+    color: white;
+
+    padding: 5px 20px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    font-size: clamp(16px, 1.83vw + 0.12rem, 20px);
+  }
+}

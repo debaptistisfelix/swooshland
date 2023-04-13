@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+.BreezeBanner-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  /*   overflow: hidden; */
+}
+
+.BreezeBanner {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.BreezeBanner-img-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.BreezeBanner-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.BreezeBanner-cut {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  border-radius: 5px;
+}
+
+.BreezeBanner-text-box {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.BreezeBanner-title-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.BreezeBanner-model {
+  color: #f8cf2c;
+  /*  opacity: 0.8; */
+  letter-spacing: 10px;
+  font-size: 120px;
+  text-align: center;
+  padding-top: 20px;
+  box-sizing: border-box;
+  margin: 0;
+
+  font-family: "Anton", sans-serif;
+}
+
+.BreezeBanner-name {
+  color: #f8cf2c;
+  font-family: "Anton", sans-serif;
+  font-size: 280px;
+  margin: 0;
+  margin-top: -100px;
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+.BreezeBanner-btn {
+  text-decoration: none;
+  color: #f8cf2c;
+  border: 1px solid #f8cf2c;
+  border-radius: 5px;
+  padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  z-index: 4;
+  transition: all 0.2s ease-out;
+  letter-spacing: 3px;
+}
+
+.BreezeBanner-btn:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+  .BreezeBanner-container {
+    border-radius: 0px;
+    /*   overflow: hidden; */
+  }
+
+  .BreezeBanner {
+    border-radius: 0px;
+  }
+
+  .BreezeBanner-img-container {
+    border-radius: 0px;
+    overflow: hidden;
+  }
+
+  .BreezeBanner-img {
+    border-radius: 0px;
+  }
+
+  .BreezeBanner-cut {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    border-radius: 5px;
+  }
+
+  .BreezeBanner-title-box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .BreezeBanner-model {
+    color: #f8cf2c;
+    /*  opacity: 0.8; */
+    letter-spacing: 10px;
+    font-size: clamp(30px, 10vw + 0.12rem, 50px);
+    text-align: center;
+    padding-top: 0px;
+    box-sizing: border-box;
+    margin: 0;
+
+    font-family: "Anton", sans-serif;
+  }
+
+  .BreezeBanner-name {
+    color: #f8cf2c;
+    font-family: "Anton", sans-serif;
+    font-size: clamp(90px, 31.45vw + 0.12rem, 140px);
+
+    margin: 0;
+    margin-top: -10px;
+    text-align: center;
+    letter-spacing: 5px;
+  }
+
+  .BreezeBanner-btn {
+    text-decoration: none;
+    color: #f8cf2c;
+    border: 1px solid #f8cf2c;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 3%;
+    font-size: 14px;
+    z-index: 4;
+    text-align: center;
+    transition: all 0.2s ease-out;
+    letter-spacing: 3px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .BreezeBanner-container {
+    height: 33vh;
+  }
+  .BreezeBanner-model {
+    color: #f8cf2c;
+    /*  opacity: 0.8; */
+    letter-spacing: 10px;
+    font-size: clamp(60px, 5.47vw + 0.12rem, 70px);
+    text-align: center;
+    padding-top: 0px;
+    box-sizing: border-box;
+    margin: 0;
+
+    font-family: "Anton", sans-serif;
+  }
+
+  .BreezeBanner-name {
+    color: #f8cf2c;
+    font-family: "Anton", sans-serif;
+    font-size: clamp(150px, 19.28vw + 0.12rem, 165px);
+
+    margin: 0;
+    margin-top: -10px;
+    text-align: center;
+    letter-spacing: 5px;
+  }
+
+  .BreezeBanner-btn {
+    text-decoration: none;
+    color: #f8cf2c;
+    border: 1px solid #f8cf2c;
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 3%;
+    font-size: clamp(16px, 1.83vw + 0.12rem, 20px);
+    z-index: 4;
+    text-align: center;
+    transition: all 0.2s ease-out;
+    letter-spacing: 3px;
+  }
+}

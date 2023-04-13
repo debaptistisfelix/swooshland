@@ -1,44 +1,45 @@
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import { UserContext } from "./UserContext";
-
 
 export const LoggedContext = createContext();
 
-
 export function LoggedProvider(props) {
-    const [logged, setLogged] = useState(false);
-    const { user, setUser } = useContext(UserContext);
-    const [cookies, setCookie, removeCookie] = useCookies(['client']);
-    const navigate = useNavigate();
+  const [cookies, setCookie, removeCookie] = useCookies(["client"]);
+  const navigate = useNavigate();
+  const [logged, setLogged] = useState(false);
+  const [token, setToken] = useState(null);
+  const [codeUI, setCodeUI] = useState(null);
 
+  useEffect(() => {
+    cookies.client ? setToken(cookies.client.token) : setToken(null);
+    cookies.client ? setCodeUI(cookies.client.codeUI) : setCodeUI(null);
+  }, []);
 
+  useEffect(() => {
+    cookies.client ? setToken(cookies.client.token) : setToken(null);
+    cookies.client ? setCodeUI(cookies.client.codeUI) : setCodeUI(null);
+  }, [logged]);
 
-    const logOut = () => {
-        removeCookie("client");
-        removeCookie("isLGGD");
-        setLogged(false);
-        setUser({})
-        navigate("/sneakers");
+  const logOut = () => {
+    removeCookie("client");
+    removeCookie("isLGGD");
+    navigate("/sneakers");
+    setToken(null);
+    setCodeUI(null);
+    setLogged(false);
+  };
 
-    }
+  const logIn = () => {
+    setLogged(true);
+    setCookie("isLGGD", true, { path: "/", maxAge: 60 * 60 * 24 });
+  };
 
-    const logIn = () => {
-        setLogged(true);
-        setCookie('isLGGD', true, { path: '/', maxAge: 60 * 60 * 24 });
-
-    }
-
-
-    return (
-        <LoggedContext.Provider value={{ logged, setLogged, logOut, logIn }}>
-            {props.children}
-        </LoggedContext.Provider>
-    )
+  return (
+    <LoggedContext.Provider
+      value={{ logged, setLogged, logOut, logIn, token, codeUI }}
+    >
+      {props.children}
+    </LoggedContext.Provider>
+  );
 }
-
-
-
-
-

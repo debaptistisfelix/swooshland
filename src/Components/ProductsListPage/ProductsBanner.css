@@ -1,220 +1,209 @@
 .ProductsBanner {
-    border: 1px solid #dee2e6;
-    box-sizing: border-box;
-    width: 100%;
-    min-height: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0% 5%;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-    z-index: 3;
+  border: 1px solid #dee2e6;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0% 5%;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  z-index: 3;
 }
 
 .ProductsBanner-title {
-    color: #191919;
-    font-size: 40px;
-    letter-spacing: 5px;
-    font-weight: 600;
-
+  color: #191919;
+  font-size: 40px;
+  letter-spacing: 5px;
+  font-weight: 600;
 }
 
 .ProductsBanner-control-box {
+  /*    border: 1px solid black; */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+
+.ProductsBanner-control-tool {
+  font-weight: 600;
+  color: #191919;
+  font-size: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+
+.sort-status {
+  position: relative;
+}
+
+.ProductsBanner-sort-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px solid #dee2e6;
+  background-color: whitesmoke;
+  border: 2px solid #dee2e6;
+  top: 150%;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  z-index: 5;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.sort-modal-option {
+  color: #191919;
+  /*   border: 1px solid #dee2e6; */
+  height: 25%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.show-sort-modal {
+  opacity: 1;
+}
+
+.hide-sort-modal {
+  opacity: 0;
+}
+
+.sort-modal-option:hover {
+  background-color: #dee2e6;
+}
+
+.filter-status {
+  position: relative;
+}
+
+.ProductsBanner-filter-modal {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 150%;
+  right: 0;
+  border: 2px solid #dee2e6;
+  background-color: whitesmoke;
+  z-index: 5;
+  width: 300px;
+  height: 150px;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.filter-modal-option {
+  color: #191919;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  gap: 10px;
+  height: 25px;
+}
+
+.filter-modal-option:hover {
+  background-color: #dee2e6;
+}
+
+@media (max-width: 767px) {
+  .ProductsBanner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ProductsBanner-title {
+    font-size: clamp(22px, 6.45vw + 0.12rem, 26px);
+    letter-spacing: 5px;
+    height: 50%;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ProductsBanner-control-box {
+    gap: 0;
+    width: 100%;
+    height: 50%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ProductsBanner-control-tool {
+    font-size: clamp(10px, 2.86vw + 0.12rem, 16px);
+    gap: 3px;
+
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .ProductsBanner-title {
+    font-size: 25px;
+  }
+
+  .ProductsBanner-control-box {
     /*    border: 1px solid black; */
     height: 100%;
     display: flex;
     align-items: center;
-    gap: 100px;
-}
+    gap: clamp(20px, 2.35vw + 0.12rem, 40px);
+  }
 
-.ProductsBanner-control-tool {
+  .ProductsBanner-control-tool {
     font-weight: 600;
     color: #191919;
-    font-size: 14px;
+    font-size: clamp(12px, 1.31vw + 0.12rem, 14px);
     display: flex;
     gap: 10px;
     align-items: center;
     cursor: pointer;
     letter-spacing: 2px;
-}
+  }
 
-
-.sort-status {
-    position: relative;
-}
-
-.ProductsBanner-sort-modal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    position: absolute;
-    box-sizing: border-box;
-    border: 1px solid #dee2e6;
-    background-color: whitesmoke;
-    border: 2px solid #dee2e6;
-    top: 150%;
-    right: 0;
-    width: 150px;
-    height: 150px;
-    z-index: 5;
-}
-
-.sort-modal-option {
-    color: #191919;
-    /*   border: 1px solid #dee2e6; */
-    height: 25%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-}
-
-.show-sort-modal {
-    opacity: 1;
-}
-
-.hide-sort-modal {
-    opacity: 0;
-}
-
-.sort-modal-option:hover {
-    background-color: #dee2e6;
-}
-
-.filter-status {
-    position: relative;
-}
-
-.ProductsBanner-filter-modal {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: 150%;
-    right: 0;
-    border: 2px solid #dee2e6;
-    background-color: whitesmoke;
-    z-index: 5;
-    width: 300px;
-    height: 150px;
-    box-sizing: border-box;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.filter-modal-option {
-    color: #191919;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-    gap: 10px;
-    height: 25px;
-}
-
-.filter-modal-option:hover {
-    background-color: #dee2e6;
-
-}
-
-@media (max-width:767px) {
-
-
-    .ProductsBanner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
+  @keyframes expandWidth {
+    from {
+      left: 30%;
+      width: 70%;
     }
 
-    .ProductsBanner-title {
+    to {
+      left: 0;
+      width: 100%;
+    }
+  }
 
-        font-size: clamp(22px, 6.45vw + 0.12rem, 26px);
-        letter-spacing: 5px;
-        height: 50%;
-
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+  @keyframes reduceWidth {
+    from {
+      left: 0;
+      width: 100%;
     }
 
-    .ProductsBanner-control-box {
-        gap: 0;
-        width: 100%;
-        height: 50%;
-        justify-content: space-between;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
+    to {
+      left: 30%;
+      width: 70%;
     }
-
-    .ProductsBanner-control-tool {
-        font-size: clamp(10px, 2.86vw + 0.12rem, 16px);
-        gap: 3px;
-
-        width: 50%;
-        display: flex;
-        justify-content: center;
-    }
-}
-
-@media (min-width:768px) and (max-width:1024px) {
-
-
-    .ProductsBanner-title {
-
-        font-size: 25px;
-
-    }
-
-    .ProductsBanner-control-box {
-        /*    border: 1px solid black; */
-        height: 100%;
-        display: flex;
-        align-items: center;
-        gap: clamp(20px, 2.35vw + 0.12rem, 40px)
-    }
-
-    .ProductsBanner-control-tool {
-        font-weight: 600;
-        color: #191919;
-        font-size: clamp(12px, 1.31vw + 0.12rem, 14px);
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        cursor: pointer;
-        letter-spacing: 2px;
-    }
-
-    @keyframes expandWidth {
-        from {
-            left: 30%;
-            width: 70%;
-        }
-
-        to {
-            left: 0;
-            width: 100%;
-        }
-    }
-
-    @keyframes reduceWidth {
-        from {
-            left: 0;
-            width: 100%;
-        }
-
-        to {
-            left: 30%;
-            width: 70%;
-        }
-    }
+  }
 }

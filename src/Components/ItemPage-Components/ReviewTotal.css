@@ -1,0 +1,105 @@
+.ReviewTotal {
+  box-sizing: border-box;
+  width: 15%;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+}
+
+.ReviewTotal-box {
+  height: 85%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ReviewTotal-title {
+  margin: 0;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.ReviewTotal-score-box {
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 20px;
+  height: 90%;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ReviewTotal-score {
+  letter-spacing: 3px;
+  font-size: 40px;
+  margin: 0;
+  color: #191919;
+}
+
+.ReviewTotal-review-count {
+  margin: 0;
+  letter-spacing: 2px;
+  color: #191919;
+}
+
+.ReviewTotal-star-box {
+  display: flex;
+  justify-content: center;
+}
+
+.ReviewTotal-star-box i {
+  color: #191919;
+}
+
+@media (max-width: 767px) {
+  .ReviewTotal {
+    width: 100%;
+    padding: 0;
+    /* border: 1px solid red; */
+  }
+
+  .ReviewTotal-title {
+    font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
+  }
+  .ReviewTotal-box {
+    height: 100%;
+    width: 100%;
+  }
+
+  .ReviewTotal-score {
+    font-size: clamp(40px, 13.58vw + 0.12rem, 60px);
+  }
+
+  .ReviewTotal-star-box .review-star {
+    font-size: clamp(20px, 6.45vw + 0.12rem, 28px);
+  }
+
+  .ReviewTotal-review-count {
+    font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .ReviewTotal {
+    padding: 0;
+  }
+
+  .ReviewTotal-title {
+    font-size: clamp(16px, 1.83vw + 0.12rem, 20px);
+  }
+
+  .ReviewTotal-score {
+    font-size: clamp(40px, 4.95vw + 0.12rem, 60px);
+  }
+
+  .ReviewTotal-star-box .review-star {
+    font-size: clamp(20px, 2.35vw + 0.12rem, 28px);
+  }
+
+  .ReviewTotal-review-count {
+    font-size: clamp(16px, 1.83vw + 0.12rem, 18px);
+  }
+}

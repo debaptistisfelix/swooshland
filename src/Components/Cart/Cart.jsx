@@ -1,41 +1,66 @@
 import "../Cart/Cart.css";
 import CartRecap from "./CartRecap";
 import CartList from "./CartList";
-import useLoadedState from "../Hooks/useLoadedState";
 import { useContext, useState } from "react";
-import { UserContext } from "../Context/UserContext";
 import Error404 from "../Error404/Error404";
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import { CartContext } from "../Context/CartContext";
+import useFetchCart from "../Hooks/useFetchCart";
 
 function Cart() {
-    /* const [loadedPage, loadPage] = useLoadedState(false); */
-    const [loadedPage, setLoadedPage] = useState(false);
-    const { user } = useContext(UserContext);
-    function loadPage(delay) {
-        setTimeout(() => {
-            setLoadedPage(true);
-        }, delay);
-    }
+  const [cookies] = useCookies(["client"]);
+  const token = cookies?.client.token;
+  const headers = { Authorization: `Bearer ${token}` };
 
-    loadPage(600);
-    return (
-        <div className="Cart">
-            {
-                (!user.cart)
-                    ? <Error404 />
-                    : loadedPage === true
-                        ? <div className="Cart-container">
-                            <CartList />
-                            <CartRecap />
-                        </div>
-                        : <div className="Cart-loader-box">
-                            <div className="loader-container">
-                                <div className="loader"></div>
-                                <span className="loader-text">LOADING</span>
-                            </div>
-                        </div>
-            }
+  const { data, isLoading, error, setUpdateState, payRecap, updateState } =
+    useContext(CartContext);
+
+  const removeCartItem = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8000/api/cartItems/${id}`, {
+        headers,
+      });
+      setUpdateState(!updateState);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const [loadedPage, setLoadedPage] = useState(false);
+
+  function loadPage(delay) {
+    setTimeout(() => {
+      setLoadedPage(true);
+    }, delay);
+  }
+
+  loadPage(600);
+
+  return (
+    <div className="Cart">
+      {!cookies.client ? (
+        <Error404 />
+      ) : loadedPage === true ? (
+        <div className="Cart-container">
+          <CartList
+            data={data}
+            error={error}
+            isLoading={isLoading}
+            removeCartItem={removeCartItem}
+          />
+          <CartRecap data={data} payRecap={payRecap} />
         </div>
-    )
+      ) : (
+        <div className="Cart-loader-box">
+          <div className="loader-container">
+            <div className="loader"></div>
+            <span className="loader-text">LOADING</span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
-export default Cart
+export default Cart;
