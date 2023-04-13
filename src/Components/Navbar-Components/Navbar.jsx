@@ -9,9 +9,8 @@ import CartIcon from "./CartIcon";
 import { useContext } from "react";
 import { LoggedContext } from "../Context/LoggedContext";
 import axios from "axios";
-import { UserContext } from "../Context/UserContext";
+
 import { useCookies } from "react-cookie";
-import { v4 as uuidv4 } from "uuid";
 import { CartContext } from "../Context/CartContext";
 
 function Navbar() {

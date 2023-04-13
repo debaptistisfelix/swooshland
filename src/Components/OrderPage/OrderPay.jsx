@@ -1,10 +1,8 @@
 import "../OrderPage/OrderPay.css";
 import { useContext, useEffect } from "react";
-import { UserContext } from "../Context/UserContext";
+
 import { OrderContext } from "../Context/OrderContext";
-import axios from "axios";
-import { useCookies } from "react-cookie";
-import { useNavigate } from "react-router-dom";
+
 import { loadStripe } from "@stripe/stripe-js";
 
 let stripePromise;

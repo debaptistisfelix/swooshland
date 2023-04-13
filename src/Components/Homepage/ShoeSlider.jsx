@@ -1,5 +1,4 @@
 import "../Homepage/ShoeSlider.css";
-import { useState } from "react";
 
 function ShoeSlider({ handleNext, handlePrevious, currentImageIndex }) {
   const images = [

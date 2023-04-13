@@ -3,7 +3,6 @@ import "../Register/RegisterPage.css";
 import axios from "axios";
 import { LoggedContext } from "../Context/LoggedContext";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../Context/UserContext";
 import { useCookies } from "react-cookie";
 
 function RegisterPage({ formOn, toggleForm }) {

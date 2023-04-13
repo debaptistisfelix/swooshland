@@ -3,10 +3,8 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 function PumaBanner() {
-  const navigate = useNavigate();
   useEffect(() => {
     AOS.init();
     return () => {

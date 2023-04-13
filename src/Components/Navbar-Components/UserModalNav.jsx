@@ -2,7 +2,6 @@ import "./UserModalNav.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { LoggedContext } from "../Context/LoggedContext";
-import { UserContext } from "../Context/UserContext";
 import { useCookies } from "react-cookie";
 import { v4 as uuidv4 } from "uuid";
 

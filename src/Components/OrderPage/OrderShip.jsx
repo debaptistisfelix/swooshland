@@ -2,10 +2,8 @@ import "../OrderPage/OrderShip.css";
 import AddressList from "../OrderPage/AddressList";
 import AddressForm from "../OrderPage/AddressForm";
 import { useState, useContext } from "react";
-import { OrderContext } from "../Context/OrderContext";
-import { UserContext } from "../Context/UserContext";
+
 import { OrderProcessContext } from "../Context/OrderProcessContext";
-import axios from "axios";
 
 function OrderShip() {
   const { chosenAddress, addCartToOrder, selectAddress, addAddress } =

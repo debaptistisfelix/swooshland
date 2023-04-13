@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 function CartListBlock({ item, id, removeCartItem }) {
   const [blockAnim, setBlockAnim] = useState(false);
 
-  console.log(item);
-
   let blockStatus;
   blockAnim === true ? (blockStatus = "vanish-anim") : "not true";
 

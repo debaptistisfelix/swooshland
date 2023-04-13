@@ -6,7 +6,6 @@ import Error404 from "../Error404/Error404";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import { CartContext } from "../Context/CartContext";
-import useFetchCart from "../Hooks/useFetchCart";
 
 function Cart() {
   const [cookies] = useCookies(["client"]);

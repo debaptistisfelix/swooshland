@@ -28,7 +28,6 @@ function BentoCard() {
         <div className="BentoCard-img-box">
           <div className="BentoCard-circle">
             <BentoImg />
-            {/* <img className="BentoCard-small-img" src="/bento-long.png" /> */}
           </div>
         </div>
 

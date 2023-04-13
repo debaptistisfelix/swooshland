@@ -1,6 +1,5 @@
 import "../OrderPage/PaymentRecap.css";
 import { useContext } from "react";
-import { UserContext } from "../Context/UserContext";
 import { CartContext } from "../Context/CartContext";
 
 function PaymentRecap() {

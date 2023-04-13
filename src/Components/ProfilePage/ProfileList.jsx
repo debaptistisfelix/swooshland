@@ -1,12 +1,5 @@
 import "../ProfilePage/ProfileList.css";
 import AddressBlock from "./AddressBlock";
-import { useContext, useState, useEffect } from "react";
-import { UserContext } from "../Context/UserContext";
-import { LoggedContext } from "../Context/LoggedContext";
-import { AddressContext } from "../Context/AddressContext";
-import axios from "axios";
-import { useCookies } from "react-cookie";
-import useFetchAddress from "../Hooks/useFetchAddress";
 
 function ProfileList({ data, isLoading, error, deleteAddress }) {
   return (
