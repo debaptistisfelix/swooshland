@@ -28,6 +28,20 @@ export function ItemsProvider(props) {
     setFilteredItems(arrZA);
   }
 
+  function sortByBestRating() {
+    const arrBestRating = [...filteredItems].sort((a, b) =>
+      a.ratingsAverage > b.ratingsAverage ? 1 : -1
+    );
+    setFilteredItems(arrBestRating);
+  }
+
+  function sortByWorstRating() {
+    const arrWorstRating = [...filteredItems].sort((a, b) =>
+      a.ratingsAverage > b.ratingsAverage ? -1 : 1
+    );
+    setFilteredItems(arrWorstRating);
+  }
+
   return (
     <ItemsContext.Provider
       value={{
@@ -43,6 +57,8 @@ export function ItemsProvider(props) {
         error,
         setIsLoading,
         setError,
+        sortByWorstRating,
+        sortByBestRating,
       }}
     >
       {props.children}

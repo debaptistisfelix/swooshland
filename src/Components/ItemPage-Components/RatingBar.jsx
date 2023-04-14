@@ -6,7 +6,7 @@ function RatingBar({ starRating, filterByRating, ratingCounts, allReviews }) {
 
   function calculateWidth() {
     let widthPercentageNum = (ratingCounts * 100) / allReviews.length;
-    console.log(widthPercentageNum, ratingCounts);
+
     if (isNaN(widthPercentageNum)) {
       setWidthPercentage(0);
     } else {
@@ -21,10 +21,6 @@ function RatingBar({ starRating, filterByRating, ratingCounts, allReviews }) {
   useEffect(() => {
     calculateWidth();
   }, [ratingCounts, allReviews]);
-
-  console.log(
-    `widpercentage(${widthPercentage}) = ${ratingCounts} * 100 / ${allReviews.length}`
-  );
 
   return (
     <div

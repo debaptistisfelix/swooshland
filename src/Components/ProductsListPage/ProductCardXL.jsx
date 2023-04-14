@@ -2,8 +2,6 @@ import "../ProductsListPage/ProductCardXL.css";
 import fullStarsCount from "../Hooks/useDisplayStars";
 
 function ProductCardXL({ model, name, imgSrc, price, ratingsAvg, item }) {
-  console.log(ratingsAvg);
-
   return (
     <div className="ProductCardXL">
       <div className="ProductCardXL-img-box">

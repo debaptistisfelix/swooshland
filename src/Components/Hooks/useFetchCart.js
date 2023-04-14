@@ -60,7 +60,6 @@ const useFetchCart = (url) => {
         setIsLoading(false);
         setData(null);
         console.log(err);
-        console.log(token);
       });
     }, 60 * 1000);
 

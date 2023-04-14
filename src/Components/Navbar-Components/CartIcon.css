@@ -118,6 +118,28 @@
     align-items: center;
   }
 
+  .reserved-note {
+    position: absolute;
+    right: -100%;
+    top: 150%;
+    z-index: 11;
+    background-color: #191919;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    letter-spacing: 2px;
+    animation: vanishNote 2s 0s forwards ease-in-out;
+  }
+
   .CartIcon-box {
     background-color: #495057;
     width: 20px;

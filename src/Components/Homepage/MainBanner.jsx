@@ -26,7 +26,11 @@ function MainBanner() {
       path: "/products/6432f546e715a8760dcccada",
     },
   ];
-  const images = ["/lust-shoe.png", "/pride-shoe.png", "/rage-shoe.png"];
+  const images = [
+    "/lust-shoe-smaller.png",
+    "/pride-shoe-smaller.png",
+    "/rage-shoe-smaller.png",
+  ];
 
   let fontColor;
   let shoeImg;

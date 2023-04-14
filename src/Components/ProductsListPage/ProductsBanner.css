@@ -53,8 +53,8 @@
   border: 2px solid #dee2e6;
   top: 150%;
   right: 0;
-  width: 150px;
-  height: 150px;
+  width: 180px;
+  height: 200px;
   z-index: 5;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
 }

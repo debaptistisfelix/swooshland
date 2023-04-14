@@ -3,7 +3,7 @@ import RatingBar from "./RatingBar";
 
 function ReviewStats({ filterByRating, starRatingCount, allReviews }) {
   const starArray = [1, 2, 3, 4, 5];
-  console.log(starRatingCount);
+
   return (
     <div className="ReviewStats">
       <h3 className="ReviewStats-title">REVIEWS</h3>

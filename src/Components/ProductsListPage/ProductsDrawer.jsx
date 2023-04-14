@@ -2,7 +2,6 @@ import "../ProductsListPage/ProductsDrawer.css";
 import { v4 as uuidv4 } from "uuid";
 import { useContext } from "react";
 import { ItemsContext } from "../Context/ItemsContext";
-import Slider from "./Slider";
 
 function ProductsDrawer({
   openDrawer,
@@ -10,6 +9,7 @@ function ProductsDrawer({
   categories,
   sortByBrand,
   drawerImg,
+  filterByRating,
 }) {
   const { listedItems } = useContext(ItemsContext);
 
@@ -46,7 +46,7 @@ function ProductsDrawer({
         ></i>
       </div>
       <div className="ProductsDrawer-category-box">
-        <span className="ProductsDrawer-category-title">SNEAKER MODELS</span>
+        <span className="ProductsDrawer-category-title">BY MODELS</span>
         <div className="ProductsDrawer-category-list">
           <span
             onClick={() => sortByBrand("")}
@@ -60,9 +60,69 @@ function ProductsDrawer({
           {list}
         </div>
       </div>
-      {/* <div className="ProductsDrawer-slider-box">
-                <Slider />
-            </div> */}
+      {/*  <div className="ProductsDrawer-price-filter-box">
+        <h5 className="ProductsDrawer-price-filter-title">PRICE</h5>
+        <div className="ProductsDrawer-price-input">
+          <h6 className="ProductsDrawer-input-minmax">0</h6>
+          <input type="range" />
+          <h6 className="ProductsDrawer-input-minmax">289.90</h6>
+        </div>
+      </div> */}
+      <div className="ProductsDrawer-ratings-filter-box">
+        <h5 className="ProductsDrawer-ratings-filter-title">BY RATING</h5>
+        <div className="ProductsDrawer-ratings-box">
+          <span
+            onClick={() => {
+              filterByRating(5);
+            }}
+            className="ProductsDrawer-rating-bar"
+          >
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+          </span>
+          <span
+            onClick={() => {
+              filterByRating(4);
+            }}
+            className="ProductsDrawer-rating-bar"
+          >
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+          </span>
+          <span
+            onClick={() => {
+              filterByRating(3);
+            }}
+            className="ProductsDrawer-rating-bar"
+          >
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+          </span>
+          <span
+            onClick={() => {
+              filterByRating(2);
+            }}
+            className="ProductsDrawer-rating-bar"
+          >
+            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
+          </span>
+          <span
+            onClick={() => {
+              filterByRating(1);
+            }}
+            className="ProductsDrawer-rating-bar"
+          >
+            <i className="fa-solid fa-star"></i>
+          </span>
+        </div>
+      </div>
     </div>
   );
 }

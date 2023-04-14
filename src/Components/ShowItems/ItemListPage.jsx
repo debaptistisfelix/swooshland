@@ -11,7 +11,7 @@ const categories = [
   { categ: "JORDAN 1 LOW", qty: 2 },
   { categ: "PUMA", qty: 1 },
   { categ: "FILA", qty: 1 },
-  { categ: "ADIDAS", qty: 1 },
+  { categ: "ADIDAS", qty: 2 },
 ];
 
 const drawerImg = "dragon-img.jpg";
@@ -19,7 +19,6 @@ const ProductName = "Sneakers";
 const path = "products";
 
 function ItemListPage() {
-  /* const [listedItems, setListedItems] = useState(items) */
   const [openDrawer, setOpenDrawer] = useState("");
   const [openSort, setOpenSort] = useState(false);
   const [loadedPage, setLoadedPage] = useState(false);
@@ -33,23 +32,12 @@ function ItemListPage() {
         "http://localhost:8000/api/items?tag=sneakers&limit=31"
       );
       const results = response.data.data.data;
-      /*  const sneakerResults = results.filter((item) => {
-        return item.tag === "sneakers";
-      }); */
+
       setListedItems(results);
       setFilteredItems(results);
     };
     fetchSneakers();
   }, []);
-  /* 
-  async function showStuff() {
-    const response = await axios.get(
-      "http://localhost:3000/api/products?limit=50"
-    );
-    console.log(response.data.data);
-  }
-
-  showStuff(); */
 
   function toggleDrawer() {
     openDrawer === "" && setOpenDrawer(false);
@@ -66,7 +54,21 @@ function ItemListPage() {
       return item.category.includes(brand);
     });
     setFilteredItems([...filteredList]);
-    console.log(filteredList);
+
+    window.matchMedia("(max-width:767px)").matches && setOpenDrawer(false);
+  }
+
+  function filterByRating(ratingScore) {
+    let filteredList = listedItems.filter((item) => {
+      return (
+        item.ratingsAverage >= ratingScore &&
+        item.ratingsAverage < ratingScore + 1
+      );
+    });
+
+    filteredList.length === 0
+      ? setFilteredItems([])
+      : setFilteredItems(filteredList);
     window.matchMedia("(max-width:767px)").matches && setOpenDrawer(false);
   }
 
@@ -97,6 +99,7 @@ function ItemListPage() {
             sortByBrand={sortByBrand}
             categories={categories}
             drawerImg={drawerImg}
+            filterByRating={filterByRating}
           />
           <ProductsDisplayer
             openDrawer={openDrawer}

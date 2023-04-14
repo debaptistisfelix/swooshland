@@ -1,5 +1,5 @@
 import "./CartModalNav.css";
-import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 import { CartContext } from "../Context/CartContext";
 
 import { useContext, useEffect, useState } from "react";
@@ -31,7 +31,7 @@ function CartModalNav({ openedCartModal }) {
           data &&
           data.map((item) => {
             return (
-              <div key={item.itemId} className="CartModalNav-itembox">
+              <div key={uuidv4()} className="CartModalNav-itembox">
                 <span className="item-box-qty">
                   <i className="fa-solid fa-heart"></i>
                 </span>
