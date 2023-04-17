@@ -50,6 +50,9 @@ function LoginPage({ formOn, toggleForm }) {
       setCookie("client", infos, {
         path: "/",
         maxAge: 60 * 60 * 24,
+        Secure: true,
+        httpOnly: true,
+        sameSite: "strict",
       });
 
       navigate("/");

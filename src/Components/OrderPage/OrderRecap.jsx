@@ -30,8 +30,8 @@ function OrderRecap() {
   const checkoutOptions = {
     lineItems: [...stripeArr],
     mode: "payment",
-    successUrl: "http://localhost:5173/order-completed",
-    cancelUrl: "http://localhost:5173/order-failed",
+    successUrl: `${window.location.origin}/order-completed`,
+    cancelUrl: `${window.location.origin}/order-failed`,
   };
 
   const redirectToCheckout = async () => {
