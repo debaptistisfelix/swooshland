@@ -10,10 +10,6 @@ function OrderCompleted() {
   const headers = { Authorization: `Bearer ${token}` };
   const orderConfirmedRef = useRef(false);
 
-  const updateInventory = async () => {
-    let finishedOrder = cookies.ordCookie;
-  };
-
   const confirmOrder = useCallback(async () => {
     let finishedOrder = cookies.ordCookie;
     const newOrder = await axios.post(

@@ -1,6 +1,6 @@
 import "../OrderPage/OrderRecap.css";
 import CartSummary from "./CartSummary";
-import { createContext, useContext } from "react";
+import { useContext } from "react";
 import { OrderProcessContext } from "../Context/OrderProcessContext";
 import ShippingRecap from "./ShippingRecap";
 import PaymentRecap from "./PaymentRecap";

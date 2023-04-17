@@ -35,9 +35,6 @@ export function LoggedProvider(props) {
     setCookie("isLGGD", true, {
       path: "/",
       maxAge: 60 * 60 * 24,
-      Secure: true,
-      httpOnly: true,
-      sameSite: "strict",
     });
   };
 
