@@ -70,7 +70,13 @@ export function OrderProcessProvider(props) {
       items: userCart,
       itemsIds: userCartIds,
     };
-    setCookie("ordCookie", orderObj, { path: "/" });
+    setCookie("ordCookie", orderObj, {
+      path: "/",
+      maxAge: 60 * 60 * 24,
+      Secure: true,
+      httpOnly: true,
+      sameSite: "strict",
+    });
   };
 
   return (

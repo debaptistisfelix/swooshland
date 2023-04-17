@@ -32,7 +32,13 @@ export function LoggedProvider(props) {
 
   const logIn = () => {
     setLogged(true);
-    setCookie("isLGGD", true, { path: "/", maxAge: 60 * 60 * 24 });
+    setCookie("isLGGD", true, {
+      path: "/",
+      maxAge: 60 * 60 * 24,
+      Secure: true,
+      httpOnly: true,
+      sameSite: "strict",
+    });
   };
 
   return (

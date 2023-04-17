@@ -56,7 +56,13 @@ function RegisterPage({ formOn, toggleForm }) {
         token: JWT,
         codeUI: codeUI,
       };
-      setCookie("client", infos, { path: "/" });
+      setCookie("client", infos, {
+        path: "/",
+        maxAge: 60 * 60 * 24,
+        Secure: true,
+        httpOnly: true,
+        sameSite: "strict",
+      });
       logIn();
       navigate("/");
     } catch (err) {

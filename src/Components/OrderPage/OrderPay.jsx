@@ -22,8 +22,8 @@ function OrderPay() {
   const checkoutOptions = {
     lineItems: [...order.stripe],
     mode: "payment",
-    successUrl: "http://localhost:5173/order-completed",
-    cancelUrl: "http://localhost:5173/",
+    successUrl: `${window.location.origin}/order-completed`,
+    cancelUrl: `${window.location.origin}/order-failed`,
   };
 
   const redirectToCheckout = async () => {
@@ -32,28 +32,6 @@ function OrderPay() {
     const { error } = await stripe.redirectToCheckout(checkoutOptions);
     console.log("Stripe checkout error", error);
   };
-
-  /*   async function fetchUser() {
-          const userData = cookies.client._id
-          const res = await axios.get(`http://localhost:3000/api/users/${userData}`)
-          const userInfos = res.data;
-          setUser(userInfos)
-      }
-  
-  
-  
-  
-  
-      async function completeOrder(ord) {
-          const id = user._id;
-          await axios.patch(`http://localhost:3000/api/users/${id}`, {
-              orders: [...user.orders, { ...ord, date: new Date().toLocaleDateString("en-es") }],
-              cart: []
-          })
-          const updatedUser = await axios.get(`http://localhost:3000/api/users/${user._id}`)
-          setUser(updatedUser.data);
-          navigate("/");
-      } */
 
   return (
     <div className="OrderPay">
