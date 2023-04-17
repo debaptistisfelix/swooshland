@@ -22,6 +22,7 @@ import ForgotPassword from "./Components/Login/ForgotPassword";
 import ResetPassword from "./Components/Login/ResetPassword";
 import { AppProvider } from "./Components/Context/AppContext";
 import { UserProvider } from "./Components/Context/UserContext";
+import OrderPaid from "./Components/OrderPage/OrderPaid";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
                 <Route path="/orders" element={<Orders />} />
                 <Route path="/order-completed" element={<OrderCompleted />} />
                 <Route path="/order-failed" element={<OrderFailed />} />
+                <Route path="/order-finished" element={<OrderPaid />} />
               </Routes>
               <Footer />
             </AppProvider>
