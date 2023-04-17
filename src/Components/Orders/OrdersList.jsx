@@ -1,24 +1,26 @@
 import "../Orders/OrdersList.css";
 import OrderBlock from "./OrderBlock";
-import useFetchOrders from "../Hooks/useFetchOrders";
-import { OrderContext } from "../Context/OrderContext";
 import { useContext } from "react";
+import { UserContext } from "../Context/UserContext";
 
 function OrdersList() {
-  const { data, isLoading, error, setUpdateState } = useContext(OrderContext);
-  console.log(data);
+  const { orders, ordersIsLoading, ordersError, setUpdateState } =
+    useContext(UserContext);
+
   return (
     <div className="OrdersList">
       <span className="OrdersList-title">YOUR ORDERS</span>
 
-      {error && <div>{error}</div>}
-      {isLoading && <div className="Loading-orders">Loading Orders...</div>}
-      {data && (
+      {ordersError && <div>{ordersError}</div>}
+      {ordersIsLoading && (
+        <div className="Loading-orders">Loading Orders...</div>
+      )}
+      {orders && (
         <div className="OrdersList-list">
-          {data.map((order, i) => {
+          {orders.map((order, i) => {
             return <OrderBlock key={i} order={order} />;
           })}
-          {data && data.length === 0 && "No orders yet."}
+          {orders && orders.length === 0 && "No orders yet."}
         </div>
       )}
     </div>

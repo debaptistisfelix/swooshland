@@ -6,34 +6,40 @@ import { LoggedContext } from "../Context/LoggedContext";
 const useFetchAddress = (url) => {
   let { token } = useContext(LoggedContext);
 
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [updateState, setUpdateState] = useState(false);
+  const [address, setAddress] = useState(null);
+  const [addressIsLoading, setAddressIsLoading] = useState(true);
+  const [addressError, setAddressError] = useState(null);
+  const [updateAddressState, setUpdateAddressState] = useState(false);
 
   const fetchData = useCallback(async () => {
     const headers = { Authorization: `Bearer ${token}` };
     const res = await axios.get(url, {
       headers,
     });
-    setData(res.data.data.addresses);
-    setError(null);
-    setIsLoading(false);
-    setUpdateState(false);
+    setAddress(res.data.data.addresses);
+    setAddressError(null);
+    setAddressIsLoading(false);
+    setUpdateAddressState(false);
   }, [token]);
 
   useEffect(() => {
-    if (token !== undefined) {
+    if (token) {
       fetchData().catch((err) => {
-        setError(err.message);
-        setIsLoading(false);
-        setData(null);
+        setAddressError(err.message);
+        setAddressIsLoading(false);
+        setAddress(null);
         console.log(err.message);
       });
     }
-  }, [fetchData, updateState, token]);
+  }, [fetchData, updateAddressState, token]);
 
-  return { data, error, isLoading, setUpdateState, updateState };
+  return {
+    address,
+    addressError,
+    addressIsLoading,
+    setUpdateAddressState,
+    updateAddressState,
+  };
 };
 
 export default useFetchAddress;

@@ -40,7 +40,7 @@ function RegisterPage({ formOn, toggleForm }) {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/users/signup",
+        "https://easy-ruby-goose-sari.cyclic.app/api/users/signup",
         {
           name: username,
           email: email,

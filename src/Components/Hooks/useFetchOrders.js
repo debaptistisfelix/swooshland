@@ -1,13 +1,13 @@
 import { useState, useCallback, useEffect, useContext } from "react";
-import { useCookies } from "react-cookie";
+
 import axios from "axios";
 import { LoggedContext } from "../Context/LoggedContext";
 
 const useFetchOrders = (url, dataName) => {
   let { token } = useContext(LoggedContext);
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [orders, setOrders] = useState(null);
+  const [ordersIsLoading, setOrdersIsLoading] = useState(true);
+  const [ordersError, setOrdersError] = useState(null);
   const [updateOrderState, setUpdateOrderState] = useState(false);
 
   const fetchData = useCallback(async () => {
@@ -15,24 +15,30 @@ const useFetchOrders = (url, dataName) => {
     const res = await axios.get(url, {
       headers,
     });
-    setData(res.data.data.orders);
-    setError(null);
-    setIsLoading(false);
+    setOrders(res.data.data.orders);
+    setOrdersError(null);
+    setOrdersIsLoading(false);
     setUpdateOrderState(!updateOrderState);
   }, [token]);
 
   useEffect(() => {
-    if (token !== undefined) {
+    if (token) {
       fetchData().catch((err) => {
-        setError(err.message);
-        setIsLoading(false);
-        setData(null);
+        setOrdersError(err.message);
+        setOrdersIsLoading(false);
+        setOrders(null);
         console.log(err.message);
       });
     }
   }, [fetchData, updateOrderState, token]);
 
-  return { data, error, isLoading, setUpdateOrderState, updateOrderState };
+  return {
+    orders,
+    ordersError,
+    ordersIsLoading,
+    setUpdateOrderState,
+    updateOrderState,
+  };
 };
 
 export default useFetchOrders;

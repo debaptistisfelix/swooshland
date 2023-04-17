@@ -17,13 +17,16 @@ function OrderCompleted() {
   const confirmOrder = useCallback(async () => {
     let finishedOrder = cookies.ordCookie;
     const newOrder = await axios.post(
-      "http://localhost:8000/api/orders",
+      "https://easy-ruby-goose-sari.cyclic.app/api/orders",
       finishedOrder,
       { headers }
     );
-    await axios.delete("http://localhost:8000/api/cartItems", {
-      headers,
-    });
+    await axios.delete(
+      "https://easy-ruby-goose-sari.cyclic.app/api/cartItems",
+      {
+        headers,
+      }
+    );
     removeCookie("ordCookie");
     console.log("Order confirmed and cart emptied");
   }, [headers]);

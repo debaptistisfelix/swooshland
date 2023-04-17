@@ -5,16 +5,16 @@ import { LoggedContext } from "../Context/LoggedContext";
 const useFetchCart = (url) => {
   let { token } = useContext(LoggedContext);
 
-  const [data, setData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [updateState, setUpdateState] = useState(false);
-  const [payRecap, setPayRecap] = useState(null);
+  const [cart, setCart] = useState(null);
+  const [cartIsLoading, setCartIsLoading] = useState(true);
+  const [cartError, setCartError] = useState(null);
+  const [updateCartState, setUpdateCartState] = useState(false);
+  const [cartPayRecap, setCartPayRecap] = useState(null);
   const [showReservedNote, setShowReservedNote] = useState(false);
 
   const calculateSubtotal = useCallback(() => {
-    if (data) {
-      let priceArr = data.map((item) => {
+    if (cart) {
+      let priceArr = cart.map((item) => {
         return item.price;
       });
       const subtotalToPay = priceArr.reduce((accumulator, currentValue) => {
@@ -28,37 +28,41 @@ const useFetchCart = (url) => {
         shippingCost: shippingCost,
         total: total,
       };
-      setPayRecap(payRecapObj);
+      setCartPayRecap(payRecapObj);
     }
-  }, [data, updateState]);
+  }, [cart, updateCartState]);
 
   const fetchData = useCallback(async () => {
     let headers = { Authorization: `Bearer ${token}` };
     const res = await axios.get(url, {
       headers,
     });
-    setData(res.data.data.cartItems);
-    setError(null);
-    setIsLoading(false);
-    setUpdateState(!updateState);
-    console.log("REQUESTED FETCH CART ITEMS");
+    setCart(res.data.data.cartItems);
+    setCartError(null);
+    setCartIsLoading(false);
+    setUpdateCartState(!updateCartState);
   }, [token]);
 
   useEffect(() => {
-    fetchData().catch((err) => {
-      setError(err.message);
-      setIsLoading(false);
-      setData(null);
-      console.log(err);
-    });
-  }, [fetchData, updateState, token]);
+    if (token) {
+      fetchData().catch((err) => {
+        setCartError(err.message);
+        setCartIsLoading(false);
+        setCart(null);
+        console.log(err);
+      });
+    } else {
+      setCart([]);
+      setCartIsLoading(false);
+    }
+  }, [fetchData, updateCartState, token]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       fetchData().catch((err) => {
-        setError(err.message);
-        setIsLoading(false);
-        setData(null);
+        setCartError(err.message);
+        setCartIsLoading(false);
+        setCart(null);
         console.log(err);
       });
     }, 60 * 1000);
@@ -68,15 +72,15 @@ const useFetchCart = (url) => {
 
   useEffect(() => {
     calculateSubtotal();
-  }, [data, updateState]);
+  }, [cart, updateCartState]);
 
   return {
-    data,
-    error,
-    isLoading,
-    setUpdateState,
-    updateState,
-    payRecap,
+    cart,
+    cartError,
+    cartIsLoading,
+    setUpdateCartState,
+    updateCartState,
+    cartPayRecap,
     showReservedNote,
     setShowReservedNote,
   };

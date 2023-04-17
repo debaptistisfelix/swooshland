@@ -50,6 +50,10 @@
   border: 2px solid #191919;
 }
 
+.ProfileForm-form input:focus {
+  border: 2px solid #191919;
+}
+
 .long-input {
   width: 100%;
 }

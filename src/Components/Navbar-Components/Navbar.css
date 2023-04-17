@@ -1,212 +1,202 @@
 .Navbar {
-    display: flex;
-    box-sizing: border-box;
-    padding: 0 2%;
-    justify-content: space-between;
-    width: 100%;
-    height: 8vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 9;
-    font-family: 'Montserrat', sans-serif;
-    background-color: whitesmoke;
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 2%;
+  justify-content: space-between;
+  width: 100%;
+  height: 8vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  font-family: "Montserrat", sans-serif;
+  background-color: whitesmoke;
 }
 
 .homeLink {
-    display: none;
+  display: none;
 }
 
 .Navbar-logo-box {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    width: 20%;
-    position: relative;
-    box-sizing: border-box;
-    font-size: 20px;
-
+  height: 100%;
+  display: flex;
+  align-items: center;
+  width: 20%;
+  position: relative;
+  box-sizing: border-box;
+  font-size: 20px;
 }
 
-
 .Navbar-logo {
-    cursor: pointer;
-    transition: transform 0.2s;
-    text-decoration: none;
-    color: #495057;
+  cursor: pointer;
+  transition: transform 0.2s;
+  text-decoration: none;
+  letter-spacing: 5px;
+  color: #495057;
 }
 
 .Navbar-logo:hover {
-    transform: scale(1.1);
-    color: #191919;
+  transform: scale(1.1);
+  color: #191919;
 }
 
 .Navbar-rightside {
-    display: flex;
-    width: 70%;
-    height: 100%;
+  display: flex;
+  width: 70%;
+  height: 100%;
 
-    box-sizing: border-box;
-    justify-content: flex-end;
+  box-sizing: border-box;
+  justify-content: flex-end;
 }
 
 .Navbar-close-sidemenu {
-    display: none;
+  display: none;
 }
 
 .Navbar-links {
-    display: flex;
-    width: 70%;
-    height: 100%;
-    list-style: none;
-    align-items: center;
-    justify-content: space-evenly;
-
-    box-sizing: border-box;
-    margin: 0;
-    font-weight: 500;
-    font-size: 14px;
+  display: flex;
+  width: 70%;
+  height: 100%;
+  list-style: none;
+  align-items: center;
+  justify-content: space-evenly;
+  letter-spacing: 3px;
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .link-arrow {
-    display: none;
+  display: none;
 }
 
 .Navbar-link {
-    cursor: pointer;
-    color: #495057;
-    transition: transform 0.2s;
-    text-decoration: none;
+  cursor: pointer;
+  color: #495057;
+  transition: transform 0.2s;
+  text-decoration: none;
 }
 
 .Navbar-link:hover {
-    cursor: pointer;
-    color: #191919;
-    transform: scale(1.10);
+  cursor: pointer;
+  color: #191919;
+  transform: scale(1.1);
 }
 
 .Navbar-search-box {
-
-    height: 100%;
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-
+  height: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .Navbar-search-cta {
-    display: none;
+  display: none;
 }
 
 .Navbar-complete-input {
-    display: flex;
-    width: 300px;
-    align-items: center;
-    background-color: #dee2e6;
-    padding: 5px;
-    box-sizing: border-box;
-    border-radius: 10px;
+  display: flex;
+  width: 300px;
+  align-items: center;
+  background-color: #dee2e6;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
 }
 
 .Navbar-complete-input input {
-    background-color: #dee2e6;
-    width: 100%;
-    border: none;
-    outline: none;
-    padding: 3px;
-    font-weight: bold;
+  background-color: #dee2e6;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 3px;
+  font-weight: bold;
 }
 
 .Navbar-complete-input input::placeholder {
-    color: #495057;
-    font-weight: bold;
-    font-size: 12px;
+  color: #495057;
+  font-weight: bold;
+  font-size: 12px;
 }
 
 .Navbar-complete-input i {
-    padding: 5px;
-
+  padding: 5px;
 }
 
 .hideSearchResults {
-    color: #495057;
-    cursor: pointer;
-    transition: 0.2s;
+  color: #495057;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .hideSearchResults:hover {
-    color: #191919;
-    transform: scale(1.1);
+  color: #191919;
+  transform: scale(1.1);
 }
 
 .Navbar-icons {
-    display: flex;
+  display: flex;
 
-    align-items: center;
-    justify-content: center;
-    width: 6%;
-    gap: 20px;
-    font-size: 16px;
-
+  align-items: center;
+  justify-content: center;
+  width: 6%;
+  gap: 20px;
+  font-size: 16px;
 }
 
 .Navbar-icons .nav-icons {
-    color: #495057;
-    cursor: pointer;
-    font-size: 20px;
-    transition: transform 0.2s;
-    box-sizing: border-box;
-
+  color: #495057;
+  cursor: pointer;
+  font-size: 20px;
+  transition: transform 0.2s;
+  box-sizing: border-box;
 }
 
 .Navbar-icons .nav-icons:hover {
-    transform: scale(1.1);
-    color: #191919;
+  transform: scale(1.1);
+  color: #191919;
 }
 
-
-
 .selected-nav-cart-icon {
-    background-color: #dee2e6;
-    border-radius: 50%;
-    padding: 02px;
-    box-sizing: border-box;
+  background-color: #dee2e6;
+  border-radius: 50%;
+  padding: 02px;
+  box-sizing: border-box;
 }
 
 .Nav-cart-count-box {
-    position: relative;
-
+  position: relative;
 }
 
 .Nav-cart-count {
-    position: absolute;
-    background-color: #fb5607;
-    color: white;
-    width: 60%;
-    height: 40%;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 12px;
-    top: -20%;
-    padding: 3px;
-    right: -50%;
-    font-weight: bold;
-    font-style: italic;
-    /* transform: translateX(-50%); */
+  position: absolute;
+  background-color: #fb5607;
+  color: white;
+  width: 60%;
+  height: 40%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  top: -20%;
+  padding: 3px;
+  right: -50%;
+  font-weight: bold;
+  font-style: italic;
+  /* transform: translateX(-50%); */
 }
 
 .Navbar-hamburger {
-    display: none;
-
+  display: none;
 }
 
 .Navbar-footer {
-    display: none;
+  display: none;
 }
 
 /* .Nav-blurrer {
@@ -214,390 +204,363 @@
 } */
 
 .search-nav-blurrer {
-    position: absolute;
-    width: 100%;
-    top: 100%;
-    height: 92vh;
-    left: 0;
-    z-index: 6;
-    background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  height: 92vh;
+  left: 0;
+  z-index: 6;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .hide-search-nav-blurrer {
-    display: none;
+  display: none;
 }
 
+@media (max-width: 767px) {
+  .Navbar {
+    height: 7vh;
+    background-color: transparent;
+  }
 
+  .Nav-blurrer {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 100vh;
+    left: 0;
+    z-index: 6;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 
+  .search-nav-blurrer {
+    display: none;
+  }
 
+  .hide-nav-blurrer {
+    display: none;
+  }
 
-@media (max-width:767px) {
+  .Navbar-logo-box {
+    width: 70%;
+  }
 
-    .Navbar {
-        height: 7vh;
-        background-color: transparent;
-    }
+  .Navbar-logo {
+    display: none;
+  }
 
-    .Nav-blurrer {
-        position: absolute;
-        width: 100%;
-        top: 0;
-        height: 100vh;
-        left: 0;
-        z-index: 6;
-        background-color: rgba(0, 0, 0, 0.8);
-    }
+  .Navbar-icons {
+    width: auto;
+    height: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    align-items: center;
+  }
 
-    .search-nav-blurrer {
-        display: none;
-    }
+  .Navbar-icons .nav-icons {
+    font-size: 20px;
+    font-size: clamp(20px, 6.45vw + 0.12rem, 30px);
+  }
 
-    .hide-nav-blurrer {
-        display: none;
-    }
+  .Nav-cart-count-box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
 
+  .Navbar-hamburger {
+    display: flex;
+    cursor: pointer;
+    height: 100%;
 
-    .Navbar-logo-box {
-        width: 70%;
-    }
+    display: flex;
+    align-items: center;
+  }
 
-    .Navbar-logo {
-        display: none;
-    }
+  .Navbar-icons .hamburger {
+    font-size: 25px;
+    font-size: clamp(25px, 8.22vw + 0.12rem, 35px);
+    padding: 0;
+    display: flex;
+    align-items: flex-end;
+  }
 
-    .Navbar-icons {
-        width: auto;
-        height: 100%;
-        align-items: center;
-        justify-content: flex-end;
-        align-items: center;
+  .Navbar-hamburger:hover .hamburger {
+    color: #191919;
+  }
 
-    }
+  .Navbar-rightside {
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    background-color: whitesmoke;
+    right: -100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-left: 1px solid lightgray;
+    width: 90vw;
+    height: 100vh;
+    box-sizing: border-box;
+    transition: all 0.5s ease-out;
+    box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.3);
+  }
 
-    .Navbar-icons .nav-icons {
-        font-size: 20px;
-        font-size: clamp(20px, 6.45vw + 0.12rem, 30px);
-    }
+  .Navbar-active {
+    right: 0%;
+  }
 
-    .Nav-cart-count-box {
+  .Navbar-close-sidemenu {
+    display: block;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    order: 1;
+  }
 
-        height: 100%;
-        display: flex;
-        align-items: center;
-    }
+  .Navbar-close-sidemenu i {
+    padding-right: clamp(20px, 6.45vw + 0.12rem, 25px);
+    padding-top: clamp(15px, 4.65vw + 0.12rem, 20px);
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #aaadb0;
+    font-size: clamp(25px, 8.22vw + 0.12rem, 30px);
+  }
 
-    .Navbar-hamburger {
-        display: flex;
-        cursor: pointer;
-        height: 100%;
+  .Navbar-close-sidemenu i:hover {
+    color: #191919;
+    transform: scale(1.1);
+  }
 
-        display: flex;
-        align-items: center;
-    }
+  .Navbar-complete-input input {
+    padding: clamp(5px, 1vw + 0.015rem, 8px);
+    font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
+  }
 
-    .Navbar-icons .hamburger {
-        font-size: 25px;
-        font-size: clamp(25px, 8.22vw + 0.12rem, 35px);
-        padding: 0;
-        display: flex;
-        align-items: flex-end;
-    }
+  .Navbar-complete-input input::placeholder {
+    color: #495057;
+    font-size: clamp(12px, 3.58vw + 0.12rem, 16px);
+  }
 
-    .Navbar-hamburger:hover .hamburger {
-        color: #191919;
-    }
+  .Navbar-complete-input i {
+    padding: calc(1.1vw + 0.12rem);
+  }
 
+  .Navbar-links {
+    width: 100%;
+    height: 20%;
+    flex-direction: column;
+    justify-content: space-between;
 
+    order: 3;
+    padding: 0;
+  }
 
+  .Navbar-link {
+    width: 100%;
+    gap: 10px;
+    height: 33%;
+    font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
+    display: flex;
+    font-weight: 300;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+    transform: rotateX(90deg);
+  }
 
-    .Navbar-rightside {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        background-color: whitesmoke;
-        right: -100%;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        border-left: 1px solid lightgray;
-        width: 90vw;
-        height: 100vh;
-        box-sizing: border-box;
-        transition: all 0.5s ease-out;
-        box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    .Navbar-active {
-        right: 0%;
-    }
-
-    .Navbar-close-sidemenu {
-        display: block;
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-        order: 1;
-    }
-
-    .Navbar-close-sidemenu i {
-        padding-right: clamp(20px, 6.45vw + 0.12rem, 25px);
-        padding-top: clamp(15px, 4.65vw + 0.12rem, 20px);
-        cursor: pointer;
-        transition: all 0.2s;
-        color: #aaadb0;
-        font-size: clamp(25px, 8.22vw + 0.12rem, 30px);
-    }
-
-    .Navbar-close-sidemenu i:hover {
-        color: #191919;
-        transform: scale(1.1);
-    }
-
-
-    .Navbar-complete-input input {
-        padding: clamp(5px, 1vw + 0.015rem, 8px);
-        font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
-
-    }
-
-    .Navbar-complete-input input::placeholder {
-        color: #495057;
-        font-size: clamp(12px, 3.58vw + 0.12rem, 16px)
-    }
-
-    .Navbar-complete-input i {
-        padding: calc(1.1vw + 0.12rem);
-    }
-
-
-    .Navbar-links {
-        width: 100%;
-        height: 20%;
-        flex-direction: column;
-        justify-content: space-between;
-
-        order: 3;
-        padding: 0;
-    }
-
-    .Navbar-link {
-        width: 100%;
-        gap: 10px;
-        height: 33%;
-        font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
-        display: flex;
-        font-weight: 300;
-        justify-content: center;
-        align-items: center;
-        border-bottom: 1px solid #dee2e6;
-        transform: rotateX(90deg);
-    }
-
-    /*  .Navbar-link-appear {
+  /*  .Navbar-link-appear {
         animation: dropLink 1s 0.5s ease-out forwards;
     } */
 
-    .Navbar-link-appear1 {
-        animation: dropLink 0.2s 0.25s ease-out forwards;
+  .Navbar-link-appear1 {
+    animation: dropLink 0.2s 0.25s ease-out forwards;
+  }
+
+  .Navbar-link-appear2 {
+    animation: dropLink 0.2s 0.5s ease-out forwards;
+  }
+
+  .Navbar-link-appear3 {
+    animation: dropLink 0.2s 0.75s ease-out forwards;
+  }
+
+  .Navbar-link-appear4 {
+    animation: dropLink 0.2s 1s ease-out forwards;
+  }
+
+  @keyframes dropLink {
+    from {
+      transform: rotateX(90deg);
     }
 
-    .Navbar-link-appear2 {
-        animation: dropLink 0.2s 0.5s ease-out forwards;
+    to {
+      transform: rotateX(0deg);
+    }
+  }
+
+  .Navbar-link:hover {
+    background-color: #dee2e6;
+    transform: scale(1);
+  }
+
+  .link-arrow {
+    display: inline-block;
+  }
+
+  .Navbar-search-box {
+    flex-direction: column;
+    height: 20%;
+    border-bottom: 1px solid #dee2e6;
+    width: 100%;
+    order: 2;
+  }
+
+  .Navbar-search-cta {
+    display: block;
+    color: #495057;
+    width: 80%;
+    font-size: clamp(14px, 4vw + 0.12rem, 16px);
+    margin: clamp(10px, 2.86vw + 0.12rem, 14px) 0;
+    text-align: center;
+  }
+
+  .Navbar-complete-input {
+    width: 80%;
+  }
+
+  .Navbar-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60%;
+    order: 4;
+    position: relative;
+  }
+
+  .Navbar-footer-card {
+    width: 90%;
+    height: 90%;
+    background-image: url(/jordanOrange.jpg);
+    background-image: url(/PosterOgOrange.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    transform: rotateY(90deg);
+  }
+
+  .Navbar-footer-card-appears {
+    animation: rotateCard 0.3s 1.25s linear forwards;
+  }
+
+  @keyframes rotateCard {
+    from {
+      transform: rotateY(90deg);
     }
 
-    .Navbar-link-appear3 {
-        animation: dropLink 0.2s 0.75s ease-out forwards;
+    to {
+      transform: rotateY(0deg);
     }
+  }
 
-    .Navbar-link-appear4 {
-        animation: dropLink 0.2s 1s ease-out forwards;
-    }
+  .Navbar-footer-shadow {
+    width: 100%;
+    border-radius: 10px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5% 2%;
+  }
 
+  .Navbar-weekly-tag {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 200;
+    font-size: clamp(15px, 4.65vw + 0.12rem, 18px);
+    line-height: calc(8.22vw + 0.12rem);
+    /*  border: 1px solid white; */
+    text-align: center;
+    /*  padding: calc(1.1vw + 0.12rem) calc(2.86vw + 0.12rem); */
+    box-sizing: border-box;
+    /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3); */
+    border-radius: 10px;
+    letter-spacing: 2px;
+  }
 
+  .Navbar-weekly-model {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    /*  border: 1px solid white; */
+    width: 90%;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: clamp(20px, 6.45vw + 0.12rem, 24px);
+    box-sizing: border-box;
+    height: 80%;
+  }
 
-    @keyframes dropLink {
-        from {
-            transform: rotateX(90deg);
-        }
+  .Navbar-sneaker-brand {
+    font-size: clamp(10px, 2.86vw + 0.12rem, 12px);
+    /* margin-right: 70px; */
+    letter-spacing: 3px;
+    margin-bottom: clamp(5px, 1.1vw + 0.12rem, 8px);
+  }
 
-        to {
-            transform: rotateX(0deg);
-        }
-    }
+  .Navbar-sneaker-category {
+    font-size: clamp(30px, 10vw + 0.12rem, 35px);
+    color: #fb5607;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: clamp(5px, 1.1vw + 0.12rem, 8px);
+  }
 
-    .Navbar-link:hover {
-        background-color: #dee2e6;
-        transform: scale(1);
-    }
+  .Navbar-sneaker-name {
+    font-size: clamp(20px, 6.45vw + 0.12rem, 25px);
+    /* margin-right: 40px; */
+    font-weight: 200;
+  }
 
-    .link-arrow {
-        display: inline-block;
+  .Navbar-weekly-model .Navbar-show-monthly {
+    background-color: #fb5607;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    padding: clamp(5px, 1.1vw + 0.12rem, 8px)
+      clamp(10px, 2.86vw + 0.12rem, 14px);
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 2.86vw + 0.12rem, 14px);
+    margin-top: calc(10vw + 0.12rem);
+    margin-top: clamp(30px, 10vw + 0.12rem, 35px);
+    /* margin-right: 45px; */
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s;
+    letter-spacing: 2px;
+    text-decoration: none;
+    font-size: clamp(14px, 4vw + 0.12rem, 18px);
+  }
 
-    }
-
-
-
-
-    .Navbar-search-box {
-        flex-direction: column;
-        height: 20%;
-        border-bottom: 1px solid #dee2e6;
-        width: 100%;
-        order: 2;
-    }
-
-    .Navbar-search-cta {
-        display: block;
-        color: #495057;
-        width: 80%;
-        font-size: clamp(14px, 4vw + 0.12rem, 16px);
-        margin: clamp(10px, 2.86vw + 0.12rem, 14px) 0;
-        text-align: center;
-    }
-
-    .Navbar-complete-input {
-        width: 80%;
-    }
-
-    .Navbar-footer {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 60%;
-        order: 4;
-        position: relative;
-    }
-
-    .Navbar-footer-card {
-        width: 90%;
-        height: 90%;
-        background-image: url(/jordanOrange.jpg);
-        background-image: url(/PosterOgOrange.jpg);
-        background-size: cover;
-        background-position: center;
-        border-radius: 10px;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-        transform: rotateY(90deg);
-
-    }
-
-    .Navbar-footer-card-appears {
-        animation: rotateCard 0.3s 1.25s linear forwards;
-    }
-
-    @keyframes rotateCard {
-        from {
-            transform: rotateY(90deg);
-        }
-
-        to {
-            transform: rotateY(0deg);
-        }
-    }
-
-    .Navbar-footer-shadow {
-        width: 100%;
-        border-radius: 10px;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        padding: 5% 2%;
-
-    }
-
-    .Navbar-weekly-tag {
-        color: rgba(255, 255, 255, 0.75);
-        font-weight: 200;
-        font-size: clamp(15px, 4.65vw + 0.12rem, 18px);
-        line-height: calc(8.22vw + 0.12rem);
-        /*  border: 1px solid white; */
-        text-align: center;
-        /*  padding: calc(1.1vw + 0.12rem) calc(2.86vw + 0.12rem); */
-        box-sizing: border-box;
-        /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3); */
-        border-radius: 10px;
-        letter-spacing: 2px;
-    }
-
-    .Navbar-weekly-model {
-        display: flex;
-        flex-direction: column;
-        color: white;
-        /*  border: 1px solid white; */
-        width: 90%;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: clamp(20px, 6.45vw + 0.12rem, 24px);
-        box-sizing: border-box;
-        height: 80%;
-
-
-    }
-
-    .Navbar-sneaker-brand {
-        font-size: clamp(10px, 2.86vw + 0.12rem, 12px);
-        /* margin-right: 70px; */
-        letter-spacing: 3px;
-        margin-bottom: clamp(5px, 1.1vw + 0.12rem, 8px);
-    }
-
-    .Navbar-sneaker-category {
-        font-size: clamp(30px, 10vw + 0.12rem, 35px);
-        color: #fb5607;
-        font-weight: 400;
-        text-align: center;
-        margin-bottom: clamp(5px, 1.1vw + 0.12rem, 8px);
-    }
-
-    .Navbar-sneaker-name {
-        font-size: clamp(20px, 6.45vw + 0.12rem, 25px);
-        /* margin-right: 40px; */
-        font-weight: 200;
-    }
-
-
-    .Navbar-weekly-model .Navbar-show-monthly {
-        background-color: #fb5607;
-        color: white;
-        border-radius: 10px;
-        border: none;
-        outline: none;
-        padding: clamp(5px, 1.1vw + 0.12rem, 8px) clamp(10px, 2.86vw + 0.12rem, 14px);
-        display: flex;
-        align-items: center;
-        gap: clamp(10px, 2.86vw + 0.12rem, 14px);
-        margin-top: calc(10vw + 0.12rem);
-        margin-top: clamp(30px, 10vw + 0.12rem, 35px);
-        /* margin-right: 45px; */
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-        transition: all 0.2s;
-        letter-spacing: 2px;
-        text-decoration: none;
-        font-size: clamp(14px, 4vw + 0.12rem, 18px);
-    }
-
-    .Navbar-weekly-model .Navbar-show-monthly:hover {
-        filter: brightness(120%);
-        cursor: pointer;
-        transform: scale(1.1);
-    }
+  .Navbar-weekly-model .Navbar-show-monthly:hover {
+    filter: brightness(120%);
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+  .Navbar-logo-box {
+    width: 15%;
+    font-size: clamp(18px, 2.09vw + 0.12rem, 25px);
+  }
 
-@media (min-width:768px) and (max-width:1024px) {
-    .Navbar-logo-box {
-        width: 15%;
-        font-size: clamp(18px, 2.09vw + 0.12rem, 25px)
-    }
-
-    .Navbar-links {
-        font-size: clamp(12px, 1.31vw + 0.12rem, 16px);
-    }
-
-
+  .Navbar-links {
+    font-size: clamp(12px, 1.31vw + 0.12rem, 16px);
+  }
 }

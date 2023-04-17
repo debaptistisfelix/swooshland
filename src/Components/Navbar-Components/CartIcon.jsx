@@ -1,12 +1,12 @@
 import "./CartIcon.css";
-import { AnimationContext } from "../Context/AnimationContext";
-import { useContext, useState, useEffect } from "react";
-import { CartContext } from "../Context/CartContext";
+import { AppContext } from "../Context/AppContext";
+import { useContext } from "react";
 import { useCookies } from "react-cookie";
+import { UserContext } from "../Context/UserContext";
 
-function CartIcon({ cart }) {
-  const { cartAnim } = useContext(AnimationContext);
-  const { data, showReservedNote } = useContext(CartContext);
+function CartIcon() {
+  const { cartAnim } = useContext(AppContext);
+  const { cart, showReservedNote } = useContext(UserContext);
   const [cookies] = useCookies(["client"]);
 
   let bagAnimation;
@@ -17,7 +17,7 @@ function CartIcon({ cart }) {
       <div className="CartIcon-handle"></div>
       <div className="CartIcon-box">
         <span className={`CartIcon-amount ${bagAnimation}`}>
-          {!cookies.client ? "0" : data && data.length}
+          {!cookies.client ? "0" : cart && cart.length}
         </span>
       </div>
       {showReservedNote === true && (

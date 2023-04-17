@@ -1,7 +1,7 @@
 import "../ProductsListPage/ProductsDrawer.css";
 import { v4 as uuidv4 } from "uuid";
 import { useContext } from "react";
-import { ItemsContext } from "../Context/ItemsContext";
+import { AppContext } from "../Context/AppContext";
 
 function ProductsDrawer({
   openDrawer,
@@ -11,7 +11,7 @@ function ProductsDrawer({
   drawerImg,
   filterByRating,
 }) {
-  const { listedItems } = useContext(ItemsContext);
+  const { listedItems } = useContext(AppContext);
 
   let drawerClass = "no-drawer";
   if (openDrawer === true) {
@@ -60,14 +60,6 @@ function ProductsDrawer({
           {list}
         </div>
       </div>
-      {/*  <div className="ProductsDrawer-price-filter-box">
-        <h5 className="ProductsDrawer-price-filter-title">PRICE</h5>
-        <div className="ProductsDrawer-price-input">
-          <h6 className="ProductsDrawer-input-minmax">0</h6>
-          <input type="range" />
-          <h6 className="ProductsDrawer-input-minmax">289.90</h6>
-        </div>
-      </div> */}
       <div className="ProductsDrawer-ratings-filter-box">
         <h5 className="ProductsDrawer-ratings-filter-title">BY RATING</h5>
         <div className="ProductsDrawer-ratings-box">

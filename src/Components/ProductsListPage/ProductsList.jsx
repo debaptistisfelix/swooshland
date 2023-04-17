@@ -5,7 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
-import { ItemsContext } from "../Context/ItemsContext";
+import { AppContext } from "../Context/AppContext";
 import { memo } from "react";
 
 function ProductsList({ path }) {
@@ -13,7 +13,7 @@ function ProductsList({ path }) {
     AOS.init();
   }, []);
 
-  const { filteredItems, error, isLoading } = useContext(ItemsContext);
+  const { filteredItems, error, isLoading } = useContext(AppContext);
 
   let list = filteredItems.map((item) => {
     return (

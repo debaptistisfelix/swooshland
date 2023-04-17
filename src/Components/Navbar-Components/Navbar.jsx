@@ -11,7 +11,6 @@ import { LoggedContext } from "../Context/LoggedContext";
 import axios from "axios";
 
 import { useCookies } from "react-cookie";
-import { CartContext } from "../Context/CartContext";
 
 function Navbar() {
   const [openNav, setOpenNav] = useState(false);
@@ -35,7 +34,9 @@ function Navbar() {
 
   useEffect(() => {
     async function fetchProds() {
-      const res = await axios.get("http://localhost:8000/api/items?limit=31");
+      const res = await axios.get(
+        "https://easy-ruby-goose-sari.cyclic.app/api/items?limit=31"
+      );
       const products = res.data.data.data;
 
       setItems([...products]);
@@ -150,13 +151,13 @@ function Navbar() {
           >
             ACCESSORIES <i className="fa-solid fa-chevron-right link-arrow"></i>
           </NavLink>
-          <NavLink
+          {/* <NavLink
             onClick={() => navLinkFunc()}
             to="/aboutus"
             className={`Navbar-link ${linkStatus}4`}
           >
             ABOUT US <i className="fa-solid fa-chevron-right link-arrow"></i>
-          </NavLink>
+          </NavLink> */}
         </ul>
         <div className="Navbar-search-box">
           <span className="Navbar-search-cta">

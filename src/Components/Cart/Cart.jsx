@@ -5,22 +5,32 @@ import { useContext, useState } from "react";
 import Error404 from "../Error404/Error404";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-import { CartContext } from "../Context/CartContext";
+import { UserContext } from "../Context/UserContext";
 
 function Cart() {
   const [cookies] = useCookies(["client"]);
   const token = cookies?.client.token;
   const headers = { Authorization: `Bearer ${token}` };
 
-  const { data, isLoading, error, setUpdateState, payRecap, updateState } =
-    useContext(CartContext);
+  const {
+    cart,
+    cartIsLoading,
+    cartError,
+    setUpdateCartState,
+    cartPayRecap,
+    updateCartState,
+  } = useContext(UserContext);
 
   const removeCartItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/api/cartItems/${id}`, {
-        headers,
-      });
-      setUpdateState(!updateState);
+      await axios.delete(
+        `
+      https://easy-ruby-goose-sari.cyclic.app/api/cartItems/${id}`,
+        {
+          headers,
+        }
+      );
+      setUpdateCartState(!updateCartState);
     } catch (err) {
       console.log(err);
     }
@@ -43,12 +53,12 @@ function Cart() {
       ) : loadedPage === true ? (
         <div className="Cart-container">
           <CartList
-            data={data}
-            error={error}
-            isLoading={isLoading}
+            data={cart}
+            error={cartError}
+            isLoading={cartIsLoading}
             removeCartItem={removeCartItem}
           />
-          <CartRecap data={data} payRecap={payRecap} />
+          <CartRecap data={cart} payRecap={cartPayRecap} />
         </div>
       ) : (
         <div className="Cart-loader-box">

@@ -87,6 +87,10 @@
   border-radius: 5px;
 }
 
+.Footer-newsletter-input:focus {
+  border: 2px solid #191919;
+}
+
 .Footer-submit {
   border: none;
   outline: none;

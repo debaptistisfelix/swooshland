@@ -1,9 +1,13 @@
-import { useState, createContext, useEffect, useContext } from "react";
-import useFetchAllItem from "../Hooks/useFetchAllItems";
+import { useState, createContext } from "react";
 
-export const ItemsContext = createContext();
+export const AppContext = createContext();
 
-export function ItemsProvider(props) {
+export function AppProvider(props) {
+  // ANIMATION CONTEXT
+  const [cartAnim, setCartAnim] = useState(false);
+  const [wishAnim, setWishAnim] = useState(false);
+
+  //   ITEMS CONTEXT
   const [listedItems, setListedItems] = useState(null);
   const [filteredItems, setFilteredItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -43,8 +47,12 @@ export function ItemsProvider(props) {
   }
 
   return (
-    <ItemsContext.Provider
+    <AppContext.Provider
       value={{
+        cartAnim,
+        setCartAnim,
+        wishAnim,
+        setWishAnim,
         listedItems,
         setListedItems,
         filteredItems,
@@ -62,6 +70,6 @@ export function ItemsProvider(props) {
       }}
     >
       {props.children}
-    </ItemsContext.Provider>
+    </AppContext.Provider>
   );
 }

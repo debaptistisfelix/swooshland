@@ -6,36 +6,40 @@ import ProfileList from "./ProfileList";
 import ProfileForm from "./ProfileForm";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-import { AddressContext } from "../Context/AddressContext";
+import { UserContext } from "../Context/UserContext";
 
 function ProfilePage() {
   const [loadedPage, setLoadedPage, loadPage] = useLoadedState(false);
-  const { data, isLoading, error, setUpdateState } = useContext(AddressContext);
+  const { address, addressIsLoading, addressError, setUpdateAddressState } =
+    useContext(UserContext);
 
   const [cookies] = useCookies(["client"]);
   const token = cookies.client.token;
   const headers = { Authorization: `Bearer ${token}` };
 
   async function deleteAddress(id) {
-    let filteredItems = data.filter((item) => {
+    let filteredItems = address.filter((item) => {
       return item.id !== id;
     });
-    await axios.delete(`http://localhost:8000/api/addresses/${id}`, {
-      headers,
-    });
-    setUpdateState(true);
+    await axios.delete(
+      `https://easy-ruby-goose-sari.cyclic.app/api/addresses/${id}`,
+      {
+        headers,
+      }
+    );
+    setUpdateAddressState(true);
   }
 
   async function addAddress(newAddress) {
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/addresses",
+        "https://easy-ruby-goose-sari.cyclic.app/api/addresses",
         newAddress,
         {
           headers,
         }
       );
-      setUpdateState(true);
+      setUpdateAddressState(true);
     } catch (err) {
       console.log(err);
     }
@@ -50,15 +54,15 @@ function ProfilePage() {
       ) : loadedPage === true ? (
         <div className="Profile-container">
           <ProfileList
-            data={data}
-            error={error}
-            isLoading={isLoading}
-            setUpdateState={setUpdateState}
+            data={address}
+            error={addressError}
+            isLoading={addressIsLoading}
+            setUpdateState={setUpdateAddressState}
             deleteAddress={deleteAddress}
           />
           <ProfileForm
             addAddress={addAddress}
-            setUpdateState={setUpdateState}
+            setUpdateState={setUpdateAddressState}
           />
         </div>
       ) : (

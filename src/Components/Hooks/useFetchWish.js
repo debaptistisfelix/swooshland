@@ -5,10 +5,10 @@ import { LoggedContext } from "../Context/LoggedContext";
 const useFetchWish = (url) => {
   let { token } = useContext(LoggedContext);
   const [wishes, setWishes] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [wishesIsLoading, setWishesIsLoading] = useState(true);
+  const [wishesError, setWishesError] = useState(null);
   const [updateWish, setUpdateWish] = useState(false);
-  const [payRecap, setPayRecap] = useState(null);
+  const [wishesPayRecap, setWishesPayRecap] = useState(null);
 
   const calculateSubtotal = useCallback(() => {
     if (wishes) {
@@ -26,7 +26,7 @@ const useFetchWish = (url) => {
         shippingCost: shippingCost,
         total: total,
       };
-      setPayRecap(payRecapObj);
+      setWishesPayRecap(payRecapObj);
     }
   }, [wishes, updateWish]);
 
@@ -34,25 +34,34 @@ const useFetchWish = (url) => {
     let headers = { Authorization: `Bearer ${token}` };
     const res = await axios.get(url, { headers });
     setWishes(res.data.data.wishlistItems);
-    setError(null);
-    setIsLoading(false);
+    setWishesError(null);
+    setWishesIsLoading(false);
     setUpdateWish(!updateWish);
   }, [token]);
 
   useEffect(() => {
-    fetchWishes().catch((err) => {
-      setError(err.message);
-      setIsLoading(false);
-      setWishes(null);
-      console.log(err);
-    });
+    if (token) {
+      fetchWishes().catch((err) => {
+        setWishesError(err.message);
+        setWishesIsLoading(false);
+        setWishes(null);
+        console.log(err);
+      });
+    }
   }, [fetchWishes, updateWish, token]);
 
   useEffect(() => {
     calculateSubtotal();
   }, [wishes, updateWish]);
 
-  return { wishes, error, isLoading, setUpdateWish, updateWish, payRecap };
+  return {
+    wishes,
+    wishesError,
+    wishesIsLoading,
+    setUpdateWish,
+    updateWish,
+    wishesPayRecap,
+  };
 };
 
 export default useFetchWish;

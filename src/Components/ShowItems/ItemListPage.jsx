@@ -1,9 +1,9 @@
 import "../ShowItems/ItemListPage.css";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
-import { ItemsContext } from "../Context/ItemsContext";
 import ProductsDrawer from "../ProductsListPage/ProductsDrawer";
 import ProductsDisplayer from "../ProductsListPage/ProductsDisplayer";
+import { AppContext } from "../Context/AppContext";
 
 const categories = [
   { categ: "AIR FORCE 1", qty: 11 },
@@ -24,19 +24,22 @@ function ItemListPage() {
   const [loadedPage, setLoadedPage] = useState(false);
 
   const { listedItems, setListedItems, filteredItems, setFilteredItems } =
-    useContext(ItemsContext);
+    useContext(AppContext);
 
   useEffect(() => {
     const fetchSneakers = async () => {
       const response = await axios.get(
-        "http://localhost:8000/api/items?tag=sneakers&limit=31"
+        "https://easy-ruby-goose-sari.cyclic.app/api/items?tag=sneakers&limit=31"
       );
       const results = response.data.data.data;
 
       setListedItems(results);
       setFilteredItems(results);
     };
-    fetchSneakers();
+    fetchSneakers().catch((err) => {
+      setListedItems(null);
+      setFilteredItems(null);
+    });
   }, []);
 
   function toggleDrawer() {

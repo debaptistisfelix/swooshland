@@ -2,7 +2,7 @@ import "../ProductsListPage/ProductsBanner.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useContext } from "react";
-import { ItemsContext } from "../Context/ItemsContext";
+import { AppContext } from "../Context/AppContext";
 
 function ProductsBanner({
   openDrawer,
@@ -22,7 +22,7 @@ function ProductsBanner({
     sortByDesc,
     sortByBestRating,
     sortByWorstRating,
-  } = useContext(ItemsContext);
+  } = useContext(AppContext);
 
   return (
     <div className="ProductsBanner" data-aos="fade-down">

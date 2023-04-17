@@ -1,9 +1,9 @@
 import "../OrderPage/PaymentRecap.css";
 import { useContext } from "react";
-import { CartContext } from "../Context/CartContext";
+import { UserContext } from "../Context/UserContext";
 
 function PaymentRecap() {
-  const { payRecap } = useContext(CartContext);
+  const { cartPayRecap } = useContext(UserContext);
 
   return (
     <div className="PaymentRecap">
@@ -11,16 +11,16 @@ function PaymentRecap() {
       <div className="PaymentRecap-costs">
         <div className="costs-box">
           <span className="cost-label">SUBTOTAL</span>
-          <span>${payRecap.subtotal.toFixed(2)}</span>
+          <span>${cartPayRecap.subtotal.toFixed(2)}</span>
         </div>
         <div className="costs-box">
           <span className="cost-label">SHIPPING</span>
-          <span>{payRecap.shippingCost === 0 ? "FREE" : "$30"}</span>
+          <span>{cartPayRecap.shippingCost === 0 ? "FREE" : "$30"}</span>
         </div>
         <div className="costs-box costs-total-box">
           <span className="cost-label total-label">TOTAL</span>
           <span className="total-amount">
-            ${(payRecap.subtotal + payRecap.shippingCost).toFixed(2)}
+            ${(cartPayRecap.subtotal + cartPayRecap.shippingCost).toFixed(2)}
           </span>
         </div>
       </div>

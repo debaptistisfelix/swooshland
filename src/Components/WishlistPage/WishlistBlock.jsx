@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 function WishlistBlock({ item, removeWishItem, moveToCart }) {
   const [blockAnim, setBlockAnim] = useState(false);
-  console.log(item);
 
   let blockStatus;
   blockAnim === true ? (blockStatus = "vanish-anim") : "not true";

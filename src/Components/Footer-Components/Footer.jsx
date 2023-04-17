@@ -22,7 +22,7 @@ function Footer() {
     }
     try {
       await axios.patch(
-        "http://localhost:8000/api/users/newsletterSub",
+        "https://easy-ruby-goose-sari.cyclic.app/api/users/newsletterSub",
         {
           email: email,
         },
@@ -49,14 +49,14 @@ function Footer() {
             <span className="Footer-links-title">
               <b>EXPLORE</b> <i className="fa-solid fa-rocket"></i>
             </span>
+            <Link to="/" className="Footer-link">
+              HOME
+            </Link>
             <Link to="/sneakers" className="Footer-link">
               SNEAKERS
             </Link>
             <Link to="/accessories" className="Footer-link">
               ACCESSORIES
-            </Link>
-            <Link to="/aboutus" className="Footer-link">
-              ABOUT US
             </Link>
           </div>
           <div className="Footer-links">

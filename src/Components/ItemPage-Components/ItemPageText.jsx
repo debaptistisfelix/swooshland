@@ -5,7 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { LoggedContext } from "../Context/LoggedContext";
 import { useNavigate } from "react-router-dom";
-import { AnimationContext } from "../Context/AnimationContext";
+import { AppContext } from "../Context/AppContext";
 
 function ItemPageText({ data, selectSize, addToCart, addToWish, chosenSize }) {
   useEffect(() => {
@@ -19,7 +19,7 @@ function ItemPageText({ data, selectSize, addToCart, addToWish, chosenSize }) {
   const navigate = useNavigate();
 
   const { cartAnim, setCartAnim, wishAnim, setWishAnim } =
-    useContext(AnimationContext);
+    useContext(AppContext);
 
   const [noGo, setNoGo] = useState(false);
 

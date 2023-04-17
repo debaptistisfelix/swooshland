@@ -1,9 +1,9 @@
 import "../ShowItems/ItemListPage.css";
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
-import { ItemsContext } from "../Context/ItemsContext";
 import ProductsDrawer from "../ProductsListPage/ProductsDrawer";
 import ProductsDisplayer from "../ProductsListPage/ProductsDisplayer";
+import { AppContext } from "../Context/AppContext";
 
 const categories = [
   { categ: "M.H.A. BACKPACK", qty: 1 },
@@ -19,28 +19,15 @@ function AccessoriesListPage() {
   const [openSort, setOpenSort] = useState(false);
   const [loadedPage, setLoadedPage] = useState(false);
 
-  const {
-    listedItems,
-    setListedItems,
-    filteredItems,
-    setFilteredItems,
-    setIsLoading,
-    error,
-    setError,
-    isLoading,
-  } = useContext(ItemsContext);
+  const { setListedItems, setFilteredItems, setIsLoading, setError } =
+    useContext(AppContext);
 
   useEffect(() => {
     const fetchSneakers = async () => {
       const response = await axios.get(
-        "http://localhost:8000/api/items?tag=accessories&limit=31"
+        "https://easy-ruby-goose-sari.cyclic.app/api/items?tag=accessories&limit=31"
       );
       const results = response.data.data.data;
-      /*   const sneakerResults = results.filter((item) => {
-        return item.tag === "accessories";
-      });
-      setListedItems(sneakerResults);
-      setFilteredItems(sneakerResults); */
       setFilteredItems(results);
       setListedItems(results);
     };
@@ -61,20 +48,7 @@ function AccessoriesListPage() {
     setOpenSort(!openSort);
   }
 
-  /*  function sortByBrand(brand) {
-         let filteredList = listedItems.filter(item => {
-             return item.model.includes(brand)
-         })
-         setListedItems(filteredList);
-         window.matchMedia("(max-width:767px)").matches && setOpenDrawer(false);
-     } */
-
   async function sortByBrand(brand) {
-    /*    let filteredList = listedItems.filter((item) => {
-      return item.category.includes(brand);
-    });
-    setFilteredItems([...filteredList]);
-    console.log(filteredList); */
     const response = await axios.get(
       `http://localhost:3000/api/products?category=${brand}&tag=accessories&limit=50`
     );
@@ -95,16 +69,6 @@ function AccessoriesListPage() {
   openSort === true
     ? (sortModal = "show-sort-modal")
     : (sortModal = "hide-sort-modal");
-
-  /*  let displayedItems = listedItems.map(item => {
-         return <ProductCard2
-             key={item.name}
-             imgSrc={item.imgSrc}
-             model={item.model}
-             name={item.name}
-             price={item.price}
-         />
-     }) */
 
   function closeSortModal(e) {
     let usermodal = document.querySelector(".ItemListPage-sort-modal");

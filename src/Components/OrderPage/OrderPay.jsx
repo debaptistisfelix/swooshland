@@ -1,7 +1,7 @@
 import "../OrderPage/OrderPay.css";
 import { useContext, useEffect } from "react";
 
-import { OrderContext } from "../Context/OrderContext";
+import { UserContext } from "../Context/UserContext";
 
 import { loadStripe } from "@stripe/stripe-js";
 
@@ -17,7 +17,7 @@ const getStripe = () => {
 };
 
 function OrderPay() {
-  const { order, addOrderToStorage } = useContext(OrderContext);
+  const { order, addOrderToStorage } = useContext(UserContext);
 
   const checkoutOptions = {
     lineItems: [...order.stripe],

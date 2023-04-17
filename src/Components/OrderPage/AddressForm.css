@@ -1,137 +1,138 @@
 .AddressForm {
-    width: 30%;
+  width: 30%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  gap: 20px;
+
+  border-radius: 5px;
+}
+
+.AddressForm-title {
+  color: #191919;
+  font-weight: 600;
+}
+
+.AddressForm-form {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  /*  border: 1px solid blue; */
+  box-sizing: border-box;
+}
+
+.long-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  height: 40px;
+  border: 1px solid #495057;
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  letter-spacing: 2px;
+  background-color: whitesmoke;
+}
+
+.AddressForm-input-box {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.short-input {
+  width: 47%;
+  border: none;
+  outline: none;
+  height: 40px;
+  border: 1px solid #495057;
+  border-radius: 5px;
+  padding: 5px;
+  box-sizing: border-box;
+  letter-spacing: 2px;
+  background-color: whitesmoke;
+  transition: all 0.2s ease-out;
+}
+
+.AddressForm input:hover {
+  border: 2px solid #191919;
+}
+
+.AddressForm input:focus {
+  border: 2px solid #191919;
+}
+
+.AddressForm-btn {
+  color: white;
+  background-color: #191919;
+  letter-spacing: 3px;
+  height: 40px;
+  width: 120px;
+  border-radius: 5px;
+  padding: 5px 15px;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  align-self: flex-end;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease-out;
+}
+
+.AddressForm-btn:hover {
+  filter: brightness(120%);
+  transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+  .AddressForm {
+    width: 100%;
     height: fit-content;
     display: flex;
     flex-direction: column;
-    padding: 0px 10px;
+    padding: 20px 10px;
     box-sizing: border-box;
     gap: 20px;
 
     border-radius: 5px;
+  }
 
-}
+  .AddressForm-title {
+    text-align: center;
+    font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
+  }
 
-.AddressForm-title {
-    color: #191919;
-    font-weight: 600;
-}
-
-.AddressForm-form {
-    height: 300px;
-    display: flex;
-    flex-direction: column;
+  .AddressForm-form {
+    height: fit-content;
     gap: 15px;
-    /*  border: 1px solid blue; */
-    box-sizing: border-box;
-}
+  }
 
+  .long-input {
+    height: clamp(40px, 13.58vw + 0.12rem, 50px);
+  }
 
-.long-input {
-    width: 100%;
-    border: none;
-    outline: none;
-    height: 40px;
-    border: 1px solid #495057;
-    border-radius: 5px;
-    padding: 5px;
-    box-sizing: border-box;
-    letter-spacing: 2px;
-    background-color: whitesmoke;
-}
+  .short-input {
+    height: clamp(40px, 13.58vw + 0.12rem, 50px);
+  }
 
-.AddressForm-input-box {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.short-input {
-    width: 47%;
-    border: none;
-    outline: none;
-    height: 40px;
-    border: 1px solid #495057;
-    border-radius: 5px;
-    padding: 5px;
-    box-sizing: border-box;
-    letter-spacing: 2px;
-    background-color: whitesmoke;
-}
-
-.AddressForm input:hover {
-    border: 2px solid #191919;
-}
-
-.AddressForm-btn {
+  .AddressForm-btn {
     color: white;
     background-color: #191919;
     letter-spacing: 3px;
     height: 40px;
-    width: 120px;
+    width: 100%;
     border-radius: 5px;
     padding: 5px 15px;
     box-sizing: border-box;
     outline: none;
     border: none;
-    align-self: flex-end;
+    align-self: center;
     cursor: pointer;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     transition: all 0.2s ease-out;
-}
-
-.AddressForm-btn:hover {
-    filter: brightness(120%);
-    transform: scale(1.05);
-}
-
-@media (max-width:767px) {
-    .AddressForm {
-        width: 100%;
-        height: fit-content;
-        display: flex;
-        flex-direction: column;
-        padding: 20px 10px;
-        box-sizing: border-box;
-        gap: 20px;
-
-        border-radius: 5px;
-    }
-
-    .AddressForm-title {
-        text-align: center;
-        font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
-    }
-
-    .AddressForm-form {
-        height: fit-content;
-        gap: 15px;
-    }
-
-    .long-input {
-        height: clamp(40px, 13.58vw + 0.12rem, 50px);
-    }
-
-    .short-input {
-        height: clamp(40px, 13.58vw + 0.12rem, 50px);
-    }
-
-
-
-    .AddressForm-btn {
-        color: white;
-        background-color: #191919;
-        letter-spacing: 3px;
-        height: 40px;
-        width: 100%;
-        border-radius: 5px;
-        padding: 5px 15px;
-        box-sizing: border-box;
-        outline: none;
-        border: none;
-        align-self: center;
-        cursor: pointer;
-        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
-        transition: all 0.2s ease-out;
-        font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
-    }
+    font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
+  }
 }

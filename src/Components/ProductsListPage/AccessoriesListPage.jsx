@@ -21,7 +21,9 @@ function AccessoriesListPage() {
 
   useEffect(() => {
     const fetchSneakers = async () => {
-      const response = await axios.get("http://localhost:3000/api/products");
+      const response = await axios.get(
+        "https://easy-ruby-goose-sari.cyclic.app/api/products"
+      );
       const results = response.data;
       const accessoriesResults = results.filter((item) => {
         return item.tag === "accessories";

@@ -1,7 +1,6 @@
 import "./CartModalNav.css";
 import { v4 as uuidv4 } from "uuid";
-import { CartContext } from "../Context/CartContext";
-
+import { UserContext } from "../Context/UserContext";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -9,7 +8,7 @@ import { useCookies } from "react-cookie";
 
 function CartModalNav({ openedCartModal }) {
   const [cookies] = useCookies(["client"]);
-  const { data, payRecap } = useContext(CartContext);
+  const { cart, cartPayRecap } = useContext(UserContext);
 
   function moveToCart() {
     window.scrollTo(0, 0);
@@ -25,11 +24,11 @@ function CartModalNav({ openedCartModal }) {
         </span>
       </div>
       <div className="CartModalNav-cartbox">
-        {data && data.length === 0 ? (
+        {cart && cart.length === 0 ? (
           <span className="empty-cart-model">Empty cart</span>
         ) : (
-          data &&
-          data.map((item) => {
+          cart &&
+          cart.map((item) => {
             return (
               <div key={uuidv4()} className="CartModalNav-itembox">
                 <span className="item-box-qty">
@@ -45,7 +44,7 @@ function CartModalNav({ openedCartModal }) {
       </div>
       <span className="CartModalNav-total">
         TOTAL:{" "}
-        <b>${cookies?.client ? payRecap?.subtotal.toFixed(2) : "0.00"}</b>
+        <b>${cookies?.client ? cartPayRecap?.subtotal.toFixed(2) : "0.00"}</b>
       </span>
       <Link
         to={cookies?.client ? "/cart" : "/user-log"}

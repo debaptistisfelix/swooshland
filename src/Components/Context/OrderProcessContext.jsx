@@ -1,7 +1,6 @@
 import { useState, createContext, useContext } from "react";
 import axios from "axios";
-import { AddressContext } from "./AddressContext";
-import { CartContext } from "./CartContext";
+import { UserContext } from "./UserContext";
 import { useCookies } from "react-cookie";
 
 export const OrderProcessContext = createContext();
@@ -9,8 +8,8 @@ export const OrderProcessContext = createContext();
 export function OrderProcessProvider(props) {
   const [cookies, setCookie] = useCookies(["client"]);
   const token = cookies.client?.token;
-  const { setUpdateState } = useContext(AddressContext);
-  const { payRecap } = useContext(CartContext);
+  const { setUpdateAddressState } = useContext(UserContext);
+  const { cartPayRecap } = useContext(UserContext);
   const [displayedPage, setDisplayedPage] = useState("OrderShip");
   const [chosenAddress, setChosenAddress] = useState(null);
   const [userCart, setUserCart] = useState(null);
@@ -19,9 +18,12 @@ export function OrderProcessProvider(props) {
   const addCartToOrder = async () => {
     if (token) {
       let headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get("http://localhost:8000/api/cartItems", {
-        headers,
-      });
+      const response = await axios.get(
+        "https://easy-ruby-goose-sari.cyclic.app/api/cartItems",
+        {
+          headers,
+        }
+      );
       let cartItems = response.data.data.cartItems;
       let idsArray = cartItems.map((item) => {
         return item.itemId;
@@ -47,7 +49,7 @@ export function OrderProcessProvider(props) {
           headers,
         }
       );
-      setUpdateState(true);
+      setUpdateAddressState(true);
     } catch (err) {
       console.log(err);
     }
@@ -61,9 +63,9 @@ export function OrderProcessProvider(props) {
 
   const prepareOrderFile = () => {
     let orderObj = {
-      amount: payRecap.total,
-      shippingCost: payRecap.shippingCost,
-      subtotal: payRecap.subtotal,
+      amount: cartPayRecap.total,
+      shippingCost: cartPayRecap.shippingCost,
+      subtotal: cartPayRecap.subtotal,
       address: chosenAddress,
       items: userCart,
       itemsIds: userCartIds,

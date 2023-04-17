@@ -2,10 +2,10 @@ import "../OrderPage/OrderRecap.css";
 import CartSummary from "./CartSummary";
 import { createContext, useContext } from "react";
 import { OrderProcessContext } from "../Context/OrderProcessContext";
-import { CartContext } from "../Context/CartContext";
 import ShippingRecap from "./ShippingRecap";
 import PaymentRecap from "./PaymentRecap";
 import { loadStripe } from "@stripe/stripe-js";
+import { UserContext } from "../Context/UserContext";
 
 let stripePromise;
 
@@ -20,9 +20,9 @@ const getStripe = () => {
 
 function OrderRecap() {
   const { backToOrderShip, prepareOrderFile } = useContext(OrderProcessContext);
-  const { data } = useContext(CartContext);
+  const { cart } = useContext(UserContext);
 
-  let stripeArr = data.map((el) => {
+  let stripeArr = cart.map((el) => {
     return { price: el.stripe.item, quantity: el.stripe.quantity };
   });
   console.log(stripeArr);
@@ -44,7 +44,7 @@ function OrderRecap() {
   return (
     <div className="OrderRecap">
       <div className="OrderRecap-container">
-        <CartSummary data={data} />
+        <CartSummary data={cart} />
         <div className="OrderRecap-ship-pay">
           <ShippingRecap />
           <PaymentRecap />

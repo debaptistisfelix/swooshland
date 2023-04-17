@@ -7,21 +7,17 @@ import { useState, useEffect, useContext, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useLoadedState from "../Hooks/useLoadedState";
-
-import { v4 as uuidv4 } from "uuid";
-
-import { CartContext } from "../Context/CartContext";
-import { WishContext } from "../Context/WishContext";
 import { LoggedContext } from "../Context/LoggedContext";
 import ReviewSection from "./ReviewSection";
+import { UserContext } from "../Context/UserContext";
 
 function ItemPage() {
   let { itemId } = useParams();
   const { token } = useContext(LoggedContext);
   const headers = { Authorization: `Bearer ${token}` };
-  const { setUpdateState, updateState, setShowReservedNote } =
-    useContext(CartContext);
-  const { setUpdateWish, updateWish } = useContext(WishContext);
+  const { setUpdateCartState, updateCartState, setShowReservedNote } =
+    useContext(UserContext);
+  const { setUpdateWish, updateWish } = useContext(UserContext);
   const [chosenSize, setChosenSize] = useState("");
   const [wasBought, setWasBought] = useState(false);
   const [reviewsUpdate, setReviewsUpdate] = useState(false);
@@ -36,12 +32,13 @@ function ItemPage() {
   };
 
   const fetchData = useCallback(async () => {
-    const res = await axios.get(`http://localhost:8000/api/items/${itemId}`);
+    const res = await axios.get(
+      `https://easy-ruby-goose-sari.cyclic.app/api/items/${itemId}`
+    );
     setData(res.data.data.data);
     setError(null);
     setIsLoading(false);
     setUpdateItemState(false);
-    console.log("Item was fetched again");
   }, [itemId, reviewsUpdate, updateItemState]);
 
   useEffect(() => {
@@ -55,18 +52,16 @@ function ItemPage() {
 
   // Check if user has ever ordered the item
   const didUserBuy = useCallback(async () => {
-    if (token) {
-      try {
-        const res = await axios.get(
-          `http://localhost:8000/api/orders/orderDetails/${itemId}`,
-          { headers }
-        );
+    try {
+      const res = await axios.get(
+        `https://easy-ruby-goose-sari.cyclic.app/api/orders/orderDetails/${itemId}`,
+        { headers }
+      );
 
-        setWasBought(true);
-      } catch (err) {
-        setWasBought(false);
-        console.log(err.response.data.message);
-      }
+      setWasBought(true);
+    } catch (err) {
+      setWasBought(false);
+      console.log(err.response.data.message);
     }
   }, [data]);
 
@@ -80,30 +75,34 @@ function ItemPage() {
   const [related, setRelated] = useState([]);
 
   useEffect(() => {
-    async function fetchRelated() {
-      const res = await axios.get("http://localhost:8000/api/items?limit=50");
-      const sneakers = res.data.data.data;
-      let relatedSneakers = [];
+    if (data) {
+      async function fetchRelated() {
+        const res = await axios.get(
+          "https://easy-ruby-goose-sari.cyclic.app/api/items?limit=50"
+        );
+        const sneakers = res.data.data.data;
+        let relatedSneakers = [];
 
-      let similarSnekers = sneakers.filter((item) => {
-        return item.category === data.category;
-      });
-      let preciseSimilarSneakers = similarSnekers.filter((item) => {
-        return item.name !== data.name;
-      });
+        let similarSnekers = sneakers.filter((item) => {
+          return item.category === data.category;
+        });
+        let preciseSimilarSneakers = similarSnekers.filter((item) => {
+          return item.name !== data.name;
+        });
 
-      relatedSneakers.push(...preciseSimilarSneakers);
+        relatedSneakers.push(...preciseSimilarSneakers);
 
-      while (relatedSneakers.length <= 10) {
-        let randomIndex = Math.floor(Math.random() * sneakers.length);
-        let sneakerToAdd = sneakers[randomIndex];
-        if (!relatedSneakers.includes(sneakerToAdd)) {
-          relatedSneakers.push(sneakerToAdd);
+        while (relatedSneakers.length <= 10) {
+          let randomIndex = Math.floor(Math.random() * sneakers.length);
+          let sneakerToAdd = sneakers[randomIndex];
+          if (!relatedSneakers.includes(sneakerToAdd)) {
+            relatedSneakers.push(sneakerToAdd);
+          }
         }
+        setRelated(relatedSneakers);
       }
-      setRelated(relatedSneakers);
+      fetchRelated();
     }
-    fetchRelated();
   }, [data]);
 
   // Select a size to add to Cart/wishlist
@@ -136,13 +135,13 @@ function ItemPage() {
     };
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/cartItems",
+        "https://easy-ruby-goose-sari.cyclic.app/api/cartItems",
         itemtoAdd,
         {
           headers,
         }
       );
-      setUpdateState(!updateState);
+      setUpdateCartState(!updateCartState);
       setUpdateItemState(!updateItemState);
       makeNotePopUp();
     } catch (err) {
@@ -166,7 +165,7 @@ function ItemPage() {
     };
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/wishlist",
+        "https://easy-ruby-goose-sari.cyclic.app/api/wishlist",
         itemtoAdd,
         {
           headers,

@@ -13,20 +13,6 @@ function ItemBlock({ item, id }) {
           <span className="ItemBlock-Price">${price}0</span>
         </div>
         <span className="ItemBlock-name">{name}</span>
-        {/*  <div className="ItemBlock-palette">
-          <span
-            style={{ backgroundColor: `${paletteColors[0].hex}` }}
-            className="ItemBlock-color"
-          ></span>
-          <span
-            style={{ backgroundColor: `${paletteColors[1].hex}` }}
-            className="ItemBlock-color"
-          ></span>
-          <span
-            style={{ backgroundColor: `${paletteColors[2].hex}` }}
-            className="ItemBlock-color"
-          ></span>
-        </div> */}
         <span className="ItemBlock-size">Size: {chosenSize}</span>
       </div>
     </div>

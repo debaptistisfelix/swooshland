@@ -1,33 +1,42 @@
 import "../WishlistPage/WishlistPage.css";
-import WishList from "./wishList";
+import WishList from "./WishList";
 import WishRecap from "./WishRecap";
 import { useCookies } from "react-cookie";
 import { useContext, useState } from "react";
 import useFetchWish from "../Hooks/useFetchWish";
 import axios from "axios";
 import Error404 from "../Error404/Error404";
-import { WishContext } from "../Context/WishContext";
-import { AnimationContext } from "../Context/AnimationContext";
-import { CartContext } from "../Context/CartContext";
+import { UserContext } from "../Context/UserContext";
+import { AppContext } from "../Context/AppContext";
 
 function WishlistPage() {
   const [cookies] = useCookies(["client"]);
   const token = cookies.client?.token;
   const headers = { Authorization: `Bearer ${token}` };
-  const { wishes, error, isLoading, setUpdateWish, updateWish, payRecap } =
-    useContext(WishContext);
-  const { cartAnim, setCartAnim } = useContext(AnimationContext);
-  const { setUpdateState, updateState } = useContext(CartContext);
+  const {
+    wishes,
+    wishesError,
+    wishesIsLoading,
+    setUpdateWish,
+    updateWish,
+    wishesPayRecap,
+    updateCartState,
+    setUpdateCartState,
+  } = useContext(UserContext);
+  const { cartAnim, setCartAnim } = useContext(AppContext);
+  const { setUpdateState, updateState } = useContext(UserContext);
 
   const [loadedPage, setLoadedPage] = useState(false);
 
   const removeWishItem = async (id) => {
     try {
-      await axios.delete(`http://localhost:8000/api/wishlist/${id}`, {
-        headers,
-      });
+      await axios.delete(
+        `https://easy-ruby-goose-sari.cyclic.app/api/wishlist/${id}`,
+        {
+          headers,
+        }
+      );
       setUpdateWish(!updateWish);
-      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -41,15 +50,15 @@ function WishlistPage() {
     const itemToAdd = { ...item };
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/cartItems",
+        "https://easy-ruby-goose-sari.cyclic.app/api/cartItems",
         itemToAdd,
         {
           headers,
         }
       );
-      setUpdateState(!updateState);
+      setUpdateCartState(!updateCartState);
     } catch (err) {
-      console.log(error);
+      console.log(err);
     }
 
     removeWishItem(id);
@@ -69,12 +78,12 @@ function WishlistPage() {
         <div className="Wish-container">
           <WishList
             wishes={wishes}
-            error={error}
-            isLoading={isLoading}
+            error={wishesError}
+            isLoading={wishesIsLoading}
             removeWishItem={removeWishItem}
             moveToCart={moveToCart}
           />
-          <WishRecap payRecap={payRecap} />
+          <WishRecap payRecap={wishesPayRecap} />
         </div>
       ) : (
         <div className="Wish-loader-box">
