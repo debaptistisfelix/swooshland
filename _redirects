@@ -1,1 +1,15 @@
- /sneakers          /
+ 
+ /sneakers                    /
+ /accessories                 /
+ /user-log                    /
+ /forgotPassword              /
+ /resetPassword/:resetToken   /
+ /products/:itemId            /
+ /cart                        /
+ /wishlist                    /
+ /profile                     /
+ /order                       /
+ /orders                      /
+/order-completed              /
+/order-failed                 /
+/order-finished               /

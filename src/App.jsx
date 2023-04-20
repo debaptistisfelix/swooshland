@@ -44,7 +44,6 @@ function App() {
                   path="/resetPassword/:resetToken"
                   element={<ResetPassword />}
                 />
-                <Route path="/item" element={<ItemPage />} />
                 <Route path="/products/:itemId" element={<ItemPage />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/wishlist" element={<WishlistPage />} />
