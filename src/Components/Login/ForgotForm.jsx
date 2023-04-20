@@ -13,12 +13,9 @@ function ForgotForm({ setEmailSent }) {
   const requireToken = async (event) => {
     event.preventDefault();
     try {
-      await axios.post(
-        "https://easy-ruby-goose-sari.cyclic.app/api/users/forgotpassword",
-        {
-          email: email,
-        }
-      );
+      await axios.post("http://localhost:8000/api/users/forgotpassword", {
+        email: email,
+      });
       setError(null);
       setIsLoading(false);
       setEmailSent(true);

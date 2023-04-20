@@ -1,24 +1,24 @@
 .MiniImg {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    display: flex;
-    flex-direction: column;
-    position: relative;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .MiniImg img {
-    width: 100%;
-    cursor: pointer;
+  width: 100%;
+  cursor: pointer;
 }
 
 .miniImg-eye {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 25px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 25px;
 }
 
 /* .MiniImg-displayed-shadow {
@@ -28,22 +28,21 @@
     position: absolute;
 } */
 
-@media (max-width:767px) {
-
-
-    .MiniImg img {
-        width: calc(33vw + 0.12rem);
-        height: 100%;
-        cursor: pointer;
-    }
-
-
+@media (max-width: 767px) {
+  .MiniImg {
+    min-width: fit-content;
+  }
+  .MiniImg img {
+    width: calc(33vw + 0.12rem);
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
 }
 
-
-@media (min-width:768px) and (max-width:1024px) {
-    .MiniImg img {
-        width: 100px;
-        cursor: pointer;
-    }
+@media (min-width: 768px) and (max-width: 1024px) {
+  .MiniImg img {
+    width: 100px;
+    cursor: pointer;
+  }
 }

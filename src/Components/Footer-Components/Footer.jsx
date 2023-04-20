@@ -22,7 +22,7 @@ function Footer() {
     }
     try {
       await axios.patch(
-        "https://easy-ruby-goose-sari.cyclic.app/api/users/newsletterSub",
+        "http://localhost:8000/api/users/newsletterSub",
         {
           email: email,
         },

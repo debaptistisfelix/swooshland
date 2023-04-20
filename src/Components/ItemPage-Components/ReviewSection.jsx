@@ -36,7 +36,7 @@ function ReviewSection({ data, token, wasBought, handleReviewUpdate }) {
   const fetchReviews = useCallback(async () => {
     try {
       const res = await axios.get(
-        `https://easy-ruby-goose-sari.cyclic.app/api/items/${itemId}/reviews/specific`
+        `http://localhost:8000/api/items/${itemId}/reviews/specific`
       );
       setError(null);
       setIsLoading(false);
@@ -55,7 +55,7 @@ function ReviewSection({ data, token, wasBought, handleReviewUpdate }) {
     async (id) => {
       try {
         await axios.delete(
-          `https://easy-ruby-goose-sari.cyclic.app/api/items/${itemId}/reviews/${id}`,
+          `http://localhost:8000/api/items/${itemId}/reviews/${id}`,
           { headers }
         );
         handleReviewUpdate();
@@ -93,7 +93,7 @@ function ReviewSection({ data, token, wasBought, handleReviewUpdate }) {
   async function sortBy(sortFilterQuery, sortTag) {
     try {
       const res = await axios.get(
-        `https://easy-ruby-goose-sari.cyclic.app/api/items/${itemId}/reviews/specific/${sortFilterQuery}`
+        `http://localhost:8000/api/items/${itemId}/reviews/specific/${sortFilterQuery}`
       );
       setReviews(res.data.data.data);
       setSortFilter(sortTag);
@@ -106,7 +106,7 @@ function ReviewSection({ data, token, wasBought, handleReviewUpdate }) {
   async function filterByRating(starFilterQuery, starTag) {
     try {
       const res = await axios.get(
-        `https://easy-ruby-goose-sari.cyclic.app/api/items/${itemId}/reviews/specific?rating=${starFilterQuery}`
+        `http://localhost:8000/api/items/${itemId}/reviews/specific?rating=${starFilterQuery}`
       );
       setReviews(res.data.data.data);
       setFilterBar(starTag);

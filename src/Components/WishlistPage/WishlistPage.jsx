@@ -30,12 +30,9 @@ function WishlistPage() {
 
   const removeWishItem = async (id) => {
     try {
-      await axios.delete(
-        `https://easy-ruby-goose-sari.cyclic.app/api/wishlist/${id}`,
-        {
-          headers,
-        }
-      );
+      await axios.delete(`http://localhost:8000/api/wishlist/${id}`, {
+        headers,
+      });
       setUpdateWish(!updateWish);
     } catch (err) {
       console.log(err);
@@ -50,7 +47,7 @@ function WishlistPage() {
     const itemToAdd = { ...item };
     try {
       const response = await axios.post(
-        "https://easy-ruby-goose-sari.cyclic.app/api/cartItems",
+        "http://localhost:8000/api/cartItems",
         itemToAdd,
         {
           headers,

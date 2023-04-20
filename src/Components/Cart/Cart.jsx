@@ -25,7 +25,7 @@ function Cart() {
     try {
       await axios.delete(
         `
-      https://easy-ruby-goose-sari.cyclic.app/api/cartItems/${id}`,
+        http://localhost:8000/api/cartItems/${id}`,
         {
           headers,
         }

@@ -19,7 +19,7 @@ function ReviewForm({ token, wasBought, handleReviewUpdate }) {
       const headers = { Authorization: `Bearer ${token}` };
       try {
         const newReview = await axios.post(
-          `https://easy-ruby-goose-sari.cyclic.app/api/items/${itemId}/reviews`,
+          `http://localhost:8000/api/items/${itemId}/reviews`,
           {
             reviewText: review,
             rating: rating,
