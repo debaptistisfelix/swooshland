@@ -1,6 +1,6 @@
  
- /sneakers                    /
- /accessories                 /
+ /sneakers                    /sneakers
+ /accessories                 /accessories
  /user-log                    /
  /forgotPassword              /
  /resetPassword/:resetToken   /
