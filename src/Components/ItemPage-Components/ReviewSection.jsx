@@ -18,6 +18,7 @@ function ReviewSection({ data, token, wasBought, handleReviewUpdate }) {
   const [reviews, setReviews] = useState(null);
   // State to get all the reviews
   const [allReviews, setAllReviews] = useState(null);
+  const [postReviewError, setPotsReviewError] = useState(null);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -60,6 +61,7 @@ function ReviewSection({ data, token, wasBought, handleReviewUpdate }) {
         );
         handleReviewUpdate();
         setReviewsUpdate(!reviewsUpdate);
+        setPotsReviewError(null);
       } catch (err) {
         console.log(err);
       }
@@ -158,6 +160,8 @@ function ReviewSection({ data, token, wasBought, handleReviewUpdate }) {
           <ReviewForm
             token={token}
             wasBought={wasBought}
+            postReviewError={postReviewError}
+            setPotsReviewError={setPotsReviewError}
             handleReviewUpdate={handleReviewUpdate}
           />
         </div>

@@ -17,6 +17,7 @@
 
 .ReviewTotal-title {
   margin: 0;
+  font-size: 16px;
   text-align: center;
   letter-spacing: 2px;
 }
@@ -58,7 +59,8 @@
   .ReviewTotal {
     width: 100%;
     padding: 0;
-    /* border: 1px solid red; */
+    order: 1;
+    /*  border: 1px solid red; */
   }
 
   .ReviewTotal-title {

@@ -33,7 +33,6 @@
     min-width: fit-content;
   }
   .MiniImg img {
-    width: calc(33vw + 0.12rem);
     width: 100%;
     height: 100%;
     cursor: pointer;

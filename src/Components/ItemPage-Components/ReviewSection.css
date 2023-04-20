@@ -16,9 +16,11 @@
 
 .ReviewSection-reviews-bottom {
   width: 100%;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: fit-content;
-  min-height: 300px;
+  /*   min-height: 300px; */
 }
 
 .Reviews-list {
@@ -27,6 +29,9 @@
 }
 
 @media (max-width: 767px) {
+  .ReviewSection {
+    height: fit-content;
+  }
   .ReviewSection-reviews-top {
     display: flex;
     flex-direction: column;
@@ -36,6 +41,12 @@
 
   .ReviewSection-reviews-bottom {
     width: 100%;
+    height: fit-content;
+    gap: clamp(50px, 17.15vw + 0.12rem, 60px);
+  }
+
+  .Reviews-list {
+    height: fit-content;
   }
 }
 

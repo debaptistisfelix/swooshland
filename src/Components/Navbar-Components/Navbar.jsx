@@ -192,8 +192,11 @@ function Navbar() {
                 <span className="Navbar-sneaker-category">JORDAN 1 MID</span>
                 <span className="Navbar-sneaker-name">OG-ORANGE</span>
                 <Link
-                  onClick={() => setOpenNav(false)}
-                  to="/products/64036bf0261d099979a2494b"
+                  onClick={() => {
+                    setOpenNav(false);
+                    window.scrollTo(0, 0);
+                  }}
+                  to="/products/6432f546e715a8760dcccb12"
                   className="Navbar-show-monthly"
                 >
                   SHOW <i className="fa-solid fa-rocket"></i>

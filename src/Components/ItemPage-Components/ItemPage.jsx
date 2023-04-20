@@ -61,14 +61,16 @@ function ItemPage() {
       setWasBought(false);
       console.log(err.response.data.message);
     }
-  }, [data]);
+  }, [data, reviewsUpdate]);
 
   // As soon as you have the product, check if was ever ordered
   useEffect(() => {
     if (token !== null) {
       didUserBuy();
+    } else {
+      setWasBought(false);
     }
-  }, [data]);
+  }, [data, reviewsUpdate]);
 
   const [related, setRelated] = useState([]);
 

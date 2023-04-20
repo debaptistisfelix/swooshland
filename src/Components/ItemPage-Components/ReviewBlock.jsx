@@ -10,11 +10,15 @@ function ReviewBlock({ review, data, deleteReview }) {
     <div className="ReviewBlock">
       <div className="ReviewBlock-top">
         {data && (
-          <p className="ReviewBlock-top-text">
-            <b className="review-user">{review.user.name}</b> rated the{" "}
-            {data.model} - {data.name} : <b>{review.rating}</b>{" "}
-            {fullStarsCount(review, review.rating)}
-          </p>
+          <div className="ReviewBlock-upper-part">
+            <p className="ReviewBlock-top-text">
+              <b className="review-user">{review.user.name}</b> rated the{" "}
+              {data.model} - {data.name} :
+            </p>
+            <p>
+              <b>{review.rating}</b> {fullStarsCount(review, review.rating)}
+            </p>
+          </div>
         )}
       </div>
 

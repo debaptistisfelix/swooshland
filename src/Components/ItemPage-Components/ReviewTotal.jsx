@@ -5,7 +5,7 @@ function ReviewTotal({ ratingStats }) {
   return (
     <div className="ReviewTotal">
       <div className="ReviewTotal-box">
-        <h5 className="ReviewTotal-title">Total Score</h5>
+        <h5 className="ReviewTotal-title">RATING SCORE</h5>
         <div className="ReviewTotal-score-box">
           <h2 className="ReviewTotal-score">
             {ratingStats &&

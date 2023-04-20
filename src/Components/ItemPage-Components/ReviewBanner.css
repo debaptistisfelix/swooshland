@@ -35,7 +35,7 @@
   padding: 10px 20px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
   letter-spacing: 3px;
-  height: 50%;
+  height: 50px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease-out;
@@ -60,7 +60,8 @@
     height: fit-content;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: clamp(20px, 6.45vw + 0.12rem, 30px);
+
     align-items: center;
     padding: 0;
     box-sizing: border-box;
@@ -73,11 +74,12 @@
     font-size: clamp(16px, 4.72vw + 0.12rem, 20px);
   }
   .ReviewBanner-sort-box {
-    height: 100%;
-
+    height: fit-content;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    height: fit-content;
+
     justify-content: center;
     gap: 10px;
   }
