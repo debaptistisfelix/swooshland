@@ -18,9 +18,12 @@ export function OrderProcessProvider(props) {
   const addCartToOrder = async () => {
     if (token) {
       let headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get("http://localhost:8000/api/cartItems", {
-        headers,
-      });
+      const response = await axios.get(
+        "https://easy-ruby-goose-sari.cyclic.app/api/cartItems",
+        {
+          headers,
+        }
+      );
       let cartItems = response.data.data.cartItems;
       let idsArray = cartItems.map((item) => {
         return item.itemId;
@@ -40,7 +43,7 @@ export function OrderProcessProvider(props) {
     let headers = { Authorization: `Bearer ${token}` };
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/addresses",
+        "https://easy-ruby-goose-sari.cyclic.app/api/addresses",
         newAddress,
         {
           headers,

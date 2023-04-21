@@ -9,7 +9,7 @@ function SneakSection() {
   useEffect(() => {
     const fetchSneakers = async () => {
       const response = await axios.get(
-        "http://localhost:8000/api/items?tag=sneakers&limit=31"
+        "https://easy-ruby-goose-sari.cyclic.app/api/items?tag=sneakers&limit=31"
       );
       const results = response.data.data.data;
       setNewSneak(results.slice(0, 3));

@@ -9,7 +9,7 @@ export const UserContext = createContext();
 export function UserProvider(props) {
   // ADDRESS CONTEXT
   const { address, addressIsLoading, addressError, setUpdateAddressState } =
-    useFetchAddress("http://localhost:8000/api/addresses");
+    useFetchAddress("https://easy-ruby-goose-sari.cyclic.app/api/addresses");
 
   // CART CONTEXT
   const {
@@ -21,7 +21,7 @@ export function UserProvider(props) {
     updateCartState,
     showReservedNote,
     setShowReservedNote,
-  } = useFetchCart("http://localhost:8000/api/cartItems");
+  } = useFetchCart("https://easy-ruby-goose-sari.cyclic.app/api/cartItems");
   // WISHLIST CONTEXT
   const {
     wishes,
@@ -30,7 +30,7 @@ export function UserProvider(props) {
     setUpdateWish,
     updateWish,
     wishesPayRecap,
-  } = useFetchWish("http://localhost:8000/api/wishlist");
+  } = useFetchWish("https://easy-ruby-goose-sari.cyclic.app/api/wishlist");
 
   //   ORDER CONTEXT
   const {
@@ -39,7 +39,7 @@ export function UserProvider(props) {
     ordersIsLoading,
     setUpdateOrderState,
     updateOrderState,
-  } = useFetchOrders("http://localhost:8000/api/orders");
+  } = useFetchOrders("https://easy-ruby-goose-sari.cyclic.app/api/orders");
 
   return (
     <UserContext.Provider
