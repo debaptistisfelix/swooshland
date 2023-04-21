@@ -24,7 +24,7 @@ export function LoggedProvider(props) {
   const logOut = () => {
     removeCookie("client");
     removeCookie("isLGGD");
-    navigate("/sneakers");
+    navigate("/");
     setToken(null);
     setCodeUI(null);
     setLogged(false);

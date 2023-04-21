@@ -1,65 +1,69 @@
 .Orders {
-    margin-top: 8vh;
-    width: 100%;
+  margin-top: 8vh;
+  width: 100%;
 
-    height: fit-content;
-    background-color: whitesmoke;
-    font-family: 'Montserrat', sans-serif;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+  height: fit-content;
+  background-color: whitesmoke;
+  font-family: "Montserrat", sans-serif;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .Orders-container {
-    min-height: 100%;
-    height: 100%;
-    min-width: 100%;
-    width: 100%;
-    background-color: whitesmoke;
-    display: flex;
-    padding: 2% 5%;
-    justify-content: space-between;
-    box-sizing: border-box;
+  min-height: 100%;
+  height: 100%;
+  min-width: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+  display: flex;
+  padding: 2% 5%;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
-
 .Orders-loader-box {
-    width: 100%;
-    height: 100%;
-    min-height: 92vh;
-    display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 92vh;
+  display: flex;
 
-    justify-content: center;
-    align-items: center;
-    background-color: whitesmoke;
-
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
 }
 
 .Orders-loader-box .loader-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-    letter-spacing: 3px;
-    color: #495057;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  letter-spacing: 3px;
+  color: #495057;
 }
 
 .Orders-loader-box .loader {
-    border: 4px solid #dee2e6;
-    border-top: 4px solid #495057;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 2s linear infinite;
+  border: 4px solid #dee2e6;
+  border-top: 4px solid #495057;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
 
-    100% {
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 767px) {
+  .Orders-container {
+    padding-bottom: 50px;
+  }
 }

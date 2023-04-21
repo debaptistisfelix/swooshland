@@ -29,7 +29,7 @@ function ItemListPage() {
   useEffect(() => {
     const fetchSneakers = async () => {
       const response = await axios.get(
-        "https://easy-ruby-goose-sari.cyclic.app/api/items?tag=sneakers&limit=31"
+        "http://localhost:8000/api/items?tag=sneakers&limit=31"
       );
       const results = response.data.data.data;
 

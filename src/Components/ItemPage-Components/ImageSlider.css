@@ -4,7 +4,8 @@
   display: flex;
   position: relative;
   background-color: whitesmoke;
-
+  display: flex;
+  justify-content: center;
   overflow: visible;
 }
 
@@ -88,6 +89,7 @@
 @media (max-width: 767px) {
   .ImageSlider {
     flex-direction: column;
+    justify-content: flex-start;
     /*  min-height: 500px; */
     height: 60vh;
     animation: introColorChange 0.3s 0.4s forwards ease-out;

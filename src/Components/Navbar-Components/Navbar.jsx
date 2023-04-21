@@ -18,7 +18,7 @@ function Navbar() {
   const [openCartModal, setOpenCartModal] = useState(false);
   const [openSearchResults, setOpenSearchResults] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const { setLogged } = useContext(LoggedContext);
+  const { logged, setLogged, logOut } = useContext(LoggedContext);
   const [cookies] = useCookies(["client"]);
 
   const [items, setItems] = useState([]);
@@ -34,9 +34,7 @@ function Navbar() {
 
   useEffect(() => {
     async function fetchProds() {
-      const res = await axios.get(
-        "https://easy-ruby-goose-sari.cyclic.app/api/items?limit=31"
-      );
+      const res = await axios.get("http://localhost:8000/api/items?limit=31");
       const products = res.data.data.data;
 
       setItems([...products]);
@@ -50,8 +48,8 @@ function Navbar() {
   let cardStatus;
   openNav === true ? (cardStatus = "Navbar-footer-card-appears") : undefined;
 
-  let linkStatus;
-  openNav === true ? (linkStatus = "Navbar-link-appear") : undefined;
+  /*  let linkStatus;
+  openNav === true ? (linkStatus = "Navbar-link-appear") : undefined; */
 
   let NavBlurrer;
   openNav === false
@@ -118,6 +116,8 @@ function Navbar() {
     window.scrollTo(0, 0);
   }
 
+  const mobileScreenSize = window.innerWidth <= 767;
+
   return (
     <nav className="Navbar">
       <div className="Navbar-logo-box">
@@ -133,31 +133,71 @@ function Navbar() {
           <NavLink
             onClick={() => navLinkFunc()}
             to="/"
-            className={`Navbar-link ${linkStatus}1 homeLink`}
+            className={`Navbar-link homeLink`}
           >
             HOME <i className="fa-solid fa-chevron-right link-arrow"></i>
           </NavLink>
           <NavLink
             onClick={() => navLinkFunc()}
             to="/sneakers"
-            className={`Navbar-link ${linkStatus}2`}
+            className={`Navbar-link`}
           >
             SNEAKERS <i className="fa-solid fa-chevron-right link-arrow"></i>
           </NavLink>
           <NavLink
             onClick={() => navLinkFunc()}
             to="/accessories"
-            className={`Navbar-link ${linkStatus}3`}
+            className={`Navbar-link`}
           >
             ACCESSORIES <i className="fa-solid fa-chevron-right link-arrow"></i>
           </NavLink>
-          {/* <NavLink
-            onClick={() => navLinkFunc()}
-            to="/aboutus"
-            className={`Navbar-link ${linkStatus}4`}
-          >
-            ABOUT US <i className="fa-solid fa-chevron-right link-arrow"></i>
-          </NavLink> */}
+          {logged === false && mobileScreenSize && (
+            <NavLink
+              onClick={() => navLinkFunc()}
+              to="/user-log"
+              className={`Navbar-link user-navlink`}
+            >
+              LOGIN / SIGNUP{" "}
+              <i className="fa-solid fa-chevron-right link-arrow"></i>
+            </NavLink>
+          )}
+          {logged === true && mobileScreenSize && (
+            <ul className="Navbar-links user-navbar-links">
+              <NavLink
+                onClick={() => navLinkFunc()}
+                to="/orders"
+                className={`Navbar-link user-navlink`}
+              >
+                ORDERS <i className="fa-solid fa-chevron-right link-arrow"></i>
+              </NavLink>
+              <NavLink
+                onClick={() => navLinkFunc()}
+                to="/wishlist"
+                className={`Navbar-link user-navlink`}
+              >
+                WISHLIST<i className="fa-solid fa-chevron-right link-arrow"></i>
+              </NavLink>
+              <NavLink
+                onClick={() => navLinkFunc()}
+                to="/profile"
+                className={`Navbar-link user-navlink`}
+              >
+                ADDRESSES
+                <i className="fa-solid fa-chevron-right link-arrow"></i>
+              </NavLink>
+              <NavLink
+                onClick={() => {
+                  logOut();
+                  navLinkFunc();
+                }}
+                to="/"
+                className={`Navbar-link user-navlink`}
+              >
+                LOG OUT
+                <i className="fa-solid fa-chevron-right link-arrow"></i>
+              </NavLink>
+            </ul>
+          )}
         </ul>
         <div className="Navbar-search-box">
           <span className="Navbar-search-cta">
@@ -168,7 +208,7 @@ function Navbar() {
             <input
               onChange={handleSearchChange}
               value={searchValue}
-              placeholder="SEARCH"
+              placeholder="Search ..."
               type="text"
             />
             {openSearchResults === true ? (
@@ -185,7 +225,7 @@ function Navbar() {
             filteredItem={filteredItem}
           />
         </div>
-        <div className="Navbar-footer">
+        {/* <div className="Navbar-footer">
           <div className={`Navbar-footer-card ${cardStatus}`}>
             <div className="Navbar-footer-shadow">
               <span className="Navbar-weekly-tag">CUSTOM OF THE MONTH</span>
@@ -206,7 +246,7 @@ function Navbar() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="Navbar-icons">
         <i
@@ -231,10 +271,12 @@ function Navbar() {
           <i className="hamburger fa-solid fa-bars nav-icons"></i>
         </div>
       </div>
+
       <UserModalNav
         toggleUserModal={toggleUserModal}
         openedUserModal={openUserModal}
       />
+
       <CartModalNav openedCartModal={openCartModal} />
       <div className={`Nav-blurrer ${NavBlurrer}`}></div>
       <div className={`search-nav-blurrer ${SearchNavBlurrer}`}></div>

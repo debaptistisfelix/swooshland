@@ -23,12 +23,9 @@ function Cart() {
 
   const removeCartItem = async (id) => {
     try {
-      await axios.delete(
-        `https://easy-ruby-goose-sari.cyclic.app/api/cartItems/${id}`,
-        {
-          headers,
-        }
-      );
+      await axios.delete(`http://localhost:8000/api/cartItems/${id}`, {
+        headers,
+      });
       setUpdateCartState(!updateCartState);
     } catch (err) {
       console.log(err);

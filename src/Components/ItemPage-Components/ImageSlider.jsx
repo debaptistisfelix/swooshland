@@ -43,8 +43,15 @@ function ImageSlider({ data }) {
     ? (smallAos = "fade-right")
     : (smallAos = "fade-down");
 
+  const mobileScreenSize = window.innerWidth <= 767;
+
   return (
-    <div className="ImageSlider">
+    <div
+      style={{
+        height: mobileScreenSize && data.images.length === 1 && "fit-content",
+      }}
+      className="ImageSlider"
+    >
       <div
         className={`ImageSlider-img-box`}
         data-aos={`${bigAos}`}
@@ -53,6 +60,7 @@ function ImageSlider({ data }) {
         <img className="ImageSlider-img" src={displayedImg} />
       </div>
       <div
+        style={{ display: data.images.length === 1 && "none" }}
         className={`ImageSlider-images`}
         data-aos={`${smallAos}`}
         data-aos-delay={600}

@@ -21,19 +21,16 @@ function ProfilePage() {
     let filteredItems = address.filter((item) => {
       return item.id !== id;
     });
-    await axios.delete(
-      `https://easy-ruby-goose-sari.cyclic.app/api/addresses/${id}`,
-      {
-        headers,
-      }
-    );
+    await axios.delete(`http://localhost:8000/api/addresses/${id}`, {
+      headers,
+    });
     setUpdateAddressState(true);
   }
 
   async function addAddress(newAddress) {
     try {
       const response = await axios.post(
-        "https://easy-ruby-goose-sari.cyclic.app/api/addresses",
+        "http://localhost:8000/api/addresses",
         newAddress,
         {
           headers,

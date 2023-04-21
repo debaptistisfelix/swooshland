@@ -31,7 +31,7 @@ function LoginPage({ formOn, toggleForm }) {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://easy-ruby-goose-sari.cyclic.app/api/users/login",
+        "http://localhost:8000/api/users/login",
         {
           email: email,
           password: password,

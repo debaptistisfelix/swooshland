@@ -119,7 +119,8 @@
 
 .Navbar-complete-input input::placeholder {
   color: #495057;
-  font-weight: bold;
+  letter-spacing: 2px;
+  font-weight: 600;
   font-size: 12px;
 }
 
@@ -199,10 +200,6 @@
   display: none;
 }
 
-/* .Nav-blurrer {
-   
-} */
-
 .search-nav-blurrer {
   position: absolute;
   width: 100%;
@@ -255,6 +252,10 @@
     align-items: center;
     justify-content: flex-end;
     align-items: center;
+  }
+
+  .Navbar-icons .fa-user {
+    display: none;
   }
 
   .Navbar-icons .nav-icons {
@@ -349,9 +350,9 @@
   .Navbar-links {
     width: 100%;
     height: 20%;
+    height: fit-content;
     flex-direction: column;
     justify-content: space-between;
-
     order: 3;
     padding: 0;
   }
@@ -360,19 +361,20 @@
     width: 100%;
     gap: 10px;
     height: 33%;
+    height: 50px;
     font-size: clamp(16px, 4.72vw + 0.12rem, 18px);
     display: flex;
     font-weight: 300;
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid #dee2e6;
-    transform: rotateX(90deg);
+    /* transform: rotateX(90deg); */
   }
 
   /*  .Navbar-link-appear {
         animation: dropLink 1s 0.5s ease-out forwards;
     } */
-
+  /* 
   .Navbar-link-appear1 {
     animation: dropLink 0.2s 0.25s ease-out forwards;
   }
@@ -387,7 +389,7 @@
 
   .Navbar-link-appear4 {
     animation: dropLink 0.2s 1s ease-out forwards;
-  }
+  } */
 
   @keyframes dropLink {
     from {

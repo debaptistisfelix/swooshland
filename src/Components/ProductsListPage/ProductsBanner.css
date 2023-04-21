@@ -73,11 +73,11 @@
 }
 
 .show-sort-modal {
-  opacity: 1;
+  display: flex;
 }
 
 .hide-sort-modal {
-  opacity: 0;
+  display: none;
 }
 
 .sort-modal-option:hover {

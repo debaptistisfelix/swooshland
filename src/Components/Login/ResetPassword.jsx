@@ -23,7 +23,7 @@ function ResetPassword() {
   async function ResetYourPassword(pass, passConf) {
     try {
       await axios.patch(
-        `https://easy-ruby-goose-sari.cyclic.app/api/users/resetPassword/${resetToken}`,
+        `http://localhost:8000/api/users/resetPassword/${resetToken}`,
         {
           password: pass,
           passwordConfirm: passConf,
