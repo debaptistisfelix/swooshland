@@ -1,6 +1,5 @@
 import "./NavbarSearchResults.css";
 import { Link } from "react-router-dom";
-import useLoadedState from "../Hooks/useLoadedState";
 
 import ProductCard2 from "../ProductCard2";
 

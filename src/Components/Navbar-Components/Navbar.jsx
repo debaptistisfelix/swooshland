@@ -34,7 +34,9 @@ function Navbar() {
 
   useEffect(() => {
     async function fetchProds() {
-      const res = await axios.get("http://localhost:8000/api/items?limit=31");
+      const res = await axios.get(
+        "https://easy-ruby-goose-sari.cyclic.app/api/items?limit=31"
+      );
       const products = res.data.data.data;
 
       setItems([...products]);

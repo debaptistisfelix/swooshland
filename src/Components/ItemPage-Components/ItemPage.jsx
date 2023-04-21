@@ -32,7 +32,9 @@ function ItemPage() {
   };
 
   const fetchData = useCallback(async () => {
-    const res = await axios.get(`http://localhost:8000/api/items/${itemId}`);
+    const res = await axios.get(
+      `https://easy-ruby-goose-sari.cyclic.app/api/items/${itemId}`
+    );
     setData(res.data.data.data);
     setError(null);
     setIsLoading(false);
@@ -52,7 +54,7 @@ function ItemPage() {
   const didUserBuy = useCallback(async () => {
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/orders/orderDetails/${itemId}`,
+        `https://easy-ruby-goose-sari.cyclic.app/api/orders/orderDetails/${itemId}`,
         { headers }
       );
 
@@ -77,7 +79,9 @@ function ItemPage() {
   useEffect(() => {
     if (data) {
       async function fetchRelated() {
-        const res = await axios.get("http://localhost:8000/api/items?limit=50");
+        const res = await axios.get(
+          "https://easy-ruby-goose-sari.cyclic.app/api/items?limit=50"
+        );
         const sneakers = res.data.data.data;
         let relatedSneakers = [];
 
@@ -133,7 +137,7 @@ function ItemPage() {
     };
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/cartItems",
+        "https://easy-ruby-goose-sari.cyclic.app/api/cartItems",
         itemtoAdd,
         {
           headers,
@@ -163,7 +167,7 @@ function ItemPage() {
     };
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/wishlist",
+        "https://easy-ruby-goose-sari.cyclic.app/api/wishlist",
         itemtoAdd,
         {
           headers,
