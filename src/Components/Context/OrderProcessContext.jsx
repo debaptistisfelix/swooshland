@@ -18,12 +18,9 @@ export function OrderProcessProvider(props) {
   const addCartToOrder = async () => {
     if (token) {
       let headers = { Authorization: `Bearer ${token}` };
-      const response = await axios.get(
-        "https://easy-ruby-goose-sari.cyclic.app/api/cartItems",
-        {
-          headers,
-        }
-      );
+      const response = await axios.get("http://localhost:8000/api/cartItems", {
+        headers,
+      });
       let cartItems = response.data.data.cartItems;
       let idsArray = cartItems.map((item) => {
         return item.itemId;
@@ -73,9 +70,6 @@ export function OrderProcessProvider(props) {
     setCookie("ordCookie", orderObj, {
       path: "/",
       maxAge: 60 * 60 * 24,
-      Secure: true,
-      httpOnly: true,
-      sameSite: "strict",
     });
   };
 
