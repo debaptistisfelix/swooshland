@@ -22,8 +22,8 @@ function OrderPay() {
   const checkoutOptions = {
     lineItems: [...order.stripe],
     mode: "payment",
-    successUrl: `${window.location.origin}/order-finished`,
-    cancelUrl: `${window.location.origin}/order-finished`,
+    successUrl: `${window.location.origin}/order-completed`,
+    cancelUrl: `${window.location.origin}/order-failed`,
   };
 
   const redirectToCheckout = async () => {
