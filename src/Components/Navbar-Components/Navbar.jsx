@@ -123,7 +123,13 @@ function Navbar() {
   return (
     <nav className="Navbar">
       <div className="Navbar-logo-box">
-        <NavLink to="/" className="Navbar-logo">
+        <NavLink
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+          to="/"
+          className="Navbar-logo"
+        >
           SWOOSHLAND
         </NavLink>
       </div>
