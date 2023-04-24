@@ -79,6 +79,11 @@ function ItemPageText({ data, selectSize, addToCart, addToWish, chosenSize }) {
     window.matchMedia("(max-width: 767px)").matches &&
     data.availableSizes.length === 1;
 
+  function getToLogIn() {
+    window.scrollTo(0, 0);
+    navigate("/user-log");
+  }
+
   return (
     <div className="ItemPageText">
       <div className="ItemPageText-title-box">
@@ -151,7 +156,7 @@ function ItemPageText({ data, selectSize, addToCart, addToWish, chosenSize }) {
         <div className="ItemPageText-btns">
           <button
             onClick={() => {
-              logged === true ? activateWishAnim() : navigate("/user-log");
+              logged === true ? activateWishAnim() : getToLogIn();
             }}
             className="ItemPageText-add-to-wish"
           >
@@ -160,7 +165,7 @@ function ItemPageText({ data, selectSize, addToCart, addToWish, chosenSize }) {
           </button>
           <button
             onClick={() => {
-              logged === true ? activateCartAnim() : navigate("/user-log");
+              logged === true ? activateCartAnim() : getToLogIn();
             }}
             className="ItemPageText-add-to-cart"
           >

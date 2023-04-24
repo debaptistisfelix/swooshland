@@ -49,13 +49,31 @@ function Footer() {
             <span className="Footer-links-title">
               <b>EXPLORE</b> <i className="fa-solid fa-rocket"></i>
             </span>
-            <Link to="/" className="Footer-link">
+            <Link
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+              to="/"
+              className="Footer-link"
+            >
               HOME
             </Link>
-            <Link to="/sneakers" className="Footer-link">
+            <Link
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+              to="/sneakers"
+              className="Footer-link"
+            >
               SNEAKERS
             </Link>
-            <Link to="/accessories" className="Footer-link">
+            <Link
+              onClick={() => {
+                window.scrollTo(0, 0);
+              }}
+              to="/accessories"
+              className="Footer-link"
+            >
               ACCESSORIES
             </Link>
           </div>
